@@ -8,10 +8,18 @@
         tools:context=".Activity_active">
 
     <LinearLayout
+            android:id="@+id/lenar_active"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorfon">
+
+        <ListView
+                android:id="@+id/list_activ"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="100">
+        </ListView>
 
         <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipgroup_active"
@@ -19,33 +27,44 @@
                 android:layout_height="wrap_content"
                 app:singleLine="true"
                 app:singleSelection="true"
-                app:chipSpacingHorizontal="0dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp">
+                android:layout_weight="1">
 
-            <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_a1"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="true"
-                    android:text="@string/active_1"
-                    android:theme="@style/Theme.MaterialComponents.Light"/>
-            <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_a2"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="true"
-                    android:text="@string/active_2"
-                    android:theme="@style/Theme.MaterialComponents.Light"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_a1"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            android:text="@string/active_1"
+                            android:theme="@style/Theme.MaterialComponents.Light"
+                            android:layout_centerInParent="true"/>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_a2"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            android:text="@string/active_2"
+                            android:theme="@style/Theme.MaterialComponents.Light"
+                            android:layout_centerInParent="true"/>
+                </RelativeLayout>
+            </LinearLayout>
         </com.google.android.material.chip.ChipGroup>
-
-        <ListView
-                android:id="@+id/list_activ"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-        </ListView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

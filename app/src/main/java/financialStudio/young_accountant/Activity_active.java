@@ -1,9 +1,12 @@
 package financialStudio.young_accountant;
 
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -117,6 +120,7 @@ public class Activity_active extends AppCompatActivity {
                 float _density = getMetrics().density;
 
                 float chipgroup_active_Width = (chipgroup_active.getWidth() / _density);
+
 
                 chipgroup_active.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
