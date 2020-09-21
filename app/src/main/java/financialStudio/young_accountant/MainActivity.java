@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.moeidbannerlibrary.banner.BannerLayout;
 import com.example.moeidbannerlibrary.banner.BaseBannerAdapter;
+import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.ads.*;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sp;
     private DisplayMetrics metrics;
+
+    private ChartOFaccounts chartOFaccounts;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -69,9 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
+
+        chartOFaccounts = new ChartOFaccounts(getResources());
+
     }
-
-
 
     private void startBanner(){
 
@@ -297,16 +302,22 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getBaseContext(), Activity_active.class);
+
+            intent.putExtra("active_1", getChartOFaccounts().getActive_1());
+            intent.putExtra("active_2", getChartOFaccounts().getActive_2());
+
             startActivity(intent);
         }
     };
-
-
 
     View.OnClickListener btn2Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getBaseContext(), Activity_passive.class);
+
+            intent.putExtra("passive_1", getChartOFaccounts().getPasssive_1());
+            intent.putExtra("passive_2", getChartOFaccounts().getPasssive_2());
+
             startActivity(intent);
         }
     };
@@ -315,6 +326,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getBaseContext(), Activity_transite.class);
+
+            intent.putExtra("transite", getChartOFaccounts().getTransite());
+
             startActivity(intent);
         }
     };
@@ -323,6 +337,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getBaseContext(), Activity_zabalanse.class);
+
+            intent.putExtra("zabalanse", getChartOFaccounts().getZabalans());
+
             startActivity(intent);
         }
     };
@@ -332,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(getBaseContext(), Activity_dopol.class);
             intent.putExtra("dopol", 1);
+
             startActivity(intent);
         }
     };
@@ -341,6 +359,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(getBaseContext(), Activity_dopol.class);
             intent.putExtra("dopol", 2);
+
             startActivity(intent);
         }
     };
@@ -370,5 +389,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setMetrics(DisplayMetrics metrics) {
         this.metrics = metrics;
+    }
+
+    public ChartOFaccounts getChartOFaccounts() {
+        return chartOFaccounts;
     }
 }

@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.*;
 
@@ -49,30 +50,19 @@ public class Activity_dopol extends AppCompatActivity implements DoubleTapCallba
         TextView textView = (TextView) findViewById(R.id.action_bar_text);
         textView.setText(getResources().getString(R.string.dopol));
 
-        try{
+        try {
+            InputStream inNSBU = getResources().openRawResource(R.raw.nsbu);
 
-        //    InputStream in = getResources().openRawResource(R.raw.nsbu);
-         //   File file = new File(getExternalFilesDir(null), "nsbu.pdf");
+            File fileNsbu = new File(getExternalFilesDir(null), "nsbu.pdf");
+            copy(inNSBU, fileNsbu);
 
-        //    copy(in, file);
+            PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
 
-        //    ParcelFileDescriptor descriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
-
-        //    pdf = new PdfRenderer(descriptor);
-
-        //    PdfAdapter adapter = new PdfAdapter(getApplicationContext(), pdf);
-
-         //   ListView listView = (ListView) findViewById(R.id.list_pdf);
-        //    listView.setAdapter(adapter);
-
-         //   listView.setOnItemClickListener(new DoubleTapListener(this));
-
-            Log.d(TAG, "lofing");
-            DokDopol dokDopol = new DokDopol(getBaseContext(), getResources());
-            dokDopol.openNSBU();
+            DokDopol dokDopol = new DokDopol(pdfView);
+            dokDopol.openNSBU(fileNsbu);
 
 
-        }catch (Exception e){
+        }catch (IOException e){
             Log.d(TAG, e.getMessage());
         }
 
@@ -89,25 +79,18 @@ public class Activity_dopol extends AppCompatActivity implements DoubleTapCallba
         TextView textView = (TextView) findViewById(R.id.action_bar_text);
         textView.setText(getResources().getString(R.string.dopol));
 
-        try{
-            InputStream in = getResources().openRawResource(R.raw.zakon);
-            File file = new File(getExternalFilesDir(null), "zakon.pdf");
+        try {
+            InputStream inZakon = getResources().openRawResource(R.raw.zakon);
 
-            copy(in, file);
+            File fileZakon = new File(getExternalFilesDir(null), "zalon.pdf");
+            copy(inZakon, fileZakon);
 
-            ParcelFileDescriptor descriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+            PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
 
-            pdf = new PdfRenderer(descriptor);
+            DokDopol dokDopol = new DokDopol(pdfView);
+            dokDopol.openNSBU(fileZakon);
 
-            PdfAdapter adapter = new PdfAdapter(getApplicationContext(), pdf);
-
-         //   ListView listView = (ListView) findViewById(R.id.list_pdf);
-         //   listView.setAdapter(adapter);
-
-        //    listView.setOnItemClickListener(new DoubleTapListener(this));
-
-
-        }catch (Exception e){
+        }catch (IOException e){
             Log.d(TAG, e.getMessage());
         }
 

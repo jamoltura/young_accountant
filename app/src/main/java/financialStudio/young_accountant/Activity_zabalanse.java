@@ -40,27 +40,9 @@ public class Activity_zabalanse extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> list = new ArrayList<>();
-        list.add(getResources().getString(R.string.zabalans_001));
-        list.add(getResources().getString(R.string.zabalans_002));
-        list.add(getResources().getString(R.string.zabalans_003));
-        list.add(getResources().getString(R.string.zabalans_004));
-        list.add(getResources().getString(R.string.zabalans_005));
-        list.add(getResources().getString(R.string.zabalans_006));
-        list.add(getResources().getString(R.string.zabalans_007));
-        list.add(getResources().getString(R.string.zabalans_008));
-        list.add(getResources().getString(R.string.zabalans_009));
-        list.add(getResources().getString(R.string.zabalans_010));
-        list.add(getResources().getString(R.string.zabalans_011));
-        list.add(getResources().getString(R.string.zabalans_012));
-        list.add(getResources().getString(R.string.zabalans_013));
-        list.add(getResources().getString(R.string.zabalans_014));
-        list.add(getResources().getString(R.string.zabalans_015));
-        list.add(getResources().getString(R.string.zabalans_016));
-
         ListView listView = (ListView) findViewById(R.id.list_zabalans);
 
-        SchetAdapter sch = new SchetAdapter(getApplicationContext(), list);
+        SchetAdapter sch = new SchetAdapter(getApplicationContext(), getIntent().getStringArrayListExtra("zabalanse"));
         listView.setAdapter(sch);
     }
 

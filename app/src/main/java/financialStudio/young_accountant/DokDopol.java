@@ -2,6 +2,8 @@ package financialStudio.young_accountant;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import com.github.barteksc.pdfviewer.PDFView;
 
@@ -12,53 +14,22 @@ public class DokDopol {
 
     private static final String TAG = "myLogs";
 
-    final private Context context;
-    final Resources resources;
-    private PDFView pdfView;
+    private File fileNSBU;
+    private File fileZakon;
+    final private PDFView pdfView;
 
 
-    public DokDopol(Context context, Resources resources) {
-        this.resources = resources;
-        this.context = context;
-        this.pdfView = ((MainActivity) context).findViewById(R.id.pdfView);
+    public DokDopol(PDFView pdfView) {
+        this.pdfView = pdfView;
     }
 
-    public void openNSBU() throws IOException{
-
-        Log.d(TAG, "log");
-
-        InputStream in = getResources().openRawResource(R.raw.nsbu);
-        File file = new File(context.getExternalFilesDir(null), "nsbu.pdf");
-
-        copy(in, file);
-
-        pdfView.fromFile(file).pages().enableSwipe(true).swipeHorizontal(false).enableDoubletap(true).defaultPage(0);
-
-        Log.d(TAG, "log");
-
+    public void openNSBU(File fileNSBU) {
+        this.fileNSBU = fileNSBU;
+        pdfView.fromFile(fileNSBU).load();
     }
 
-    public void openZakon() throws IOException{
-
-    }
-
-
-
-    private void copy(InputStream in, File target) throws IOException {
-
-        OutputStream out = new FileOutputStream(target);
-
-        byte[] buf = new byte[1024];
-        int len;
-
-        while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
-        }
-        out.flush();
-        out.close();
-    }
-
-    public Resources getResources() {
-        return resources;
+    public void openZakon(File fileZakon){
+        this.fileZakon = fileZakon;
+        pdfView.fromFile(fileZakon).load();
     }
 }

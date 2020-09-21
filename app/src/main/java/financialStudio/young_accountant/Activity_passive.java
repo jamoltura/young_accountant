@@ -115,119 +115,19 @@ public class Activity_passive extends AppCompatActivity {
 
     private void init_passive1(){
         setPage(1);
-        ArrayList<String> list = new ArrayList<>();
-        list.add(getResources().getString(R.string.passive_6000));
-        list.add(getResources().getString(R.string.passive_6010));
-        list.add(getResources().getString(R.string.passive_6020));
-        list.add(getResources().getString(R.string.passive_6100));
-        list.add(getResources().getString(R.string.passive_6110));
-        list.add(getResources().getString(R.string.passive_6120));
-        list.add(getResources().getString(R.string.passive_6200));
-        list.add(getResources().getString(R.string.passive_6210));
-        list.add(getResources().getString(R.string.passive_6220));
-        list.add(getResources().getString(R.string.passive_6230));
-        list.add(getResources().getString(R.string.passive_6240));
-        list.add(getResources().getString(R.string.passive_6250));
-        list.add(getResources().getString(R.string.passive_6290));
-        list.add(getResources().getString(R.string.passive_6300));
-        list.add(getResources().getString(R.string.passive_6310));
-        list.add(getResources().getString(R.string.passive_6320));
-        list.add(getResources().getString(R.string.passive_6390));
-        list.add(getResources().getString(R.string.passive_6400));
-        list.add(getResources().getString(R.string.passive_6410));
-        list.add(getResources().getString(R.string.passive_6500));
-        list.add(getResources().getString(R.string.passive_6510));
-        list.add(getResources().getString(R.string.passive_6520));
-        list.add(getResources().getString(R.string.passive_6600));
-        list.add(getResources().getString(R.string.passive_6610));
-        list.add(getResources().getString(R.string.passive_6620));
-        list.add(getResources().getString(R.string.passive_6630));
-        list.add(getResources().getString(R.string.passive_6700));
-        list.add(getResources().getString(R.string.passive_6710));
-        list.add(getResources().getString(R.string.passive_6720));
-        list.add(getResources().getString(R.string.passive_6800));
-        list.add(getResources().getString(R.string.passive_6810));
-        list.add(getResources().getString(R.string.passive_6820));
-        list.add(getResources().getString(R.string.passive_6830));
-        list.add(getResources().getString(R.string.passive_6840));
-        list.add(getResources().getString(R.string.passive_6900));
-        list.add(getResources().getString(R.string.passive_6910));
-        list.add(getResources().getString(R.string.passive_6920));
-        list.add(getResources().getString(R.string.passive_6930));
-        list.add(getResources().getString(R.string.passive_6930));
-        list.add(getResources().getString(R.string.passive_6940));
-        list.add(getResources().getString(R.string.passive_6950));
-        list.add(getResources().getString(R.string.passive_6960));
-        list.add(getResources().getString(R.string.passive_6970));
-        list.add(getResources().getString(R.string.passive_6990));
-        list.add(getResources().getString(R.string.passive_7000));
-        list.add(getResources().getString(R.string.passive_7010));
-        list.add(getResources().getString(R.string.passive_7020));
-        list.add(getResources().getString(R.string.passive_7100));
-        list.add(getResources().getString(R.string.passive_7110));
-        list.add(getResources().getString(R.string.passive_7120));
-        list.add(getResources().getString(R.string.passive_7200));
-        list.add(getResources().getString(R.string.passive_7210));
-        list.add(getResources().getString(R.string.passive_7220));
-        list.add(getResources().getString(R.string.passive_7230));
-        list.add(getResources().getString(R.string.passive_7240));
-        list.add(getResources().getString(R.string.passive_7250));
-        list.add(getResources().getString(R.string.passive_7290));
-        list.add(getResources().getString(R.string.passive_7300));
-        list.add(getResources().getString(R.string.passive_7310));
-        list.add(getResources().getString(R.string.passive_7400));
-        list.add(getResources().getString(R.string.passive_7500));
-        list.add(getResources().getString(R.string.passive_7600));
-        list.add(getResources().getString(R.string.passive_7700));
-        list.add(getResources().getString(R.string.passive_7800));
-        list.add(getResources().getString(R.string.passive_7810));
-        list.add(getResources().getString(R.string.passive_7820));
-        list.add(getResources().getString(R.string.passive_7830));
-        list.add(getResources().getString(R.string.passive_7840));
-        list.add(getResources().getString(R.string.passive_7900));
-        list.add(getResources().getString(R.string.passive_7910));
-        list.add(getResources().getString(R.string.passive_7920));
-
 
         ListView listView = (ListView) findViewById(R.id.list_passiv);
 
-        SchetAdapter sch = new SchetAdapter(getApplicationContext(), list);
+        SchetAdapter sch = new SchetAdapter(getApplicationContext(), getIntent().getStringArrayListExtra("passive_1"));
         listView.setAdapter(sch);
     }
 
     private void init_passive2(){
         setPage(2);
-        ArrayList<String> list = new ArrayList<>();
-        list.add(getResources().getString(R.string.passive_8000));
-        list.add(getResources().getString(R.string.passive_8100));
-        list.add(getResources().getString(R.string.passive_8200));
-        list.add(getResources().getString(R.string.passive_8300));
-        list.add(getResources().getString(R.string.passive_8310));
-        list.add(getResources().getString(R.string.passive_8320));
-        list.add(getResources().getString(R.string.passive_8330));
-        list.add(getResources().getString(R.string.passive_8400));
-        list.add(getResources().getString(R.string.passive_8410));
-        list.add(getResources().getString(R.string.passive_8420));
-        list.add(getResources().getString(R.string.passive_8500));
-        list.add(getResources().getString(R.string.passive_8510));
-        list.add(getResources().getString(R.string.passive_8520));
-        list.add(getResources().getString(R.string.passive_8530));
-        list.add(getResources().getString(R.string.passive_8600));
-        list.add(getResources().getString(R.string.passive_8610));
-        list.add(getResources().getString(R.string.passive_8620));
-        list.add(getResources().getString(R.string.passive_8700));
-        list.add(getResources().getString(R.string.passive_8710));
-        list.add(getResources().getString(R.string.passive_8720));
-        list.add(getResources().getString(R.string.passive_8800));
-        list.add(getResources().getString(R.string.passive_8810));
-        list.add(getResources().getString(R.string.passive_8820));
-        list.add(getResources().getString(R.string.passive_8830));
-        list.add(getResources().getString(R.string.passive_8840));
-        list.add(getResources().getString(R.string.passive_8890));
 
         ListView listView = (ListView) findViewById(R.id.list_passiv);
 
-        SchetAdapter sch = new SchetAdapter(getApplicationContext(), list);
+        SchetAdapter sch = new SchetAdapter(getApplicationContext(), getIntent().getStringArrayListExtra("passive_2"));
         listView.setAdapter(sch);
     }
 
