@@ -1,0 +1,499 @@
+<resources>
+    <string name="app_name">Yosh buxgalter</string>
+    <string name="active">Aktiv schetlar</string>
+    <string name="passive">Passiv schetlar</string>
+    <string name="transit">Tranzit schetlar</string>
+    <string name="zabalans">Balansdan tashqari schetlar</string>
+    <string name="dopol">Qo`shimcha</string>
+    <string name="dopol2">Qo`shimcha</string>
+
+    <string name="lang_ru">Rus tili</string>
+    <string name="lang_uz_l">Uz lotin</string>
+    <string name="lang_uz_k">Uz kiril</string>
+
+
+    <string name="active_1">Узоқ муддатли активлар</string>
+
+    <string name="active_raz_1">I БЎЛИМ. АСОСИЙ ВОСИТАЛАР, НОМОДДИЙ ВА БОШҚА УЗОҚ МУДДАТЛИ АКТИВЛАР</string>
+
+    <string name="active_0100">0100 АСОСИЙ ВОСИТАЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0110">0110 Ер</string>
+    <string name="active_0111">0111 Ерни ободонлаштириш</string>
+    <string name="active_0112">0112 Узоқ муддатли ижара шартномаси бўйича олинган асосий воситаларни ободонлаштириш</string>
+    <string name="active_0120">0120 Бинолар, иншоотлар ва узатувчи мосламалар</string>
+    <string name="active_0130">0130 Машина ва асбоб-ускуналар</string>
+    <string name="active_0140">0140 Мебель ва офис жиҳозлари</string>
+    <string name="active_0150">0150 Компьютер жиҳозлари ва ҳисоблаш техникаси</string>
+    <string name="active_0160">0160 Транспорт воситалари</string>
+    <string name="active_0170">0170 Ишчи ва маҳсулдор ҳайвонлар</string>
+    <string name="active_0180">0180 Кўп йиллик ўсимликлар</string>
+    <string name="active_0190">0190 Бошқа асосий воситалар</string>
+    <string name="active_0199">0199 Консервация қилинган асосий воситалар</string>
+
+    <string name="active_0200">0200 АСОСИЙ ВОСИТАЛАРНИНГ ЭСКИРИШИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0211">0211 Ерни ободонлаштиришнинг эскириши</string>
+    <string name="active_0212">0212 Узоқ муддатли ижара шартномаси бўйича олинган асосий воситаларни ободонлаштиришнинг эскириши</string>
+    <string name="active_0220">0220 Бино, иншоотлар ва узатувчи мосламаларнинг эскириши</string>
+    <string name="active_0230">0230 Машина ва асбоб-ускуналарнинг эскириши</string>
+    <string name="active_0240">0240 Мебель ва офис жиҳозларининг эскириши</string>
+    <string name="active_0250">0250 Компьютер жиҳозлари ва ҳисоблаш техникасининг эскириши</string>
+    <string name="active_0260">0260 Транспорт воситаларининг эскириши</string>
+    <string name="active_0270">0270 Ишчи ҳайвонларнинг эскириши</string>
+    <string name="active_0280">0280 Кўп йиллик ўсимликларнинг эскириши</string>
+    <string name="active_0290">0290 Бошқа асосий воситаларнинг эскириши</string>
+    <string name="active_0299">0299 Узоқ муддатли ижара шартномаси бўйича олинган асосий воситаларнинг эскириши</string>
+
+    <string name="active_0300">0300 УЗОҚ МУДДАТЛИ ИЖАРА ШАРТНОМАСИ БЎЙИЧА ОЛИНГАН АСОСИЙ ВОСИТАЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0310">0310 Узоқ муддатли ижара шартномаси бўйича олинган асосий воситалар</string>
+
+    <string name="active_0400">0400 НОМОДДИЙ АКТИВЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0410">0410 Патентлар, лицензиялар ва ноу-хау</string>
+    <string name="active_0420">0420 Савдо маркалари, товар белгилари ва саноат намуналари</string>
+    <string name="active_0430">0430 Дастурий таъминот</string>
+    <string name="active_0440">0440 Ер ва табиат ресурсларидан фойдаланиш ҳуқуқлари</string>
+    <string name="active_0450">0450 Ташкилий харажатлар</string>
+    <string name="active_0460">0460 Франчайз</string>
+    <string name="active_0470">0470 Муаллифлик ҳуқуқлари</string>
+    <string name="active_0480">0480 Гудвилл</string>
+    <string name="active_0490">0490 Бошқа номоддий активлар</string>
+
+    <string name="active_0500">0500 НОМОДДИЙ АКТИВЛАР АМОРТИЗАЦИЯСИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0510">0510 Патентлар, лицензиялар ва ноу-хаунинг амортизацияси</string>
+    <string name="active_0520">0520 Савдо маркалари, товар белгилари ва саноат намуналарининг амортизацияси</string>
+    <string name="active_0530">0530 Дастурий таъминотнинг амортизацияси</string>
+    <string name="active_0540">0540 Ер ва табиат ресурсларидан фойдаланиш ҳуқуқларининг амортизацияси</string>
+    <string name="active_0550">0550 Ташкилий харажатларнинг амортизацияси</string>
+    <string name="active_0560">0560 Франчайзнинг амортизацияси</string>
+    <string name="active_0570">0570 Муаллифлик ҳуқуқларининг амортизацияси</string>
+    <string name="active_0590">0590 Бошқа номоддий активларнинг амортизацияси</string>
+
+    <string name="active_0600">0600 УЗОҚ МУДДАТЛИ ИНВЕСТИЦИЯЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0610">0610 Қимматли қоғозлар</string>
+    <string name="active_0620">0620 Шуъба хўжалик жамиятларига инвестициялар</string>
+    <string name="active_0630">0630 Қарам хўжалик жамиятларига инвестициялар</string>
+    <string name="active_0640">0640 Чет эл капитали мавжуд бўлган корхоналарга инвестициялар</string>
+    <string name="active_0690">0690 Бошқа узоқ муддатли инвестициялар</string>
+
+    <string name="active_0700">0700 ЎРНАТИЛАДИГАН АСБОБ-УСКУНАЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0710">0710 Ўрнатиладиган асбоб-ускуналар - маҳаллий</string>
+    <string name="active_0720">0720 Ўрнатиладиган асбоб-ускуналар - хорижий</string>
+
+    <string name="active_0800">0800 КАПИТАЛ ҚЎЙИЛМАЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0810">0810 Тугалланмаган қурилиш</string>
+    <string name="active_0820">0820 Асосий воситаларни харид қилиш</string>
+    <string name="active_0830">0830 Номоддий активларни харид қилиш</string>
+    <string name="active_0840">0840 Асосий подани ташкил қилиш</string>
+    <string name="active_0850">0850 Ерни ободонлаштиришга капитал қўйилмалар</string>
+    <string name="active_0860">0860 Узоқ муддатли ижара шартномаси бўйича олинган асосий воситаларга капитал қўйилмалар</string>
+    <string name="active_0890">0890 Бошқа капитал қўйилмалар</string>
+
+    <string name="active_0900">0900 УЗОҚ МУДДАТЛИ ДЕБИТОР ҚАРЗЛАРИ ВА КЕЧИКТИРИЛГАН ХАРАЖАТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_0910">0910 Олинган векселлар</string>
+    <string name="active_0920">0920 Узоқ муддатли ижара бўйича олинадиган тўловлар</string>
+    <string name="active_0930">0930 Ходимларнинг узоқ муддатли қарзлари</string>
+    <string name="active_0940">0940 Бошқа узоқ муддатли дебитор қарзлар</string>
+    <string name="active_0950">0950 Вақтинчалик фарқлар бўйича кечиктирилган даромад (фойда) солиғи</string>
+    <string name="active_0960">0960 Дисконт (чегирма)лар бўйича узоқ муддатли кечиктирилган харажатлар</string>
+    <string name="active_0990">0990 Бошқа узоқ муддатли кечиктирилган харажатлар</string>
+
+
+    <string name="active_2">Жорий активлар</string>
+
+    <string name="active_raz_2">II БЎЛИМ. ТОВАР-МОДДИЙ ЗАХИРАЛАРИ</string>
+
+    <string name="active_1000">1000 МАТЕРИАЛЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_1010">1010 Хом ашё ва материаллар</string>
+    <string name="active_1020">1020 Сотиб олинган ярим тайёр маҳсулотлар ва бутловчи буюмлар</string>
+    <string name="active_1030">1030 Ёқилғилар</string>
+    <string name="active_1040">1040 Эҳтиёт қисмлар</string>
+    <string name="active_1050">1050 Қурилиш материаллари</string>
+    <string name="active_1060">1060 Идиш ва идишбоп материаллар</string>
+    <string name="active_1070">1070 Четга қайта ишлаш учун берилган материаллар</string>
+    <string name="active_1080">1080 Инвентарь ва хўжалик жиҳозлари</string>
+    <string name="active_1090">1090 Бошқа материаллар</string>
+
+    <string name="active_1100">1100 ЎСТИРИШДАГИ ВА БОҚУВДАГИ ҲАЙВОНЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_1110">1110 Ўстиришдаги ҳайвонлар</string>
+    <string name="active_1120">1120 Бўрдоқидаги ҳайвонлар</string>
+
+    <string name="active_1200">1200</string>
+    <string name="active_1300">1300</string>
+    <string name="active_1400">1400</string>
+
+    <string name="active_1500">1500 МАТЕРИАЛЛАРНИ ТАЙЁРЛАШ ВА ХАРИД ҚИЛИШНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_1510">1510 Материалларни тайёрлаш ва харид қилиш</string>
+
+    <string name="active_1600">1600 МАТЕРИАЛЛАР ҚИЙМАТИДАГИ ФАРҚЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_1610">1610 Материаллар қийматидаги фарқлар</string>
+
+    <string name="active_1700">1700</string>
+    <string name="active_1800">1800</string>
+    <string name="active_1900">1900</string>
+
+    <string name="active_2000">2000 АСОСИЙ ИШЛАБ ЧИҚАРИШНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2010">2010 Асосий ишлаб чиқариш</string>
+
+    <string name="active_2100">2100 ЎЗИДА ИШЛАБ ЧИҚАРИЛГАН ЯРИМ ТАЙЁР МАҲСУЛОТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2110">2110 Ўзида ишлаб чиқарилган ярим тайёр маҳсулотлар</string>
+
+    <string name="active_2200">2200</string>
+
+    <string name="active_2300">2300 ЁРДАМЧИ ИШЛАБ ЧИҚАРИШНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2310">2310 Ёрдамчи ишлаб чиқариш</string>
+
+    <string name="active_2400">2400</string>
+
+    <string name="active_2500">2500 УМУМИШЛАБ ЧИҚАРИШ ХАРАЖАТЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2510">2510 Умумишлаб чиқариш харажатлари</string>
+
+    <string name="active_2600">2600 ИШЛАБ ЧИҚАРИШДАГИ ЯРОҚСИЗ МАҲСУЛОТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2610">2610 Ишлаб чиқаришдаги яроқсиз маҳсулотлар</string>
+
+    <string name="active_2700">2700 ХИЗМАТ КЎРСАТУВЧИ ХЎЖАЛИКЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2710">2710 Хизмат кўрсатувчи хўжаликлар</string>
+
+    <string name="active_2800">2800 ТАЙЁР МАҲСУЛОТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2810">2810 Омбордаги тайёр маҳсулотлар</string>
+    <string name="active_2820">2820 Кўргазмадаги тайёр маҳсулотлар</string>
+    <string name="active_2830">2830 Комиссияга берилган тайёр маҳсулотлар</string>
+
+    <string name="active_2900">2900 ТОВАРЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_2910">2910 Омбордаги товарлар</string>
+    <string name="active_2920">2920 Чакана савдодаги товарлар</string>
+    <string name="active_2930">2930 Кўргазмадаги товарлар</string>
+    <string name="active_2940">2940 Прокатдаги буюмлар</string>
+    <string name="active_2950">2950 Товарлар билан банд ва бўш идишлар</string>
+    <string name="active_2960">2960 Комиссияга берилган товарлар</string>
+    <string name="active_2970">2970 Йўлдаги товарлар</string>
+    <string name="active_2980">2980 Савдо устамаси</string>
+    <string name="active_2990">2990 Бошқа товарлар</string>
+
+    <string name="active_raz_3">2990 III БЎЛИМ. КЕЛГУСИ ДАВР ХАРАЖАТЛАРИ ВА КЕЧИКТИРИЛГАН  ХАРАЖАТЛАР - ЖОРИЙ ҚИСМИ</string>
+
+    <string name="active_3000">3000</string>
+
+    <string name="active_3100">3100 КЕЛГУСИ ДАВР ХАРАЖАТЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_3110">3110 Олдиндан тўланган ижара ҳақи</string>
+    <string name="active_3120">3120 Олдиндан тўланган хизмат ҳақи</string>
+    <string name="active_3190">3190 Бошқа келгуси давр харажатлари</string>
+
+    <string name="active_3200">3200 КЕЧИКТИРИЛГАН ХАРАЖАТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_3210">3210 Вақтинчалик фарқлар бўйича кечиктирилган даромад (фойда) солиғи</string>
+    <string name="active_3220">3220 Дисконт (чегирма)лар бўйича кечиктирилган харажатлар</string>
+    <string name="active_3290">3290 Бошқа кечиктирилган харажатлар</string>
+
+    <string name="active_3300">3300</string>
+    <string name="active_3400">3400</string>
+    <string name="active_3500">3500</string>
+    <string name="active_3600">3600</string>
+    <string name="active_3700">3700</string>
+    <string name="active_3800">3800</string>
+    <string name="active_3900">3900</string>
+
+    <string name="active_raz_4">IV БЎЛИМ. ОЛИНАДИГАН СЧЁТЛАР - ЖОРИЙ ҚИСМИ</string>
+
+    <string name="active_4000">4000 ОЛИНАДИГАН СЧЁТЛАР</string>
+    <string name="active_4010">4010 Харидорлар ва буюртмачилардан олинадиган счётлар</string>
+    <string name="active_4020">4020 Олинган векселлар</string>
+
+    <string name="active_4100">4100 АЖРАТИЛГАН БЎЛИНМАЛАР, ШУЪБА ВА ҚАРАМ ХЎЖАЛИК ЖАМИЯТЛАРИДАН ОЛИНАДИГАН СЧЁТЛАР</string>
+    <string name="active_4110">4110 Ажратилган бўлинмалардан олинадиган счётлар</string>
+    <string name="active_4120">4120 Шуъба ва қарам хўжалик жамиятларидан олинадиган счётлар</string>
+
+    <string name="active_4200">4200 ХОДИМЛАРГА БЕРИЛГАН БЎНАКЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4210">4210 Меҳнат ҳақи бўйича берилган бўнаклар</string>
+    <string name="active_4220">4220 Хизмат сафарларига берилган бўнаклар</string>
+    <string name="active_4230">4230 Умумхўжалик харажатлари учун берилган бўнаклар</string>
+    <string name="active_4290">4290 Ходимларга берилган бошқа бўнаклар</string>
+
+    <string name="active_4300">4300 МОЛ ЕТКАЗИБ БЕРУВЧИЛАР ВА ПУДРАТЧИЛАРГА БЕРИЛГАН БЎНАКЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4310">4310 ТМҚлар учун мол етказиб берувчилар ва пудратчиларга берилган бўнаклар</string>
+    <string name="active_4320">4320 Узоқ муддатли активлар учун мол етказиб берувчилар ва пудратчиларга берилган бўнаклар</string>
+    <string name="active_4330">4330 Бошқа берилган бўнаклар</string>
+
+    <string name="active_4400">4400 БЮДЖЕТГА БЎНАК ТЎЛОВЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4410">4410 Бюджетга солиқлар ва йиғимлар бўйича бўнак тўловлари (турлари бўйича)</string>
+
+    <string name="active_4500">4500 МАҚСАДЛИ ДАВЛАТ ЖАМҒАРМАЛАРИГА ВА СУҒУРТАЛАР БЎЙИЧА БЎНАК ТЎЛОВЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4510">4510 Суғурталар бўйича бўнак тўловлари</string>
+    <string name="active_4520">4520 Мақсадли давлат жамғармаларига бўнак тўловлари</string>
+
+    <string name="active_4600">4600 УСТАВ КАПИТАЛИГА ТАЪСИСЧИЛАРНИНГ УЛУШЛАРИ БЎЙИЧА ҚАРЗИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4610">4610 Устав капиталига таъсисчиларнинг улушлари бўйича қарзи</string>
+
+    <string name="active_4700">4700 ХОДИМЛАРНИНГ БОШҚА ОПЕРАЦИЯЛАР БЎЙИЧА ҚАРЗИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4710">4710 Кредитга сотилган товарлар бўйича ходимларнинг қарзи</string>
+    <string name="active_4720">4720 Берилган қарзлар бўйича ходимларнинг қарзи</string>
+    <string name="active_4730">4730 Моддий зарарни қоплаш бўйича ходимларнинг қарзи</string>
+    <string name="active_4790">4790 Ходимларнинг бошқа <қарзлари></қарзлари></string>
+
+    <string name="active_4800">4800 ТУРЛИ ДЕБИТОРЛАР ҚАРЗЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4810">4810 Узоқ муддатли ижара бўйича олинадиган жорий тўловлар</string>
+    <string name="active_4820">4820 Қисқа муддатли ижара бўйича олинадиган тўловлар</string>
+    <string name="active_4830">4830 Олинадиган фоизлар</string>
+    <string name="active_4840">4840 Олинадиган дивидендлар</string>
+    <string name="active_4850">4850 Олинадиган роялти</string>
+    <string name="active_4860">4860 Даъволар бўйича олинадиган счётлар</string>
+    <string name="active_4890">4890 Бошқа дебиторлар қарзлари</string>
+
+    <string name="active_4900">4900 ДАРГУМОН ҚАРЗЛАР БЎЙИЧА РЕЗЕРВНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_4910">4910 Даргумон қарзлар бўйича резерв</string>
+
+    <string name="active_raz_5">V БЎЛИМ. ПУЛ МАБЛАҒЛАРИ, ҚИСҚА МУДДАТЛИ ИНВЕСТИЦИЯЛАР ВА БОШҚА ЖОРИЙ АКТИВЛАР</string>
+
+    <string name="active_5000">5000 КАССАДАГИ ПУЛ МАБЛАҒЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5010">5010 Миллий валютадаги пул маблағлари</string>
+    <string name="active_5020">5020 Чет эл валютасидаги пул маблағлари</string>
+
+    <string name="active_5100">5100 ҲИСОБ-КИТОБ СЧЁТИДАГИ ПУЛ МАБЛАҒЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5110">5110 Ҳисоб-китоб счёти</string>
+
+    <string name="active_5200">5200 ЧЕТ ЭЛ ВАЛЮТАСИДАГИ ПУЛ МАБЛАҒЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5210">5210 Мамлакат ичидаги валюта счётлари</string>
+    <string name="active_5220">5220 Чет элдаги валюта счётлари</string>
+
+    <string name="active_5300">5300</string>
+    <string name="active_5400">5400</string>
+
+    <string name="active_5500">5500 БАНКДАГИ МАХСУС СЧЁТЛАРДАГИ ПУЛ МАБЛАҒЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5510">5510 Аккредитивлар</string>
+    <string name="active_5520">5520 Чек дафтарчалари</string>
+    <string name="active_5530">5530 Бошқа махсус счётлар</string>
+
+    <string name="active_5600">5600 ПУЛ ЭКВИВАЛЕНТЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5610">5610 Пул эквивалентлари (турлари бўйича)</string>
+
+    <string name="active_5700">5700 ЙЎЛДАГИ ПУЛ МАБЛАҒ (ЎТКАЗМА)ЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5710">5710 Йўлдаги пул маблағ (ўтказма)лари</string>
+
+    <string name="active_5800">5800 ҚИСҚА МУДДАТЛИ ИНВЕСТИЦИЯЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5810">5810 Қимматли қоғозлар</string>
+    <string name="active_5830">5830 Берилган қисқа муддатли қарзлар</string>
+    <string name="active_5890">5890 Бошқа жорий инвестициялар</string>
+
+    <string name="active_5900">5900 КАМОМАДЛАР ВА ҚИЙМАТЛИКЛАРНИНГ БУЗИЛИШИДАН ЙЎҚОТИШЛАР ВА БОШҚА ЖОРИЙ АКТИВЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="active_5910">5910 Камомадлар ва қийматликларнинг бузилишидан йўқотишлар</string>
+    <string name="active_5920">5920 Бошқа жорий активлар</string>
+
+
+    <string name="passive_1">Мажбуриятлар</string>
+
+    <string name="active_raz_6">VI БЎЛИМ. ЖОРИЙ МАЖБУРИЯТЛАР</string>
+
+    <string name="passive_6000">6000 МОЛ ЕТКАЗИБ БЕРУВЧИЛАР ВА ПУДРАТЧИЛАРГА ТЎЛАНАДИГАН СЧЁТЛАР</string>
+    <string name="passive_6010">6010 Мол етказиб берувчилар ва пудратчиларга тўланадиган счётлар</string>
+    <string name="passive_6020">6020 Берилган векселлар</string>
+
+    <string name="passive_6100">6100 АЖРАТИЛГАН БЎЛИНМАЛАР, ШУЪБА ВА ҚАРАМ ХЎЖАЛИК ЖАМИЯТЛАРИГА ТЎЛАНАДИГАН СЧЁТЛАР</string>
+    <string name="passive_6110">6110 Ажратилган бўлинмаларга тўланадиган счётлар</string>
+    <string name="passive_6120">6120 Шуъба ва қарам хўжалик жамиятларига тўланадиган счётлар</string>
+
+    <string name="passive_6200">6200 КЕЧИКТИРИЛГАН МАЖБУРИЯТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6210">6210 Дисконт (чегирма)лар кўринишидаги кечиктирилган даромадлар</string>
+    <string name="passive_6220">6220 Мукофот (устама)лар кўринишидаги кечиктирилган даромадлар</string>
+    <string name="passive_6230">6230 Бошқа кечиктирилган даромадлар</string>
+    <string name="passive_6240">6240 Солиқлар ва мажбурий тўловлар бўйича кечиктирилган мажбуриятлар</string>
+    <string name="passive_6250">6250 Вақтинчалик фарқлар бўйича кечиктирилган даромад (фойда) солиғи бўйича мажбуриятлар</string>
+    <string name="passive_6290">6290 Бошқа кечиктирилган мажбуриятлар</string>
+
+    <string name="passive_6300">6300 ОЛИНГАН БЎНАКЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6310">6310 Харидорлар ва буюртмачилардан олинган бўнаклар</string>
+    <string name="passive_6320">6320 Акцияга обуначилардан олинган бўнаклар</string>
+    <string name="passive_6390">6390 Бошқа олинган бўнаклар</string>
+
+    <string name="passive_6400">6400 БЮДЖЕТГА ТЎЛОВЛАР БЎЙИЧА ҚАРЗНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6410">6410 Бюджетга тўловлар бўйича қарз (турлари бўйича)</string>
+
+    <string name="passive_6500">6500 СУҒУРТА ВА МАҚСАДЛИ ДАВЛАТ ЖАМҒАРМАЛАРИГА ТЎЛОВЛАР БЎЙИЧА ҚАРЗНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6510">6510 Суғурта бўйича тўловлар</string>
+    <string name="passive_6520">6520 Мақсадли давлат жамғармаларига тўловлар</string>
+
+    <string name="passive_6600">6600 ТАЪСИСЧИЛАРГА БЎЛГАН ҚАРЗНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6610">6610 Тўланадиган дивидендлар</string>
+    <string name="passive_6620">6620 Чиқиб кетаётган таъсисчиларга улушлари бўйича қарз</string>
+    <string name="passive_6630">6630 Вклады учредителей по увеличению уставного капитала</string>
+
+    <string name="passive_6700">6700 МЕҲНАТ ҲАҚИ БЎЙИЧА ХОДИМ БИЛАН ҲИСОБЛАШИШЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6710">6710 Меҳнат ҳақи бўйича ходим билан ҳисоблашишлар</string>
+    <string name="passive_6720">6720 Депонентланган иш ҳақи</string>
+
+    <string name="passive_6800">6800 ҚИСҚА МУДДАТЛИ КРЕДИТЛАР ВА ҚАРЗЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6810">6810 Қисқа муддатли банк кредитлари</string>
+    <string name="passive_6820">6820 Қисқа муддатли қарзлар</string>
+    <string name="passive_6830">6830 Тўланадиган облигациялар</string>
+    <string name="passive_6840">6840 Тўланадиган векселлар</string>
+
+    <string name="passive_6900">6900 ТУРЛИ КРЕДИТОРЛАРГА БЎЛГАН ҚАРЗЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_6910">6910 Тўланадиган қисқа муддатли ижара</string>
+    <string name="passive_6920">6920 Ҳисобланган фоизлар</string>
+    <string name="passive_6930">6930 Роялти бўйича қарз</string>
+    <string name="passive_6940">6940 Кафолатлар бўйича қарз</string>
+    <string name="passive_6950">6950 Узоқ муддатли мажбуриятлар - жорий қисми</string>
+    <string name="passive_6960">6960 Даъволар бўйича тўланадиган счётлар</string>
+    <string name="passive_6970">6970 Ҳисобдор шахсларга бўлган қарз</string>
+    <string name="passive_6990">6990 Бошқа мажбуриятлар</string>
+
+    <string name="passive_raz_7">VII БЎЛИМ. УЗОҚ МУДДАТЛИ МАЖБУРИЯТЛАР</string>
+
+    <string name="passive_7000">7000 МОЛ ЕТКАЗИБ БЕРУВЧИЛАР ВА ПУДРАТЧИЛАРГА ТЎЛАНАДИГАН УЗОҚ МУДДАТЛИ СЧЁТЛАР</string>
+    <string name="passive_7010">7010 Мол етказиб берувчилар ва пудратчиларга тўланадиган счётлар</string>
+    <string name="passive_7020">7020 Берилган векселлар</string>
+
+    <string name="passive_7100">7100 АЖРАТИЛГАН БЎЛИНМАЛАР, ШУЪБА ВА ҚАРАМ ХЎЖАЛИК ЖАМИЯТЛАРИГА БЎЛГАН УЗОҚ МУДДАТЛИ ҚАРЗ</string>
+    <string name="passive_7110">7110 Ажратилган бўлинмаларга бўлган узоқ муддатли қарз</string>
+    <string name="passive_7120">7120 Шуъба ва қарам хўжалик жамиятларига бўлган узоқ муддатли қарз</string>
+
+    <string name="passive_7200">7200 КЕЧИКТИРИЛГАН УЗОҚ МУДДАТЛИ МАЖБУРИЯТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_7210">7210 Дисконт (чегирма)лар кўринишидаги узоқ муддатли кечиктирилган даромадлар</string>
+    <string name="passive_7220">7220 Мукофот (устама)лар кўринишидаги узоқ муддатли кечиктирилган даромадлар</string>
+    <string name="passive_7230">7230 Бошқа узоқ муддатли кечиктирилган даромадлар</string>
+    <string name="passive_7240">7240 Солиқлар ва мажбурий тўловлар бўйича узоқ муддатли кечиктирилган мажбуриятлар</string>
+    <string name="passive_7250">7250 Вақтинчалик фарқлар бўйича кечиктирилган даромад (фойда) солиғи бўйича узоқ муддатли мажбуриятлар</string>
+    <string name="passive_7290">7290 Бошқа узоқ муддатли кечиктирилган мажбуриятлар</string>
+
+    <string name="passive_7300">7300 ХАРИДОРЛАР ВА БУЮРТМАЧИЛАРДАН ОЛИНГАН БЎНАКЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_7310">7310 Харидорлар ва буюртмачилардан олинган бўнаклар</string>
+
+    <string name="passive_7400">7400</string>
+    <string name="passive_7500">7500</string>
+    <string name="passive_7600">7600</string>
+    <string name="passive_7700">7700</string>
+
+    <string name="passive_7800">7800 УЗОҚ МУДДАТЛИ КРЕДИТЛАР ВА ҚАРЗЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_7810">7810 Узоқ муддатли банк кредитлари</string>
+    <string name="passive_7820">7820 Узоқ муддатли қарзлар</string>
+    <string name="passive_7830">7830 Тўланадиган облигациялар</string>
+    <string name="passive_7840">7840 Тўланадиган векселлар</string>
+
+    <string name="passive_7900">7900 ТУРЛИ КРЕДИТОРЛАРГА БЎЛГАН УЗОҚ МУДДАТЛИ ҚАРЗЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_7910">7910 Тўланадиган узоқ муддатли ижара</string>
+    <string name="passive_7920">7920 Турли кредиторларга бўлган бошқа узоқ муддатли қарзлар</string>
+
+
+    <string name="passive_2">Хусусий капитал</string>
+
+    <string name="passive_raz_8">VIII БЎЛИМ. КАПИТАЛ, ТАҚСИМЛАНМАГАН ФОЙДА ВА РЕЗЕРВЛАР</string>
+
+    <string name="passive_8000">8000</string>
+    <string name="passive_8100">8100</string>
+    <string name="passive_8200">8200</string>
+
+    <string name="passive_8300">8300 УСТАВ КАПИТАЛИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_8310">8310 Оддий акциялар</string>
+    <string name="passive_8320">8320 Имтиёзли акциялар</string>
+    <string name="passive_8330">8320 Пай ва улушлар</string>
+
+    <string name="passive_8400">8400 ҚЎШИЛГАН КАПИТАЛНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_8410">8410 Эмиссия даромади</string>
+    <string name="passive_8420">8420 Устав капиталини шакллантиришдаги курс фарқи</string>
+
+    <string name="passive_8500">8500 РЕЗЕРВ КАПИТАЛИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_8510">8510 Мулкни қайта баҳолаш бўйича тузатишлар</string>
+    <string name="passive_8520">8520 Резерв капитали</string>
+    <string name="passive_8530">8530 Текинга олинган мулк</string>
+
+    <string name="passive_8600">8600 СОТИБ ОЛИНГАН ХУСУСИЙ АКЦИЯЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_8610">8610 Сотиб олинган хусусий акциялар - оддий</string>
+    <string name="passive_8620">8620 Сотиб олинган хусусий акциялар - имтиёзли</string>
+
+    <string name="passive_8700">8700 ТАҚСИМЛАНМАГАН ФОЙДА (ҚОПЛАНМАГАН ЗАРАР)НИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_8710">8710 Ҳисобот даврининг тақсимланмаган фойдаси (қопланмаган зарари)</string>
+    <string name="passive_8720">8720 Жамғарилган фойда (қопланмаган зарар)</string>
+
+    <string name="passive_8800">8800 МАҚСАДЛИ ТУШУМЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_8810">8810 Грантлар</string>
+    <string name="passive_8820">8820 Субсидиялар</string>
+    <string name="passive_8830">8830 Аъзолик бадаллари</string>
+    <string name="passive_8840">8840 Мақсадли фойдаланадиган солиқ имтиёзлари</string>
+    <string name="passive_8890">8890 Бошқа мақсадли тушумлар</string>
+
+    <string name="passive_8900">8900 КЕЛГУСИ ХАРАЖАТЛАР ВА ТЎЛОВЛАР РЕЗЕРВЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="passive_8910">8910 Келгуси харажатлар ва тўловлар резервлари</string>
+
+
+    <string name="transit_1">МОЛИЯВИЙ НАТИЖАЛАРНИНГ ШАКЛЛАНИШИ ВА ИШЛАТИЛИШИ</string>
+
+    <string name="transit_raz_9">IX БЎЛИМ. ДАРОМАДЛАР ВА ХАРАЖАТЛАР</string>
+
+    <string name="transit_9000">9000 АСОСИЙ (ОПЕРАЦИОН) ФАОЛИЯТНИНГ ДАРОМАДЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9010">9010 Тайёр маҳсулотларни сотишдан даромадлар</string>
+    <string name="transit_9020">9020 Товарларни сотишдан даромадлар</string>
+    <string name="transit_9030">9030 Ишлар бажариш ва хизматлар кўрсатишдан даромадлар</string>
+    <string name="transit_9040">9040 Сотилган товарларнинг қайтиши</string>
+    <string name="transit_9050">9050 Харидорлар ва буюртмачиларга берилган чегирмалар</string>
+
+    <string name="transit_9100">9100 СОТИЛГАН МАҲСУЛОТ (ТОВАР, ИШ, ХИЗМАТ)ЛАРНИНГ ТАННАРХИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9110">9110 Сотилган тайёр маҳсулотларнинг таннархи</string>
+    <string name="transit_9120">9120 Сотилган товарларнинг таннархи</string>
+    <string name="transit_9130">9130 Бажарилган иш ва кўрсатилган хизматларнинг таннархи</string>
+    <string name="transit_9140">9140 Даврий ҳисобда ТМЗ сотиб олиш/харид қилиш</string>
+    <string name="transit_9150">9150 Даврий ҳисобда ТМЗ бўйича тузатишлар</string>
+
+    <string name="transit_9200">9200 АСОСИЙ ВОСИТАЛАР ВА БОШҚА АКТИВЛАРНИНГ ЧИҚИБ КЕТИШИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9210">9210 Асосий воситаларнинг чиқиб кетиши</string>
+    <string name="transit_9220">9220 Бошқа активларнинг чиқиб кетиши</string>
+
+    <string name="transit_9300">9300 АСОСИЙ ФАОЛИЯТНИНГ БОШҚА ДАРОМАДЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9310">9310 Асосий воситаларнинг чиқиб кетишидан фойда</string>
+    <string name="transit_9320">9320 Бошқа активларнинг чиқиб кетишидан фойда</string>
+    <string name="transit_9330">9330 Ундирилган жарима, пеня ва устамалар</string>
+    <string name="transit_9340">9340 Ўтган йиллар фойдалари</string>
+    <string name="transit_9350">9350 Қисқа муддатли ижарадан даромадлар</string>
+    <string name="transit_9360">9360 Кредитор ва депонент қарзларни ҳисобдан чиқаришдан даромадлар</string>
+    <string name="transit_9370">9370 Хизмат кўрсатувчи хўжаликлар даромадлари</string>
+    <string name="transit_9380">9380 Текин қайтарилмайдиган молиявий ёрдам</string>
+    <string name="transit_9390">9390 Бошқа операцион даромадлар</string>
+
+    <string name="transit_9400">9400 ДАВР ХАРАЖАТЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9410">9410 Сотиш харажатлари</string>
+    <string name="transit_9420">9420 Маъмурий харажатлар</string>
+    <string name="transit_9430">9430 Бошқа операцион харажатлар</string>
+    <string name="transit_9440">9440 Келгусида солиқ солинадиган базадан чиқариладиган ҳисобот даври харажатлари</string>
+
+    <string name="transit_9500">9500 МОЛИЯВИЙ ФАОЛИЯТ ДАРОМАДЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9510">9510 Роялти кўринишидаги даромадлар</string>
+    <string name="transit_9520">9520 Дивидендлар кўринишидаги даромадлар</string>
+    <string name="transit_9530">9530 Фоизлар кўринишидаги даромадлар</string>
+    <string name="transit_9540">9540 Валюталар курслари фарқидан даромадлар</string>
+    <string name="transit_9550">9550 Узоқ муддатли ижарадан даромадлар</string>
+    <string name="transit_9560">9560 Қимматли қоғозларни қайта баҳолашдан даромадлар</string>
+    <string name="transit_9590">9590 Молиявий фаолиятнинг бошқа даромадлари</string>
+
+    <string name="transit_9600">9600 МОЛИЯВИЙ ФАОЛИЯТ БЎЙИЧА ХАРАЖАТЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9610">9610 Фоизлар кўринишидаги харажатлар</string>
+    <string name="transit_9620">9620 Валюталар курслари фарқидан зарарлар</string>
+    <string name="transit_9630">9630 Қимматли қоғозларни чиқариш ва тарқатиш бўйича харажатлар</string>
+    <string name="transit_9690">9690 Молиявий фаолият бўйича бошқа харажатлар</string>
+
+    <string name="transit_9700">9700 ФАВҚУЛОДДАГИ ФОЙДА (ЗАРАР)ЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9710">9710 Фавқулоддаги фойдалар</string>
+    <string name="transit_9720">9720 Фавқулоддаги зарарлар</string>
+
+    <string name="transit_9800">9800 СОЛИҚЛАР ВА ЙИҒИМЛАРНИ ТЎЛАШ УЧУН ФОЙДАНИНГ ИШЛАТИЛИШИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9810">9810 Даромад (фойда) солиғи бўйича харажатлар</string>
+    <string name="transit_9820">9820 Фойдадан ҳисобланган бошқа солиқлар ва йиғимлар бўйича харажатлар</string>
+
+    <string name="transit_9900">9900 ЯКУНИЙ МОЛИЯВИЙ НАТИЖАНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
+    <string name="transit_9910">9910 Якуний молиявий натижа</string>
+
+
+    <string name="zabalans_1">БАЛАНСДАН ТАШҚАРИ СЧЁТЛАР</string>
+
+    <string name="zabalans_001">001 Қисқа муддатли ижарага олинган асосий воситалар</string>
+    <string name="zabalans_002">002 Масъул сақлашга қабул қилинган товар-моддий қийматликлар</string>
+    <string name="zabalans_003">003 Қайта ишловга қабул қилинган материаллар</string>
+    <string name="zabalans_004">004 Комиссияга қабул қилинган товарлар</string>
+    <string name="zabalans_005">005 Ўрнатиш учун қабул қилинган ускуналар</string>
+    <string name="zabalans_006">006 Қатъий ҳисобот варақлари</string>
+    <string name="zabalans_007">007 Тўлашга қобилиятсиз дебиторларнинг зарарга ўтказилиб ҳисобдан чиқарилган қарзи</string>
+    <string name="zabalans_008">008 Мажбуриятлар ва тўловларни таъминлаш - олинган</string>
+    <string name="zabalans_009">009 Мажбуриятлар ва тўловларни таъминлаш - берилган</string>
+    <string name="zabalans_010">010 Узоқ муддатли ижара шартномаси бўйича берилган асосий воситалар</string>
+    <string name="zabalans_011">011 Ссуда шартномаси бўйича олинган мулк</string>
+    <string name="zabalans_012">012 Келгуси даврларда солиқ солинадиган базадан чиқариладиган харажатлар</string>
+    <string name="zabalans_013">013 Вақтинчалик солиқ имтиёзлари (турлари бўйича)</string>
+    <string name="zabalans_014">014 Фойдаланишдаги инвентарь ва хўжалик жиҳозлари</string>
+    <string name="zabalans_015">015 Имущество, полученное по договору простого товарищества (совместной деятельности)</string>
+    <string name="zabalans_016">016 Нематериальные активы, полученные по праву пользования</string>
+
+</resources>

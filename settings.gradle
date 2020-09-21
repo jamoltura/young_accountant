@@ -1,0 +1,2 @@
+rootProject.name='young_accountant'
+include ':app'

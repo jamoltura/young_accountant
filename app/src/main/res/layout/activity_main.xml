@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+
+    <LinearLayout
+            android:id="@+id/display"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:id="@+id/display_carusel"
+                android:layout_width="match_parent"
+                android:layout_height="370px">
+
+            <com.example.moeidbannerlibrary.banner.BannerLayout
+                    android:id="@+id/Banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:autoPlaying="true"
+                    app:centerScale="1.6"
+                    app:itemSpace="0"
+                    app:moveSpeed="0.5"
+                    app:showIndicator="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_1"
+                android:layout_width="match_parent"
+                android:layout_height="240px">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <RelativeLayout
+                        android:id="@+id/rl_ac"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <FrameLayout
+                            style="@style/FrameLayoutBase">
+                        <ImageButton
+                                android:id="@+id/imgbtn1"
+                                app:srcCompat="@drawable/ic_active"
+                                style="@style/bazebutton"/>
+                        <TextView
+                                android:text="@string/active"
+                                style="@style/ImageButtonTextstyle"
+                                android:id="@+id/textView"/>
+                    </FrameLayout>
+
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/rl_pa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <FrameLayout
+                            style="@style/FrameLayoutBase">
+
+                        <ImageButton
+                                android:id="@+id/imgbtn2"
+                                app:srcCompat="@drawable/ic_active"
+                                style="@style/bazebutton"/>
+                        <TextView
+                                android:text="@string/passive"
+                                style="@style/ImageButtonTextstyle"
+                                android:id="@+id/textView2"/>
+                    </FrameLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_2"
+                android:layout_width="match_parent"
+                android:layout_height="240px">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <RelativeLayout
+                        android:id="@+id/rl_tr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <FrameLayout
+                            style="@style/FrameLayoutBase">
+
+                        <ImageButton
+                                android:id="@+id/imgbtn3"
+                                app:srcCompat="@drawable/ic_active"
+                                style="@style/bazebutton"/>
+                        <TextView
+                                android:text="@string/transit"
+                                style="@style/ImageButtonTextstyle"
+                                android:id="@+id/textView3"/>
+                    </FrameLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/rl_za"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <FrameLayout
+                            style="@style/FrameLayoutBase">
+
+                        <ImageButton
+                                android:id="@+id/imgbtn4"
+                                app:srcCompat="@drawable/ic_active"
+                                style="@style/bazebutton"/>
+                        <TextView
+                                android:text="@string/zabalans"
+                                style="@style/ImageButtonTextstyle"
+                                android:id="@+id/textView4"/>
+                    </FrameLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_3"
+                android:layout_width="match_parent"
+                android:layout_height="240px">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <RelativeLayout
+                        android:id="@+id/rl_do1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <FrameLayout
+                            style="@style/FrameLayoutBase">
+
+                        <ImageButton
+                                android:id="@+id/imgbtn5"
+                                app:srcCompat="@drawable/ic_active"
+                                style="@style/bazebutton"/>
+                        <TextView
+                                android:text="@string/dopol"
+                                style="@style/ImageButtonTextstyle"
+                                android:id="@+id/textView5"/>
+                    </FrameLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/rl_do2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <FrameLayout
+                            style="@style/FrameLayoutBase">
+
+                        <ImageButton
+                                android:id="@+id/imgbtn6"
+                                app:srcCompat="@drawable/ic_active"
+                                style="@style/bazebutton"/>
+                        <TextView
+                                android:text="@string/dopol2"
+                                style="@style/ImageButtonTextstyle"
+                                android:id="@+id/textView6"/>
+                    </FrameLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_4"
+                android:layout_width="match_parent"
+                android:layout_height="150px">
+
+            <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chip_ru"
+                        android:layout_margin="10dp"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:theme="@style/Theme.MaterialComponents.Light"
+                        android:text="@string/lang_ru"
+                        android:checkable="true"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chip_uz_kiril"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:theme="@style/Theme.MaterialComponents.Light"
+                        android:text="@string/lang_uz_k"
+                        android:checkable="true"/>
+                <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chip_uz_latin"
+                        android:layout_margin="10dp"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:theme="@style/Theme.MaterialComponents.Light"
+                        android:text="@string/lang_uz_l"
+                        android:checkable="true"/>
+            </com.google.android.material.chip.ChipGroup>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+            android:id="@+id/frame_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

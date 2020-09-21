@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "741264771456",
+    "firebase_url": "https://young-accountant.firebaseio.com",
+    "project_id": "young-accountant",
+    "storage_bucket": "young-accountant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741264771456:android:76dc6677ef1c5dffd11965",
+        "android_client_info": {
+          "package_name": "financialStudio.young_accountant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741264771456-nlr9ph789cpcamnhuqsmjusvotaamk5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqKGa_UanQppSZ9D7QJDJLkJrWU-E3Kc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741264771456-nlr9ph789cpcamnhuqsmjusvotaamk5q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
