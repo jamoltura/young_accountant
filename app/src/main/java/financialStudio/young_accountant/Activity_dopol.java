@@ -51,6 +51,7 @@ public class Activity_dopol extends AppCompatActivity implements DoubleTapCallba
         textView.setText(getResources().getString(R.string.dopol));
 
         try {
+
             InputStream inNSBU = getResources().openRawResource(R.raw.nsbu);
 
             File fileNsbu = new File(getExternalFilesDir(null), "nsbu.pdf");
@@ -60,7 +61,6 @@ public class Activity_dopol extends AppCompatActivity implements DoubleTapCallba
 
             DokDopol dokDopol = new DokDopol(pdfView);
             dokDopol.openNSBU(fileNsbu);
-
 
         }catch (IOException e){
             Log.d(TAG, e.getMessage());
@@ -87,8 +87,8 @@ public class Activity_dopol extends AppCompatActivity implements DoubleTapCallba
 
             PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
 
-            DokDopol dokDopol = new DokDopol(pdfView);
-            dokDopol.openNSBU(fileZakon);
+            final DokDopol dokDopol = new DokDopol(pdfView);
+            dokDopol.openZakon(fileZakon);
 
         }catch (IOException e){
             Log.d(TAG, e.getMessage());

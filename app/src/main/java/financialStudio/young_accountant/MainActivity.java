@@ -25,6 +25,7 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.chip.Chip;
 
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     getMainActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            startBanner();
+                            //startBanner();
                         }
                     });
 
@@ -199,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
         }else if (lang.equalsIgnoreCase("default")){
             ch_uz_k.setChecked(true);
         }
+
     }
 
     private void initLanguage(){
@@ -254,48 +256,133 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayInit(){
 
-        final LinearLayout ll = (LinearLayout) findViewById(R.id.display);
+        final FrameLayout fr_1 = (FrameLayout) findViewById(R.id.fr_1);
+        final FrameLayout fr_2 = (FrameLayout) findViewById(R.id.fr_2);
+        final FrameLayout fr_3 = (FrameLayout) findViewById(R.id.fr_3);
+        final FrameLayout fr_4 = (FrameLayout) findViewById(R.id.fr_4);
+        final FrameLayout fr_5 = (FrameLayout) findViewById(R.id.fr_5);
+        final FrameLayout fr_6 = (FrameLayout) findViewById(R.id.fr_6);
 
-        ll.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        fr_1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
 
-                float _density = getMetrics().density;
+                int _Width = fr_1.getWidth();
+                int _Height = fr_1.getHeight();
 
-                float Width = (ll.getWidth() / _density);
-                float Height = (ll.getHeight() / _density);
+                fr_1.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-                ll.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int superfluous = _Width - _Height;
 
-                Log.d(TAG, ll.getWidth() + "  " + ll.getHeight());
-                Log.d(TAG, Width + "  " + Height);
-
-                RelativeLayout rl_carusel = (RelativeLayout) findViewById(R.id.display_carusel);
-                RelativeLayout rl_1 = (RelativeLayout) findViewById(R.id.rl_1);
-                RelativeLayout rl_2 = (RelativeLayout) findViewById(R.id.rl_2);
-                RelativeLayout rl_3 = (RelativeLayout) findViewById(R.id.rl_3);
-                RelativeLayout rl_4 = (RelativeLayout) findViewById(R.id.rl_4);
-
-                float newHeight = Height * 35 / 100;
-
-                ViewGroup.LayoutParams l = rl_carusel.getLayoutParams();
+                int rigth_margin= (int) superfluous / 3;
+                int left_margin  = superfluous - rigth_margin;
 
 
-            //    LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(Width, newHeight);
-
-
-
-
-                RelativeLayout rl_ac = (RelativeLayout) findViewById(R.id.rl_ac);
-                RelativeLayout rl_pa = (RelativeLayout) findViewById(R.id.rl_pa);
-                RelativeLayout rl_tr = (RelativeLayout) findViewById(R.id.rl_tr);
-                RelativeLayout rl_za = (RelativeLayout) findViewById(R.id.rl_za);
-                RelativeLayout rl_do1 = (RelativeLayout) findViewById(R.id.rl_do1);
-                RelativeLayout rl_do2 = (RelativeLayout) findViewById(R.id.rl_do2);
-
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_1.getLayoutParams();
+                params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
+                fr_1.setLayoutParams(params);
             }
         });
 
+        fr_2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int _Width = fr_2.getWidth();
+                int _Height = fr_2.getHeight();
+
+                fr_2.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                int superfluous = _Width - _Height;
+
+                int left_margin = (int) superfluous / 3;
+                int rigth_margin = superfluous - left_margin;
+
+
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_2.getLayoutParams();
+                params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
+                fr_2.setLayoutParams(params);
+            }
+        });
+
+        fr_3.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int _Width = fr_3.getWidth();
+                int _Height = fr_3.getHeight();
+
+                fr_3.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                int superfluous = _Width - _Height;
+
+                int rigth_margin= (int) superfluous / 3;
+                int left_margin  = superfluous - rigth_margin;
+
+
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_3.getLayoutParams();
+                params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
+                fr_3.setLayoutParams(params);
+            }
+        });
+
+        fr_4.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int _Width = fr_4.getWidth();
+                int _Height = fr_4.getHeight();
+
+                fr_4.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                int superfluous = _Width - _Height;
+
+                int left_margin = (int) superfluous / 3;
+                int rigth_margin = superfluous - left_margin;
+
+
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_4.getLayoutParams();
+                params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
+                fr_4.setLayoutParams(params);
+            }
+        });
+
+        fr_5.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int _Width = fr_5.getWidth();
+                int _Height = fr_5.getHeight();
+
+                fr_5.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                int superfluous = _Width - _Height;
+
+                int rigth_margin= (int) superfluous / 3;
+                int left_margin  = superfluous - rigth_margin;
+
+
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_5.getLayoutParams();
+                params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
+                fr_5.setLayoutParams(params);
+            }
+        });
+
+        fr_6.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int _Width = fr_6.getWidth();
+                int _Height = fr_6.getHeight();
+
+                fr_6.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                int superfluous = _Width - _Height;
+
+                int left_margin = (int) superfluous / 3;
+                int rigth_margin = superfluous - left_margin;
+
+
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_6.getLayoutParams();
+                params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
+                fr_6.setLayoutParams(params);
+            }
+        });
     }
 
     View.OnClickListener btn1Click = new View.OnClickListener() {

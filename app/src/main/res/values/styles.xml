@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -6,17 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
         <item name="titleTextColor">@color/colorBlack</item>
-
     </style>
 
     <style name="FrameLayoutBase">
         <item name="android:background">@drawable/btnbackground</item>
-        <item name="android:layout_width">240px</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_centerInParent">true</item>
-
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <style name="bazebutton" parent="Widget.AppCompat.Button.Colored">

@@ -26,10 +26,16 @@ public class DokDopol {
     public void openNSBU(File fileNSBU) {
         this.fileNSBU = fileNSBU;
         pdfView.fromFile(fileNSBU).load();
+
+        
     }
 
     public void openZakon(File fileZakon){
         this.fileZakon = fileZakon;
         pdfView.fromFile(fileZakon).load();
+    }
+
+    public void search(){
+
     }
 }

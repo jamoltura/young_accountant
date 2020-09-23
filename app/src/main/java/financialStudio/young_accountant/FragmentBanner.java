@@ -69,9 +69,9 @@ public class FragmentBanner extends Fragment {
         AdRequest adRequest = new AdRequest.Builder().build();
 
         if (adRequest.isTestDevice(v.getContext())){
-          //  Log.d(TAG, "true            ggg");
+            Log.d(TAG, "true            ggg");
         }else{
-          //  Log.d(TAG, "false             tggg");
+            Log.d(TAG, "false           tggg");
         }
 
         mAdView.loadAd(adRequest);
