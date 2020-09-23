@@ -256,12 +256,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayInit(){
 
-        final FrameLayout fr_1 = (FrameLayout) findViewById(R.id.fr_1);
-        final FrameLayout fr_2 = (FrameLayout) findViewById(R.id.fr_2);
-        final FrameLayout fr_3 = (FrameLayout) findViewById(R.id.fr_3);
-        final FrameLayout fr_4 = (FrameLayout) findViewById(R.id.fr_4);
-        final FrameLayout fr_5 = (FrameLayout) findViewById(R.id.fr_5);
-        final FrameLayout fr_6 = (FrameLayout) findViewById(R.id.fr_6);
+        final LinearLayout fr_1 = (LinearLayout) findViewById(R.id.ll_1);
+        final LinearLayout fr_2 = (LinearLayout) findViewById(R.id.ll_2);
+        final LinearLayout fr_3 = (LinearLayout) findViewById(R.id.ll_3);
+        final LinearLayout fr_4 = (LinearLayout) findViewById(R.id.ll_4);
+        final LinearLayout fr_5 = (LinearLayout) findViewById(R.id.ll_5);
+        final LinearLayout fr_6 = (LinearLayout) findViewById(R.id.ll_6);
 
         fr_1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override

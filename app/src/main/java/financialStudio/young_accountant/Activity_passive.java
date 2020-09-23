@@ -15,7 +15,7 @@ import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 
-public class Activity_passive extends AppCompatActivity {
+public class Activity_passive extends BaseActivite {
 
     private static final String TAG = "myLogs";
 
@@ -145,5 +145,10 @@ public class Activity_passive extends AppCompatActivity {
 
     public void setMetrics(DisplayMetrics metrics) {
         this.metrics = metrics;
+    }
+
+    @Override
+    void startBanner() {
+
     }
 }

@@ -19,7 +19,7 @@ import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 
-public class Activity_active extends AppCompatActivity {
+public class Activity_active extends BaseActivite {
 
     private static final String TAG = "myLogs";
     private static final String KEY_PAGE = "PAGE";
@@ -135,6 +135,10 @@ public class Activity_active extends AppCompatActivity {
         });
     }
 
+    private Activity_active getActivity(){
+        return this;
+    }
+
     public int getPage() {
         return page;
     }
@@ -149,5 +153,10 @@ public class Activity_active extends AppCompatActivity {
 
     public void setMetrics(DisplayMetrics metrics) {
         this.metrics = metrics;
+    }
+
+    @Override
+    void startBanner() {
+
     }
 }

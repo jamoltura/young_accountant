@@ -11,7 +11,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class Activity_zabalanse extends AppCompatActivity {
+public class Activity_zabalanse extends BaseActivite {
 
     private static final String TAG = "myLogs";
 
@@ -52,5 +52,10 @@ public class Activity_zabalanse extends AppCompatActivity {
 
     public void setMetrics(DisplayMetrics metrics) {
         this.metrics = metrics;
+    }
+
+    @Override
+    void startBanner() {
+
     }
 }

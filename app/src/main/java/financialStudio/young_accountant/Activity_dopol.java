@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfRenderer;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +18,7 @@ import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.*;
 
-public class Activity_dopol extends AppCompatActivity implements DoubleTapCallback{
+public class Activity_dopol extends BaseActivite{
 
     private static final String TAG = "myLogs";
 
@@ -103,43 +102,6 @@ public class Activity_dopol extends AppCompatActivity implements DoubleTapCallba
         });
     }
 
-    @Override
-    public void onDoubleClick(AdapterView<?> parent, View view, int position, long id) {
-
-        PdfAdapter pdfAdapter =(PdfAdapter) ((ListView) parent).getAdapter();
-
-        float zoom = pdfAdapter.getZoom();
-
-        if (zoom == 1){
-            pdfAdapter.setZoom(1.5f);
-            ((ListView) parent).setAdapter(null);
-            ((ListView) parent).setAdapter(pdfAdapter);
-
-        }else{
-            pdfAdapter.setZoom(1f);
-            ((ListView) parent).setAdapter(null);
-            ((ListView) parent).setAdapter(pdfAdapter);
-        }
-    }
-
-    private Bitmap mergeMultiple(Bitmap[] parts){
-        try {
-            Bitmap result = Bitmap.createBitmap(parts[0].getWidth(), parts[0].getHeight() * parts.length, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(result);
-            Paint paint = new Paint();
-
-            for (int i = 0; i < parts.length; i++) {
-                canvas.drawBitmap(parts[i], 0, parts[i].getHeight() * i, paint);
-            }
-
-            return result;
-
-        }catch (Exception e){
-            Log.d(TAG, "error : " + e.getMessage());
-        }
-        return null;
-    }
-
     private void copy(InputStream in, File target) throws IOException {
 
         OutputStream out = new FileOutputStream(target);
@@ -160,5 +122,10 @@ public class Activity_dopol extends AppCompatActivity implements DoubleTapCallba
 
     public void setMetrics(DisplayMetrics metrics) {
         this.metrics = metrics;
+    }
+
+    @Override
+    void startBanner() {
+
     }
 }

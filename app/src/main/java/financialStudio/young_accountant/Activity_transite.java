@@ -11,7 +11,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class Activity_transite extends AppCompatActivity {
+public class Activity_transite extends BaseActivite {
 
     private static final String TAG = "myLogs";
 
@@ -52,5 +52,10 @@ public class Activity_transite extends AppCompatActivity {
 
     public void setMetrics(DisplayMetrics metrics) {
         this.metrics = metrics;
+    }
+
+    @Override
+    void startBanner() {
+
     }
 }
