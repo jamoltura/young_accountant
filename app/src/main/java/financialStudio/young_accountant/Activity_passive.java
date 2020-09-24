@@ -2,6 +2,7 @@ package financialStudio.young_accountant;
 
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,7 +26,9 @@ public class Activity_passive extends BaseActivite {
 
     private DisplayMetrics metrics;
     private int page;
+    private int status_banner;
     private static final String KEY_PAGE = "PAGE";
+    private static final String KEY_STATUSBANNER = "STATUSBANNER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +42,6 @@ public class Activity_passive extends BaseActivite {
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
 
         display_passive_init();
-
-        Chip chip_p1 = (Chip) findViewById(R.id.chip_p1);
-        Chip chip_p2 = (Chip) findViewById(R.id.chip_p2);
-
-        chip_p1.setOnClickListener(chip_p1Click);
-        chip_p2.setOnClickListener(chip_p2Click);
 
         TextView textView = (TextView) findViewById(R.id.action_bar_text);
         textView.setText(getResources().getString(R.string.passive));
@@ -60,8 +57,10 @@ public class Activity_passive extends BaseActivite {
 
         if (savedInstanceState != null){
             setPage(savedInstanceState.getInt(KEY_PAGE, 0));
+            setStatus_banner(savedInstanceState.getInt(KEY_STATUSBANNER, 0));
         }else{
             setPage(0);
+            setStatus_banner(0);
         }
 
         if (getPage() == 1){
@@ -70,39 +69,53 @@ public class Activity_passive extends BaseActivite {
             init_passive2();
         }
 
-        new ThreadBanner(getActivity()).start();
+        if (getStatus_banner() == 0) {
+            new ThreadBanner(getActivity()).start();
+            setStatus_banner(1);
+        }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_PAGE, getPage());
+        outState.putInt(KEY_STATUSBANNER, getStatus_banner());
     }
 
     private void display_passive_init(){
 
-        final ChipGroup chipgroup_passive = (ChipGroup) findViewById(R.id.chipgroup_passive);
+        ChipGroup chipGroup2 = (ChipGroup) findViewById(R.id.chipgroup_passive);
+        chipGroup2.setChipSpacingHorizontal(0);
 
-        chipgroup_passive.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        final Chip chip_p1 = (Chip) findViewById(R.id.chip_p1);
+        final Chip chip_p2 = (Chip) findViewById(R.id.chip_p2);
+
+        chip_p1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
+                int width = metrics.widthPixels / 2;
+                chip_p1.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-                float _density = getMetrics().density;
-
-                float chipgroup_passive_Width = (chipgroup_passive.getWidth() / _density);
-
-                chipgroup_passive.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                int width = (int)((chipgroup_passive_Width / 2));
-
-                Chip chip_p1 = (Chip) findViewById(R.id.chip_p1);
-                Chip chip_p2 = (Chip) findViewById(R.id.chip_p2);
-
-                chip_p1.setWidth((int)(width * _density));
-                chip_p2.setWidth((int)(width * _density));
+                ViewGroup.LayoutParams params = chip_p1.getLayoutParams();
+                params.width = width;
+                chip_p1.setLayoutParams(params);
             }
         });
 
+        chip_p2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int width = metrics.widthPixels / 2;
+                chip_p2.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                ViewGroup.LayoutParams params = chip_p2.getLayoutParams();
+                params.width = width;
+                chip_p2.setLayoutParams(params);
+            }
+        });
+
+        chip_p1.setOnClickListener(chip_p1Click);
+        chip_p2.setOnClickListener(chip_p2Click);
     }
 
     View.OnClickListener chip_p1Click = new View.OnClickListener() {
@@ -143,6 +156,14 @@ public class Activity_passive extends BaseActivite {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public int getStatus_banner() {
+        return status_banner;
+    }
+
+    public void setStatus_banner(int status_banner) {
+        this.status_banner = status_banner;
     }
 
     public DisplayMetrics getMetrics() {

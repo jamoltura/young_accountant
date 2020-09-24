@@ -82,12 +82,6 @@ public class FragmentBanner extends Fragment {
 
         AdRequest adRequest = new AdRequest.Builder().build();
 
-   //     if (adRequest.isTestDevice(v.getContext())){
-   //         Log.d(TAG, "true            ggg");
-   //     }else{
-  //          Log.d(TAG, "false           tggg");
-  //      }
-
         mAdView.loadAd(adRequest);
 
         mAdView.setAdListener(new AdListener(){
@@ -100,20 +94,17 @@ public class FragmentBanner extends Fragment {
             @Override
             public void onAdClosed() {
                 super.onAdClosed();
-           //     Log.d(TAG, "onAdClosed()");
                 close();
             }
 
             @Override
             public void onAdOpened() {
                 super.onAdOpened();
-             //   Log.d(TAG, "onAdOpened");
             }
 
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
-             //   Log.d(TAG, "onAdLoaded");
 
                 ImageButton imgbtn_close = (ImageButton) v.findViewById(R.id.imgbtn_close);
                 imgbtn_close.setVisibility(View.VISIBLE);
@@ -122,19 +113,16 @@ public class FragmentBanner extends Fragment {
             @Override
             public void onAdLeftApplication() {
                 super.onAdLeftApplication();
-   //             Log.d(TAG, "onAdLeftApplication");
             }
 
             @Override
             public void onAdClicked() {
                 super.onAdClicked();
-     //           Log.d(TAG, "onAdClicked");
             }
 
             @Override
             public void onAdImpression() {
                 super.onAdImpression();
-    //            Log.d(TAG, "onAdImpression");
             }
         });
 

@@ -26,8 +26,6 @@ public class DokDopol {
     public void openNSBU(File fileNSBU) {
         this.fileNSBU = fileNSBU;
         pdfView.fromFile(fileNSBU).load();
-
-        
     }
 
     public void openZakon(File fileZakon){

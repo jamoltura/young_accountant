@@ -25,9 +25,11 @@ public class Activity_active extends BaseActivite {
 
     private static final String TAG = "myLogs";
     private static final String KEY_PAGE = "PAGE";
+    private static final String KEY_STATUSBANNER = "STATUSBANNER";
 
     private DisplayMetrics metrics;
     private int page;
+    private int status_banner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +44,10 @@ public class Activity_active extends BaseActivite {
 
         display_active_init();
 
-        Chip chip_a1 = (Chip) findViewById(R.id.chip_a1);
-        Chip chip_a2 = (Chip) findViewById(R.id.chip_a2);
-
-        chip_a1.setOnClickListener(chip_a1Click);
-        chip_a2.setOnClickListener(chip_a2Click);
-
         TextView textView = (TextView) findViewById(R.id.action_bar_text);
         textView.setText(getResources().getString(R.string.active));
 
         ImageView btnBack = (ImageView) findViewById(R.id.imageback);
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,8 +57,10 @@ public class Activity_active extends BaseActivite {
 
         if (savedInstanceState != null){
             setPage(savedInstanceState.getInt(KEY_PAGE, 0));
+            setStatus_banner(savedInstanceState.getInt(KEY_STATUSBANNER, 0));
         }else{
             setPage(0);
+            setStatus_banner(0);
         }
 
         if (getPage() == 1){
@@ -72,13 +69,17 @@ public class Activity_active extends BaseActivite {
             init_active2();
         }
 
-        new ThreadBanner(getActivity()).start();
+        if (getStatus_banner() == 0) {
+            new ThreadBanner(getActivity()).start();
+            setStatus_banner(1);
+        }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(KEY_PAGE, page);
+        outState.putInt(KEY_PAGE, getPage());
+        outState.putInt(KEY_STATUSBANNER, getStatus_banner());
     }
 
     View.OnClickListener chip_a1Click = new View.OnClickListener() {
@@ -102,8 +103,6 @@ public class Activity_active extends BaseActivite {
 
         SchetAdapter sch = new SchetAdapter(getApplicationContext(), getIntent().getStringArrayListExtra("active_1"));
         listView.setAdapter(sch);
-
-        new ThreadBanner(getActivity()).start();
     }
 
     private void init_active2(){
@@ -117,28 +116,39 @@ public class Activity_active extends BaseActivite {
 
     private void display_active_init(){
 
-        final ChipGroup chipgroup_active = (ChipGroup) findViewById(R.id.chipgroup_active);
+        ChipGroup chipGroup = (ChipGroup) findViewById(R.id.chipgroup_active);
+        chipGroup.setChipSpacingHorizontal(0);
 
-        chipgroup_active.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+        final Chip chip_a1 = (Chip) findViewById(R.id.chip_a1);
+        final Chip chip_a2 = (Chip) findViewById(R.id.chip_a2);
+
+        chip_a1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
+                int width = metrics.widthPixels / 2;
+                chip_a1.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-                float _density = getMetrics().density;
-
-                float chipgroup_active_Width = (chipgroup_active.getWidth() / _density);
-
-
-                chipgroup_active.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                int width = (int)((chipgroup_active_Width / 2));
-
-                Chip chip_a1 = (Chip) findViewById(R.id.chip_a1);
-                Chip chip_a2 = (Chip) findViewById(R.id.chip_a2);
-
-                chip_a1.setWidth((int)(width * _density));
-                chip_a2.setWidth((int)(width * _density));
+                ViewGroup.LayoutParams params = chip_a1.getLayoutParams();
+                params.width = width;
+                chip_a1.setLayoutParams(params);
             }
         });
+
+        chip_a2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int width = metrics.widthPixels / 2;
+                chip_a2.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                ViewGroup.LayoutParams params = chip_a2.getLayoutParams();
+                params.width = width;
+                chip_a2.setLayoutParams(params);
+            }
+        });
+
+        chip_a1.setOnClickListener(chip_a1Click);
+        chip_a2.setOnClickListener(chip_a2Click);
     }
 
     private Activity_active getActivity(){
@@ -151,6 +161,14 @@ public class Activity_active extends BaseActivite {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public int getStatus_banner() {
+        return status_banner;
+    }
+
+    public void setStatus_banner(int status_banner) {
+        this.status_banner = status_banner;
     }
 
     public DisplayMetrics getMetrics() {

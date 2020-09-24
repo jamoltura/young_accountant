@@ -5,26 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.*;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import com.example.moeidbannerlibrary.banner.BannerLayout;
 import com.example.moeidbannerlibrary.banner.BaseBannerAdapter;
-import com.github.barteksc.pdfviewer.PDFView;
-import com.google.android.gms.ads.*;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.chip.Chip;
-
 
 import java.io.*;
 import java.util.ArrayList;
@@ -35,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "myLogs";
 
-    private SharedPreferences sp;
     private DisplayMetrics metrics;
-
     private ChartOFaccounts chartOFaccounts;
 
     @SuppressLint("SourceLockedOrientationActivity")
