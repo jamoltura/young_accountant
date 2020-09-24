@@ -10,6 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.fragment.app.FragmentTransaction;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -65,6 +69,8 @@ public class Activity_passive extends BaseActivite {
         }else if (getPage() == 2){
             init_passive2();
         }
+
+        new ThreadBanner(getActivity()).start();
     }
 
     @Override
@@ -147,8 +153,20 @@ public class Activity_passive extends BaseActivite {
         this.metrics = metrics;
     }
 
+    private Activity_passive getActivity(){
+        return this;
+    }
+
     @Override
     void startBanner() {
-
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                FragmentBanner frb = new FragmentBanner();
+                FragmentTransaction rft = getSupportFragmentManager().beginTransaction();
+                rft.add(R.id.frame_banner, frb);
+                rft.commit();
+            }
+        });
     }
 }

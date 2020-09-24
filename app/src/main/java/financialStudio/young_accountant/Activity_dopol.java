@@ -14,7 +14,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import com.github.barteksc.pdfviewer.PDFView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.io.*;
 
@@ -43,6 +47,8 @@ public class Activity_dopol extends BaseActivite{
         }else if (dopol == 2){
             dopol2();
         }
+
+        new ThreadBanner(getActivity()).start();
     }
 
     private void dopol1(){
@@ -124,8 +130,20 @@ public class Activity_dopol extends BaseActivite{
         this.metrics = metrics;
     }
 
+    private Activity_dopol getActivity(){
+        return this;
+    }
+
     @Override
     void startBanner() {
-
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                FragmentBanner frb = new FragmentBanner();
+                FragmentTransaction rft = getSupportFragmentManager().beginTransaction();
+                rft.add(R.id.frame_banner, frb);
+                rft.commit();
+            }
+        });
     }
 }

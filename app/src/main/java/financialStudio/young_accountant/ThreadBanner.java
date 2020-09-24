@@ -6,34 +6,31 @@ public class ThreadBanner extends Thread{
 
     final private BaseActivite activity;
 
-    public ThreadBanner(BaseActivite activity, int value) {
-        BaseActivite activity1;
-
-
-        switch (value){
-            case 0: activity1 = activity;
-            break;
-            case 1: activity1 = activity;
-                break;
-            case 2: activity1 = activity;
-                break;
-            case 3: activity1 = activity;
-                break;
-            case 4: activity1 = activity;
-                break;
-            default:
-                activity1 = activity;
-        }
-        this.activity = activity1;
+    public ThreadBanner(BaseActivite activity) {
+        this.activity = activity;
     }
 
     @Override
     public void run() {
         super.run();
 
+        try {
+            Thread.sleep(1000);
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    getActivity().startBanner();
+                }
+            });
+
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public AppCompatActivity getActivity() {
+    public BaseActivite getActivity() {
         return activity;
     }
 }

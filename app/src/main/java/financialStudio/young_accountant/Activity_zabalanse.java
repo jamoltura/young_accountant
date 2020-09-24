@@ -8,6 +8,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.fragment.app.FragmentTransaction;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
 
@@ -44,6 +48,8 @@ public class Activity_zabalanse extends BaseActivite {
 
         SchetAdapter sch = new SchetAdapter(getApplicationContext(), getIntent().getStringArrayListExtra("zabalanse"));
         listView.setAdapter(sch);
+
+        new ThreadBanner(getActivity()).start();
     }
 
     public DisplayMetrics getMetrics() {
@@ -54,8 +60,20 @@ public class Activity_zabalanse extends BaseActivite {
         this.metrics = metrics;
     }
 
+    private Activity_zabalanse getActivity(){
+        return this;
+    }
+
     @Override
     void startBanner() {
-
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                FragmentBanner frb = new FragmentBanner();
+                FragmentTransaction rft = getSupportFragmentManager().beginTransaction();
+                rft.add(R.id.frame_banner, frb);
+                rft.commit();
+            }
+        });
     }
 }

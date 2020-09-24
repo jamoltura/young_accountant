@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.ads.*;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -32,9 +34,13 @@ public class FragmentBanner extends Fragment {
 
     public FragmentBanner() {
         // Required empty public constructor
+
     }
 
-
+    private void close(){
+        FragmentTransaction rft = getActivity().getSupportFragmentManager().beginTransaction();
+        rft.remove(this).commit();
+    }
 
 
 
@@ -62,17 +68,25 @@ public class FragmentBanner extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_banner, container, false);
+        final View v = inflater.inflate(R.layout.fragment_banner, container, false);
 
         final AdView mAdView = (AdView) v.findViewById(R.id.adView);
 
+        ImageButton imgbtn_close = (ImageButton) v.findViewById(R.id.imgbtn_close);
+        imgbtn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                close();
+            }
+        });
+
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        if (adRequest.isTestDevice(v.getContext())){
-            Log.d(TAG, "true            ggg");
-        }else{
-            Log.d(TAG, "false           tggg");
-        }
+   //     if (adRequest.isTestDevice(v.getContext())){
+   //         Log.d(TAG, "true            ggg");
+   //     }else{
+  //          Log.d(TAG, "false           tggg");
+  //      }
 
         mAdView.loadAd(adRequest);
 
@@ -81,6 +95,46 @@ public class FragmentBanner extends Fragment {
             public void onAdFailedToLoad(LoadAdError loadAdError) {
                 super.onAdFailedToLoad(loadAdError);
                 Log.d(TAG, loadAdError.getMessage());
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+           //     Log.d(TAG, "onAdClosed()");
+                close();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+             //   Log.d(TAG, "onAdOpened");
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+             //   Log.d(TAG, "onAdLoaded");
+
+                ImageButton imgbtn_close = (ImageButton) v.findViewById(R.id.imgbtn_close);
+                imgbtn_close.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                super.onAdLeftApplication();
+   //             Log.d(TAG, "onAdLeftApplication");
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+     //           Log.d(TAG, "onAdClicked");
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+    //            Log.d(TAG, "onAdImpression");
             }
         });
 

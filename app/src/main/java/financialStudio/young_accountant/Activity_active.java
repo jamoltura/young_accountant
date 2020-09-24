@@ -5,18 +5,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.fragment.app.FragmentTransaction;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Activity_active extends BaseActivite {
@@ -69,6 +71,8 @@ public class Activity_active extends BaseActivite {
         }else if (getPage() == 2){
             init_active2();
         }
+
+        new ThreadBanner(getActivity()).start();
     }
 
     @Override
@@ -98,6 +102,8 @@ public class Activity_active extends BaseActivite {
 
         SchetAdapter sch = new SchetAdapter(getApplicationContext(), getIntent().getStringArrayListExtra("active_1"));
         listView.setAdapter(sch);
+
+        new ThreadBanner(getActivity()).start();
     }
 
     private void init_active2(){
@@ -157,6 +163,18 @@ public class Activity_active extends BaseActivite {
 
     @Override
     void startBanner() {
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
 
+                FragmentTransaction rft = getSupportFragmentManager().beginTransaction();
+
+                FragmentBanner frb = new FragmentBanner();
+                rft.add(R.id.frame_banner, frb);
+                rft.commit();
+            }
+        });
     }
+
+
 }

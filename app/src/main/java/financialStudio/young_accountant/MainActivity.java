@@ -56,40 +56,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         displayInit();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(1000);
-                    getMainActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //startBanner();
-                        }
-                    });
-
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
         chartOFaccounts = new ChartOFaccounts(getResources());
-
-    }
-
-    private void startBanner(){
-
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-                FragmentBanner frb = new FragmentBanner();
-                FragmentTransaction rft = getSupportFragmentManager().beginTransaction();
-                rft.add(R.id.frame_banner, frb);
-                rft.commit();
-            }
-        });
     }
 
     private void init() {
