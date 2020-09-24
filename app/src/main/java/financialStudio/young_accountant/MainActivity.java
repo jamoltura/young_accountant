@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -14,9 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.moeidbannerlibrary.banner.BannerLayout;
-import com.example.moeidbannerlibrary.banner.BaseBannerAdapter;
 import com.google.android.material.chip.Chip;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -55,53 +59,32 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        List<String> urls = new ArrayList<>();
 
-        try{
-            InputStream in = getResources().openRawResource(R.raw.logo1);
+        SliderView sliderView = findViewById(R.id.imageSlider);
 
-            File file = new File(getExternalFilesDir(null), "logo1.jpg");
+        SliderAdapterExample adapter = new SliderAdapterExample(this);
 
-            copy(in, file);
+        SliderItem sliderItem = new SliderItem(getApplicationContext(), 0);
+        adapter.addItem(sliderItem);
 
-            String logo_1 = file.getAbsolutePath();
+        sliderItem = new SliderItem(getApplicationContext(), 1);
+        adapter.addItem(sliderItem);
 
-            in = getResources().openRawResource(R.raw.logo2);
-
-            file = new File(getExternalFilesDir(null), "logo2.jpg");
-
-            copy(in, file);
-
-            String logo_2 = file.getAbsolutePath();
-
-            in = getResources().openRawResource(R.raw.logo3);
-
-            file = new File(getExternalFilesDir(null), "logo3.jpg");
-
-            copy(in, file);
-
-            String logo_3 = file.getAbsolutePath();
-
-            urls.add(logo_1);
-            urls.add(logo_2);
-            urls.add(logo_3);
-
-            BaseBannerAdapter webBannerAdapter = new BaseBannerAdapter(this, urls);
-
-            BannerLayout banner = (BannerLayout) findViewById(R.id.Banner);
-
-            banner.setAdapter(webBannerAdapter);
-
-            webBannerAdapter.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
-                @Override
-                public void onItemClick(int position) {
+        sliderItem = new SliderItem(getApplicationContext(), 2);
+        adapter.addItem(sliderItem);
 
 
-                }
-            });
-        }catch (IOException e){
-            Log.d(TAG, e.getMessage());
-        }
+        sliderView.setSliderAdapter(adapter);
+
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setIndicatorSelectedColor(Color.WHITE);
+        sliderView.setIndicatorUnselectedColor(Color.GRAY);
+        sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
+        sliderView.startAutoCycle();
+
+
 
         ImageButton btn1 = (ImageButton) findViewById(R.id.imgbtn1);
         btn1.setOnClickListener(btn1Click);
@@ -126,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setLocaleRu();
+                chartOFaccounts = new ChartOFaccounts(getResources());
                 ((Chip) v).setText(R.string.lang_ru);
             }
         });
@@ -135,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setLocaleUz_L();
+                chartOFaccounts = new ChartOFaccounts(getResources());
                 ((Chip) v).setText(R.string.lang_uz_l);
             }
         });
@@ -144,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setLocaleUz_K();
+                chartOFaccounts = new ChartOFaccounts(getResources());
                 ((Chip) v).setText(R.string.lang_uz_k);
             }
         });
@@ -157,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         }else if (lang.equalsIgnoreCase("default")){
             ch_uz_k.setChecked(true);
         }
-
     }
 
     private void initLanguage(){
@@ -195,20 +180,6 @@ public class MainActivity extends AppCompatActivity {
         }else if (lang.equalsIgnoreCase("default")){
             ch_uz_k.setChecked(true);
         }
-    }
-
-    private void copy(InputStream in, File target) throws IOException {
-
-        OutputStream out = new FileOutputStream(target);
-
-        byte[] buf = new byte[1024];
-        int len;
-
-        while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
-        }
-        out.flush();
-        out.close();
     }
 
     private void displayInit(){
@@ -438,4 +409,7 @@ public class MainActivity extends AppCompatActivity {
     public ChartOFaccounts getChartOFaccounts() {
         return chartOFaccounts;
     }
+
+
+
 }

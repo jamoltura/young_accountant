@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="activity_plitka">150dp</dimen>
-    <dimen name="disp_karusel">170dp</dimen>
-    <dimen name="item_karusel">150dp</dimen>
+    <dimen name="disp_karusel">2.7</dimen>
+    <dimen name="row">2</dimen>
+    <dimen name="podval">1.3</dimen>
 </resources>
