@@ -1,13 +1,8 @@
 package financialStudio.young_accountant;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
 import com.github.barteksc.pdfviewer.PDFView;
 
-import java.io.*;
+import java.io.File;
 
 
 public class DokDopol {
