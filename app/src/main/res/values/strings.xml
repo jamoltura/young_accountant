@@ -534,6 +534,11 @@
     <string name="zabalans_016">016 Нематериальные активы, полученные по праву пользования</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+ <!--   <string name="hello_blank_fragment">Hello blank fragment</string>  -->
+
+
+    <string name="banner_1">Бухгалтерия асослари</string>
+    <string name="banner_2">Профессионал ёндашув</string>
+    <string name="banner_3">Етук мутахассис</string>
 
 </resources>

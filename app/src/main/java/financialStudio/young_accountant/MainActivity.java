@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DisplayMetrics metrics;
     private ChartOFaccounts chartOFaccounts;
+    private SliderBuilder sliderBuilder;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -59,31 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
         SliderView sliderView = findViewById(R.id.imageSlider);
 
         SliderAdapterExample adapter = new SliderAdapterExample(this);
 
-        SliderItem sliderItem = new SliderItem(getApplicationContext(), 0);
-        adapter.addItem(sliderItem);
+        sliderBuilder = new SliderBuilder(sliderView, adapter);
 
-        sliderItem = new SliderItem(getApplicationContext(), 1);
-        adapter.addItem(sliderItem);
+        sliderBuilder.setResourses(getResources());
 
-        sliderItem = new SliderItem(getApplicationContext(), 2);
-        adapter.addItem(sliderItem);
-
-
-        sliderView.setSliderAdapter(adapter);
-
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
-        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
-        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
-        sliderView.setIndicatorSelectedColor(Color.WHITE);
-        sliderView.setIndicatorUnselectedColor(Color.GRAY);
-        sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
-        sliderView.startAutoCycle();
-
+        sliderBuilder.build();
 
 
         ImageButton btn1 = (ImageButton) findViewById(R.id.imgbtn1);
@@ -110,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setLocaleRu();
                 chartOFaccounts = new ChartOFaccounts(getResources());
+                sliderBuilder.update(getResources());
                 ((Chip) v).setText(R.string.lang_ru);
             }
         });
@@ -120,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setLocaleUz_L();
                 chartOFaccounts = new ChartOFaccounts(getResources());
+                sliderBuilder.update(getResources());
                 ((Chip) v).setText(R.string.lang_uz_l);
             }
         });
@@ -130,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setLocaleUz_K();
                 chartOFaccounts = new ChartOFaccounts(getResources());
+                sliderBuilder.update(getResources());
                 ((Chip) v).setText(R.string.lang_uz_k);
             }
         });

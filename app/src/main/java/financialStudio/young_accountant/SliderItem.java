@@ -7,25 +7,30 @@ import android.graphics.BitmapFactory;
 
 public class SliderItem {
 
-    final private Context context;
+    final private Resources res;
     private int index;
 
-    public SliderItem(Context context, int value) {
-        this.context = context;
+    public SliderItem(Resources res, int value) {
+        this.res = res;
         setIndex(value);
     }
 
     public String getDescription(){
-        return "jamol";
+        switch (getIndex()){
+            case 0: return getRes().getString(R.string.banner_1);
+            case 1: return getRes().getString(R.string.banner_2);
+            case 2: return getRes().getString(R.string.banner_3);
+        }
+        return getRes().getString(R.string.banner_1);
     }
 
     public Bitmap getImageUrl(){
         switch (getIndex()){
-            case 0: return BitmapFactory.decodeResource(context.getResources(), R.drawable.logo1);
-            case 1: return BitmapFactory.decodeResource(context.getResources(), R.drawable.logo2);
-            case 2: return BitmapFactory.decodeResource(context.getResources(), R.drawable.logo3);
+            case 0: return BitmapFactory.decodeResource(getRes(), R.drawable.logo1);
+            case 1: return BitmapFactory.decodeResource(getRes(), R.drawable.logo2);
+            case 2: return BitmapFactory.decodeResource(getRes(), R.drawable.logo3);
         }
-        return BitmapFactory.decodeResource(context.getResources(), R.drawable.logo1);
+        return BitmapFactory.decodeResource(getRes(), R.drawable.logo1);
     }
 
     public int getIndex() {
@@ -34,5 +39,9 @@ public class SliderItem {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public Resources getRes() {
+        return res;
     }
 }
