@@ -8,52 +8,73 @@
         tools:context=".Activity_active">
 
     <LinearLayout
-            android:id="@+id/lenar_active"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorfon">
+            android:layout_height="match_parent">
 
-        <ListView
-                android:id="@+id/list_activ"
+        <include layout="@layout/custom_action_bar"/>
+
+        <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="8">
-        </ListView>
+                android:layout_height="match_parent">
 
-        <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipgroup_active"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:singleLine="true"
-                app:singleSelection="true"
-                android:layout_weight="1">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chip_a1"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:checkable="true"
-                            android:text="@string/active_1"
-                            android:theme="@style/Theme.MaterialComponents.Light"/>
+                <ListView
+                        android:id="@+id/list_activ"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                </ListView>
 
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chip_a2"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:checkable="true"
-                            android:text="@string/active_2"
-                            android:theme="@style/Theme.MaterialComponents.Light"/>
-        </com.google.android.material.chip.ChipGroup>
+                <RelativeLayout
+                        android:id="@+id/rl_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                            <Button
+                                    android:text="@string/active_1"
+                                    style="@style/buttonsimplenormal"
+                                    android:id="@+id/btn_a1"
+                                    android:layout_alignParentEnd="true"/>
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                            <Button
+                                    android:text="@string/active_2"
+                                    style="@style/buttonsimplenormal"
+                                    android:id="@+id/btn_a2"
+                                    android:layout_alignParentStart="true"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <FrameLayout
+                    android:id="@+id/frame_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center">
+            </FrameLayout>
+        </FrameLayout>
+
     </LinearLayout>
-
-    <FrameLayout
-            android:id="@+id/frame_banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

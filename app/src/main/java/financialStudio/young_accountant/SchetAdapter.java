@@ -2,12 +2,14 @@ package financialStudio.young_accountant;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -53,23 +55,51 @@ public class SchetAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.item, parent, false);
         }
 
-        final TextView textView = (TextView) view.findViewById(R.id.textschet);
-        final RelativeLayout rl = (RelativeLayout) view.findViewById(R.id.rel);
+        TextView textSchet = (TextView) view.findViewById(R.id.textschet);
+        TextView textSchet_value = (TextView) view.findViewById(R.id.textschet_value);
+        RelativeLayout rl_schet = (RelativeLayout) view.findViewById(R.id.rl_schet);
+        RelativeLayout rl_schet_value = (RelativeLayout) view.findViewById(R.id.rl_schet_value);
 
-        String s = list.get(position);
-
-        textView.setText(s);
+        String s = (String) getItem(position);
 
         if (s.codePointAt(2) == 48 && s.codePointAt(3) == 48){
-            rl.setBackgroundColor(context.getResources().getColor(R.color.colorlisthead));
-            textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-            textView.setGravity(Gravity.CENTER_HORIZONTAL);
-        }else{
-            rl.setBackgroundColor(context.getResources().getColor(R.color.colorlist));
-            textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-            textView.setGravity(Gravity.LEFT);
-        }
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+            rl_schet.setLayoutParams(params);
+            rl_schet.setBackgroundColor(context.getResources().getColor(R.color.colorlisthead));
+
+            LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
+            rl_schet_value.setLayoutParams(params1);
+
+            textSchet.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            textSchet.setGravity(Gravity.CENTER_HORIZONTAL);
+            textSchet.setText(s);
+            RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            textSchet.setLayoutParams(params2);
+        }else{
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            rl_schet.setLayoutParams(params);
+            rl_schet.setBackgroundColor(context.getResources().getColor(R.color.color_white));
+
+            rl_schet_value.setLayoutParams(params);
+            rl_schet_value.setBackgroundColor(context.getResources().getColor(R.color.color_white));
+
+            String[] arr = s.split(" ", 2);
+
+            String Schet = arr[0] + " ";
+            String Schet_value = arr[1];
+
+            textSchet.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            textSchet.setGravity(Gravity.LEFT);
+            textSchet.setText(Schet);
+            RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            textSchet.setLayoutParams(params2);
+
+            textSchet_value.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            textSchet_value.setGravity(Gravity.LEFT);
+            textSchet_value.setText(Schet_value);
+        }
 
         return view;
     }

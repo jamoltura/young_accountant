@@ -2,9 +2,7 @@ package financialStudio.young_accountant;
 
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,20 +27,7 @@ public class Activity_zabalanse extends BaseActivite {
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.custom_action_bar);
-
-        TextView textView = (TextView) findViewById(R.id.action_bar_text);
-        textView.setText(getResources().getString(R.string.zabalans));
-
-        ImageView btnBack = (ImageView) findViewById(R.id.imageback);
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar_init();
 
         ListView listView = (ListView) findViewById(R.id.list_zabalans);
 
@@ -50,6 +35,30 @@ public class Activity_zabalanse extends BaseActivite {
         listView.setAdapter(sch);
 
         new ThreadBanner(getActivity()).start();
+    }
+
+    private void toolbar_init(){
+        ImageButton imageView = (ImageButton) findViewById(R.id.imageback);
+        imageView.setImageResource(R.drawable.ic_back);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        TextView textView = (TextView) findViewById(R.id.action_bar_text);
+        textView.setVisibility(View.VISIBLE);
+        textView.setText(getResources().getString(R.string.zabalans));
+
+        ImageButton imgbtn_lang = (ImageButton) findViewById(R.id.imgbtn_bar);
+        imgbtn_lang.setImageResource(R.drawable.ic_search);
+        imgbtn_lang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public DisplayMetrics getMetrics() {

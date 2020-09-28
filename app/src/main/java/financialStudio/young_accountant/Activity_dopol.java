@@ -8,10 +8,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,53 +34,49 @@ public class Activity_dopol extends BaseActivite{
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.custom_action_bar);
-
         int dopol = getIntent().getIntExtra("dopol", 0);
 
         if (dopol == 1){
+            toolbar_init(1);
             dopol1();
         }else if (dopol == 2){
+            toolbar_init(2);
             dopol2();
         }
 
         new ThreadBanner(getActivity()).start();
     }
 
-    private void dopol1(){
-        TextView textView = (TextView) findViewById(R.id.action_bar_text);
-        textView.setText(getResources().getString(R.string.dopol));
-
-        try {
-
-            InputStream inNSBU = getResources().openRawResource(R.raw.nsbu);
-
-            File fileNsbu = new File(getExternalFilesDir(null), "nsbu.pdf");
-            copy(inNSBU, fileNsbu);
-
-            PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-
-            DokDopol dokDopol = new DokDopol(pdfView);
-            dokDopol.openNSBU(fileNsbu);
-
-        }catch (IOException e){
-            Log.d(TAG, e.getMessage());
-        }
-
-        ImageView btnBack = (ImageView) findViewById(R.id.imageback);
-        btnBack.setOnClickListener(new View.OnClickListener() {
+    private void toolbar_init(int value){
+        ImageButton imageView = (ImageButton) findViewById(R.id.imageback);
+        imageView.setImageResource(R.drawable.ic_back);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               finish();
+                finish();
+            }
+        });
+
+        TextView textView = (TextView) findViewById(R.id.action_bar_text);
+        textView.setVisibility(View.VISIBLE);
+
+        if (value == 1) {
+            textView.setText(getResources().getString(R.string.zakon));
+        }else {
+            textView.setText(getResources().getString(R.string.nsbu));
+        }
+
+        ImageButton imgbtn_lang = (ImageButton) findViewById(R.id.imgbtn_bar);
+        imgbtn_lang.setImageResource(R.drawable.ic_search);
+        imgbtn_lang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void dopol2(){
-        TextView textView = (TextView) findViewById(R.id.action_bar_text);
-        textView.setText(getResources().getString(R.string.dopol));
-
+    private void dopol1(){
         try {
             InputStream inZakon = getResources().openRawResource(R.raw.zakon);
 
@@ -98,14 +91,23 @@ public class Activity_dopol extends BaseActivite{
         }catch (IOException e){
             Log.d(TAG, e.getMessage());
         }
+    }
 
-        ImageView btnBack = (ImageView) findViewById(R.id.imageback);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // init();
-            }
-        });
+    private void dopol2(){
+        try {
+            InputStream inNSBU = getResources().openRawResource(R.raw.nsbu);
+
+            File fileNsbu = new File(getExternalFilesDir(null), "nsbu.pdf");
+            copy(inNSBU, fileNsbu);
+
+            PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
+
+            DokDopol dokDopol = new DokDopol(pdfView);
+            dokDopol.openNSBU(fileNsbu);
+
+        }catch (IOException e){
+            Log.d(TAG, e.getMessage());
+        }
     }
 
     private void copy(InputStream in, File target) throws IOException {

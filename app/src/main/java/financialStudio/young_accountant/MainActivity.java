@@ -1,6 +1,7 @@
 package financialStudio.young_accountant;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
@@ -39,10 +41,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().hide();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         String lang = LocaleHelper.getLanguage(this);
 
@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         setContentView(R.layout.activity_main);
+
+        toolbar_init();
 
         SliderView sliderView = findViewById(R.id.imageSlider);
 
@@ -88,49 +90,30 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton btn6 = (ImageButton) findViewById(R.id.imgbtn6);
         btn6.setOnClickListener(btn6Click);
+    }
 
-        Chip ch_ru = (Chip) findViewById(R.id.chip_ru);
-        ch_ru.setOnClickListener(new View.OnClickListener() {
+    private void toolbar_init(){
+        ImageButton imageView = (ImageButton) findViewById(R.id.imageback);
+        imageView.setImageResource(R.drawable.ic_me);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocaleRu();
-                chartOFaccounts = new ChartOFaccounts(getResources());
-                sliderBuilder.update(getResources());
-                ((Chip) v).setText(R.string.lang_ru);
+
             }
         });
 
-        Chip ch_uz_l = (Chip) findViewById(R.id.chip_uz_latin);
-        ch_uz_l.setOnClickListener(new View.OnClickListener() {
+        TextView textView = (TextView) findViewById(R.id.action_bar_text);
+        textView.setVisibility(View.INVISIBLE);
+
+        final DialogLang dialogLang = new DialogLang();
+
+        ImageButton imgbtn_lang = (ImageButton) findViewById(R.id.imgbtn_bar);
+        imgbtn_lang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocaleUz_L();
-                chartOFaccounts = new ChartOFaccounts(getResources());
-                sliderBuilder.update(getResources());
-                ((Chip) v).setText(R.string.lang_uz_l);
+                dialogLang.show(getSupportFragmentManager(), "dlg_lang");
             }
         });
-
-        Chip ch_uz_k = (Chip) findViewById(R.id.chip_uz_kiril);
-        ch_uz_k.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setLocaleUz_K();
-                chartOFaccounts = new ChartOFaccounts(getResources());
-                sliderBuilder.update(getResources());
-                ((Chip) v).setText(R.string.lang_uz_k);
-            }
-        });
-
-        String lang = LocaleHelper.getLanguage(this);
-
-        if (lang.equalsIgnoreCase("ru")){
-            ch_ru.setChecked(true);
-        }else if (lang.equalsIgnoreCase("uz")){
-            ch_uz_l.setChecked(true);
-        }else if (lang.equalsIgnoreCase("default")){
-            ch_uz_k.setChecked(true);
-        }
     }
 
     private void initLanguage(){
@@ -148,26 +131,10 @@ public class MainActivity extends AppCompatActivity {
         textView4.setText(R.string.zabalans);
 
         TextView textView5 = (TextView) findViewById(R.id.textView5);
-        textView5.setText(R.string.dopol);
+        textView5.setText(R.string.zakon);
 
         TextView textView6 = (TextView) findViewById(R.id.textView6);
-        textView6.setText(R.string.dopol2);
-
-        Chip ch_ru = (Chip) findViewById(R.id.chip_ru);
-
-        Chip ch_uz_l = (Chip) findViewById(R.id.chip_uz_latin);
-
-        Chip ch_uz_k = (Chip) findViewById(R.id.chip_uz_kiril);
-
-        String lang = LocaleHelper.getLanguage(this);
-
-        if (lang.equalsIgnoreCase("ru")){
-            ch_ru.setChecked(true);
-        }else if (lang.equalsIgnoreCase("uz")){
-            ch_uz_l.setChecked(true);
-        }else if (lang.equalsIgnoreCase("default")){
-            ch_uz_k.setChecked(true);
-        }
+        textView6.setText(R.string.nsbu);
     }
 
     private void displayInit(){
@@ -304,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btn1Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getBaseContext(), Activity_active.class);
+            Intent intent = new Intent(getApplicationContext(), Activity_active.class);
 
             intent.putExtra("active_1", getChartOFaccounts().getActive_1());
             intent.putExtra("active_2", getChartOFaccounts().getActive_2());
@@ -316,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btn2Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getBaseContext(), Activity_passive.class);
+            Intent intent = new Intent(getApplicationContext(), Activity_passive.class);
 
             intent.putExtra("passive_1", getChartOFaccounts().getPasssive_1());
             intent.putExtra("passive_2", getChartOFaccounts().getPasssive_2());
@@ -328,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btn3Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getBaseContext(), Activity_transite.class);
+            Intent intent = new Intent(getApplicationContext(), Activity_transite.class);
 
             intent.putExtra("transite", getChartOFaccounts().getTransite());
 
@@ -370,16 +337,22 @@ public class MainActivity extends AppCompatActivity {
     public void setLocaleRu (){
         LocaleHelper.onAttach(this, "ru");
         initLanguage();
+        chartOFaccounts = new ChartOFaccounts(getResources());
+        sliderBuilder.update(getResources());
     }
 
     public void setLocaleUz_L (){
         LocaleHelper.onAttach(this, "uz");
         initLanguage();
+        chartOFaccounts = new ChartOFaccounts(getResources());
+        sliderBuilder.update(getResources());
     }
 
     public void setLocaleUz_K (){
         LocaleHelper.onAttach(this, "default");
         initLanguage();
+        chartOFaccounts = new ChartOFaccounts(getResources());
+        sliderBuilder.update(getResources());
     }
 
     private MainActivity getMainActivity(){
@@ -397,7 +370,4 @@ public class MainActivity extends AppCompatActivity {
     public ChartOFaccounts getChartOFaccounts() {
         return chartOFaccounts;
     }
-
-
-
 }

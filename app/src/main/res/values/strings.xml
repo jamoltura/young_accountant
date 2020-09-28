@@ -4,13 +4,12 @@
     <string name="passive">Пассив счетлар</string>
     <string name="transit">Транзит счетлар</string>
     <string name="zabalans">Балансдан ташқари счетлар</string>
-    <string name="dopol">Қонунлар</string>
-    <string name="dopol2">Қўшимча</string>
+    <string name="zakon">Қонунлар</string>
+    <string name="nsbu">Қўшимча</string>
 
-    <string name="lang_ru">Рус тили</string>
-    <string name="lang_uz_l">Уз лотин</string>
-    <string name="lang_uz_k">Уз кирил</string>
-
+    <string name="lang_uz_l">O`zb</string>
+    <string name="lang_uz_k">Узб</string>
+    <string name="lang_ru">Рус</string>
 
     <string name="active_1">Узоқ муддатли активлар</string>
 
@@ -177,7 +176,7 @@
     <string name="active_2980">2980 Савдо устамаси</string>
     <string name="active_2990">2990 Бошқа товарлар</string>
 
-    <string name="active_raz_3">2990 III БЎЛИМ. КЕЛГУСИ ДАВР ХАРАЖАТЛАРИ ВА КЕЧИКТИРИЛГАН ХАРАЖАТЛАР - ЖОРИЙ ҚИСМИ
+    <string name="active_raz_3">III БЎЛИМ. КЕЛГУСИ ДАВР ХАРАЖАТЛАРИ ВА КЕЧИКТИРИЛГАН ХАРАЖАТЛАР - ЖОРИЙ ҚИСМИ
     </string>
 
     <string name="active_3000">3000</string>
@@ -242,9 +241,7 @@
     <string name="active_4710">4710 Кредитга сотилган товарлар бўйича ходимларнинг қарзи</string>
     <string name="active_4720">4720 Берилган қарзлар бўйича ходимларнинг қарзи</string>
     <string name="active_4730">4730 Моддий зарарни қоплаш бўйича ходимларнинг қарзи</string>
-    <string name="active_4790">4790 Ходимларнинг бошқа
-        <қарзлари></қарзлари>
-    </string>
+    <string name="active_4790">4790 Ходимларнинг бошқа қарзлари</string>
 
     <string name="active_4800">4800 ТУРЛИ ДЕБИТОРЛАР ҚАРЗЛАРИНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
     <string name="active_4810">4810 Узоқ муддатли ижара бўйича олинадиган жорий тўловлар</string>
@@ -337,7 +334,7 @@
     <string name="passive_6600">6600 ТАЪСИСЧИЛАРГА БЎЛГАН ҚАРЗНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
     <string name="passive_6610">6610 Тўланадиган дивидендлар</string>
     <string name="passive_6620">6620 Чиқиб кетаётган таъсисчиларга улушлари бўйича қарз</string>
-    <string name="passive_6630">6630 Вклады учредителей по увеличению уставного капитала</string>
+    <string name="passive_6630">6630 Таъсисчиларнинг устав капиталини ошириш учун қўшган ҳиссалари</string>
 
     <string name="passive_6700">6700 МЕҲНАТ ҲАҚИ БЎЙИЧА ХОДИМ БИЛАН ҲИСОБЛАШИШЛАРНИ ҲИСОБГА ОЛУВЧИ СЧЁТЛАР</string>
     <string name="passive_6710">6710 Меҳнат ҳақи бўйича ходим билан ҳисоблашишлар</string>
@@ -540,5 +537,14 @@
     <string name="banner_1">Бухгалтерия асослари</string>
     <string name="banner_2">Профессионал ёндашув</string>
     <string name="banner_3">Етук мутахассис</string>
+
+
+    <!--  menu   -->
+    <string name="action_home">Бош сахифа</string>
+    <string name="action_personal">Шахсий маълумотлар</string>
+    <string name="action_setting">Созламалар</string>
+    <string name="action_about">Дастур хакида</string>
+
+    <string name="action_dialog">Тилни танланг</string>
 
 </resources>

@@ -4,12 +4,12 @@
     <string name="passive">Пассивные счета</string>
     <string name="transit">Транзитные счета</string>
     <string name="zabalans">Забалансовые счета</string>
-    <string name="dopol">Законы</string>
-    <string name="dopol2">Дополнительно</string>
+    <string name="zakon">Законы</string>
+    <string name="nsbu">Дополнительно</string>
 
-    <string name="lang_ru">Рус язык</string>
-    <string name="lang_uz_l">Уз латин</string>
-    <string name="lang_uz_k">Уз кирил</string>
+    <string name="lang_uz_l">O`zb</string>
+    <string name="lang_uz_k">Узб</string>
+    <string name="lang_ru">Рус</string>
 
 
     <string name="active_1">Долгосчрочные активы</string>
@@ -168,7 +168,7 @@
     <string name="active_2980">2980 Торговая наценка</string>
     <string name="active_2990">2990 Прочие товары</string>
 
-    <string name="active_raz_3">2990 РАЗДЕЛ III. РАСХОДЫ БУДУЩИХ ПЕРИОДОВ И ОТСРОЧЕННЫЕ РАСХОДЫ — ТЕКУЩАЯ ЧАСТЬ</string>
+    <string name="active_raz_3">РАЗДЕЛ III. РАСХОДЫ БУДУЩИХ ПЕРИОДОВ И ОТСРОЧЕННЫЕ РАСХОДЫ — ТЕКУЩАЯ ЧАСТЬ</string>
 
     <string name="active_3000">3000</string>
 
@@ -500,5 +500,13 @@
     <string name="banner_1">Основы бухгалтерского учета</string>
     <string name="banner_2">Профессиональный подход</string>
     <string name="banner_3">Зрелый специалист</string>
+
+    <!--  menu   -->
+    <string name="action_home">Главный</string>
+    <string name="action_personal">Личная информация</string>
+    <string name="action_setting">Настройка</string>
+    <string name="action_about">О программа</string>
+
+    <string name="action_dialog">Выберите язык</string>
 
 </resources>

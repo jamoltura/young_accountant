@@ -1,12 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="titleTextColor">@color/colorBlack</item>
+        <item name="titleTextColor">@color/color_black</item>
     </style>
 
     <style name="FrameLayoutBase">
@@ -20,6 +20,8 @@
         <item name="android:layout_weight">1</item>
     </style>
 
+
+
     <style name="bazebutton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">match_parent</item>
@@ -27,12 +29,55 @@
         <item name="android:layout_centerInParent">true</item>
     </style>
 
+
+
+    <style name="buttonsimplebase" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="buttonnormal" parent="buttonsimplebase">
+        <item name="android:background">@drawable/btnsimple</item>
+        <item name="android:textColor">@color/colorfon</item>
+    </style>
+
+    <style name="buttonselect" parent="buttonsimplebase">
+        <item name="android:background">@drawable/btnsimple_select</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="buttonsimplenormal" parent="buttonnormal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_centerInParent">false</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="buttonsimpleselect" parent="buttonselect">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_centerInParent">false</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="buttonlangnormal" parent="buttonnormal">
+        <item name="android:layout_width">@dimen/btn_lang</item>
+        <item name="android:layout_height">@dimen/btn_lang</item>
+    </style>
+
+    <style name="buttonlangselect" parent="buttonselect">
+        <item name="android:layout_width">@dimen/btn_lang</item>
+        <item name="android:layout_height">@dimen/btn_lang</item>
+    </style>
+
     <style name="ImageButtonTextstyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textColor">@color/colortext</item>
+        <item name="android:textColor">@color/color_white</item>
         <item name="android:textSize">11sp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">center|top</item>
         <item name="android:textStyle">bold</item>
     </style>
 

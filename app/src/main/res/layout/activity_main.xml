@@ -8,18 +8,19 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-
     <LinearLayout
             android:id="@+id/display"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+        <include layout="@layout/custom_action_bar"/>
+
         <RelativeLayout
                 android:id="@+id/display_carusel"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2.7">
+                android:layout_weight="3">
 
             <androidx.cardview.widget.CardView
                     app:cardCornerRadius="6dp"
@@ -207,7 +208,7 @@
 
                         <ImageButton
                                 android:id="@+id/imgbtn5"
-                                app:srcCompat="@drawable/ic_active"
+                                app:srcCompat="@drawable/ic_zakon"
                                 style="@style/bazebutton"/>
                     </RelativeLayout>
 
@@ -217,7 +218,7 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:text="@string/dopol"
+                                android:text="@string/zakon"
                                 style="@style/ImageButtonTextstyle"
                                 android:id="@+id/textView5"
                                 android:gravity="center_horizontal"/>
@@ -236,7 +237,7 @@
 
                         <ImageButton
                                 android:id="@+id/imgbtn6"
-                                app:srcCompat="@drawable/ic_passive"
+                                app:srcCompat="@drawable/ic_nsbu"
                                 style="@style/bazebutton"/>
                     </RelativeLayout>
                     <RelativeLayout
@@ -245,52 +246,12 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:text="@string/dopol2"
+                                android:text="@string/nsbu"
                                 style="@style/ImageButtonTextstyle"
                                 android:id="@+id/textView6"/>
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-                android:id="@+id/rl_4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1.3">
-
-            <com.google.android.material.chip.ChipGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:singleLine="true"
-                    app:singleSelection="true"
-                    android:layout_centerInParent="true">
-
-                <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/chip_ru"
-                        style="@style/Widget.MaterialComponents.Chip.Action"
-                        android:theme="@style/Theme.MaterialComponents.Light"
-                        android:text="@string/lang_ru"
-                        android:checkable="true"/>
-                <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/chip_uz_kiril"
-                        style="@style/Widget.MaterialComponents.Chip.Action"
-                        android:theme="@style/Theme.MaterialComponents.Light"
-                        android:text="@string/lang_uz_k"
-                        android:checkable="true"/>
-                <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/chip_uz_latin"
-                        style="@style/Widget.MaterialComponents.Chip.Action"
-                        android:theme="@style/Theme.MaterialComponents.Light"
-                        android:text="@string/lang_uz_l"
-                        android:checkable="true"/>
-            </com.google.android.material.chip.ChipGroup>
         </RelativeLayout>
     </LinearLayout>
 

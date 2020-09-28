@@ -7,38 +7,30 @@
         android:layout_height="match_parent"
         tools:context=".Activity_dopol">
 
-
-    <com.github.barteksc.pdfviewer.PDFView
-    android:id="@+id/pdfView"
-    android:layout_width="match_parent"
-    android:layout_height ="match_parent"/>
-
-    <FrameLayout
-            android:id="@+id/frame_banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
-    </FrameLayout>
-
-    <!--
-    <HorizontalScrollView
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical">
+        <include layout="@layout/custom_action_bar"/>
 
-            <ListView
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <com.github.barteksc.pdfviewer.PDFView
+                    android:id="@+id/pdfView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/list_pdf"
-                    android:divider="@android:color/transparent"/>
+                    android:layout_height ="match_parent"/>
 
-        </LinearLayout>
+            <FrameLayout
+                    android:id="@+id/frame_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center">
+            </FrameLayout>
 
-    </HorizontalScrollView>
-
-    -->
+        </FrameLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
