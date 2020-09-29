@@ -509,4 +509,7 @@
 
     <string name="action_dialog">Выберите язык</string>
 
+    <string name="action_search">Поиск</string>
+    <string name="action_cancel">Отмена</string>
+
 </resources>

@@ -8,6 +8,7 @@
         tools:context=".Activity_active">
 
     <LinearLayout
+            android:id="@+id/ll_active"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,9 +28,9 @@
                         android:id="@+id/list_activ"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:divider="@color/color_black">
                 </ListView>
-
                 <RelativeLayout
                         android:id="@+id/rl_a"
                         android:layout_width="match_parent"

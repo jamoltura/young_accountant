@@ -2,35 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@color/color_white"
-              android:orientation="horizontal">
-
+              android:background="@color/colorfon_list"
+              android:orientation="vertical">
 
     <RelativeLayout
-            android:id="@+id/rl_schet"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
 
-        <TextView
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:id="@+id/ll_a"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textschet"
-                android:textSize="18sp"
-                android:padding="6dp"
-                android:text="0112 "/>
+                android:elevation="5dp">
+
+            <RelativeLayout
+                    android:id="@+id/rl_schet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textschet"
+                        android:textSize="18sp"
+                        android:padding="6dp"
+                        android:text="1000 "/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:id="@+id/rl_schet_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textschet_value"
+                        android:textSize="18sp"
+                        android:padding="6dp"
+                        android:text="hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"/>
+            </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-            android:id="@+id/rl_schet_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textschet_value"
-                android:textSize="18sp"
-                android:padding="6dp"
-                android:text="Износ благоустройства основных средств, полученных по договору финансовой аренды"/>
-    </RelativeLayout>
 </LinearLayout>

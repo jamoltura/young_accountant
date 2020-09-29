@@ -509,4 +509,7 @@
 
     <string name="action_dialog">Tilni tanlang</string>
 
+    <string name="action_search">Izlash</string>
+    <string name="action_cancel">Bekor</string>
+
 </resources>

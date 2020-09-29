@@ -429,6 +429,25 @@ public class ChartOFaccounts {
         zabalans.add(res.getString(R.string.zabalans_016));
     }
 
+    public static ArrayList<String> search(String str, ArrayList<String> list){
+
+        int count = list.size();
+
+        ArrayList<String> result = new ArrayList<>();
+
+        for (int i = 0; i < count; i++){
+
+            if (list.get(i).startsWith(str)){
+                result.add(list.get(i));
+            } else if ((count - 1 - i >= str.length()) && (list.get(i).startsWith(str, i))){
+                result.add(list.get(i));
+            }
+
+        }
+
+        return list;
+    }
+
     public ArrayList<String> getActive_1() {
         return active_1;
     }
