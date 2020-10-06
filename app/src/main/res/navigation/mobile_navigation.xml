@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/mobile_navigation"
+            app:startDestination="@+id/nav_home">
+
+    <fragment
+            android:id="@+id/nav_home"
+            android:name="financialStudio.young_accountant.ui.home.HomeFragment"
+            android:label="@string/menu_home"
+            tools:layout="@layout/home_fragment">
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_lang"
+            android:name="financialStudio.young_accountant.ui.lang.LangFragment"
+            android:label="@string/menu_lang"
+            tools:layout="@layout/lang_fragment">
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_share"
+            android:name="financialStudio.young_accountant.ui.share.ShareFragment"
+            android:label="@string/menu_share"
+            tools:layout="@layout/share_fragment">
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_about"
+            android:name="financialStudio.young_accountant.ui.about.AboutFragment"
+            android:label="@string/menu_about"
+            tools:layout="@layout/about_fragment">
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_about_app"
+            android:name="financialStudio.young_accountant.ui.about_app.AboutAppFragment"
+            android:label="@string/menu_about_app"
+            tools:layout="@layout/aboutapp_fragment">
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_rate"
+            android:name="financialStudio.young_accountant.ui.rate.RateFragment"
+            android:label="@string/menu_rate"
+            tools:layout="@layout/rate_fragment">
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_other"
+            android:name="financialStudio.young_accountant.ui.other.OtherFragment"
+            android:label="@string/menu_other"
+            tools:layout="@layout/other_fragment">
+    </fragment>
+
+</navigation>

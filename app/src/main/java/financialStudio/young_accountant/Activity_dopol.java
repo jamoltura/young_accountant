@@ -1,9 +1,6 @@
 package financialStudio.young_accountant;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.pdf.PdfRenderer;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,8 +10,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.ads.MobileAds;
@@ -22,14 +17,13 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.io.*;
-import java.util.ArrayList;
 
 public class Activity_dopol extends BaseActivite{
 
     private static final String TAG = "myLogs";
 
     private DisplayMetrics metrics;
-    private PdfRenderer pdf;
+    private DokDopol dokDopol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +48,7 @@ public class Activity_dopol extends BaseActivite{
 
     private void toolbar_init(final int value){
 
-        ImageButton imageView = (ImageButton) findViewById(R.id.imageback);
-        imageView.setImageResource(R.drawable.ic_back);
+        ImageButton imageView = (ImageButton) findViewById(R.id.img_back);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +57,6 @@ public class Activity_dopol extends BaseActivite{
         });
 
         TextView textView = (TextView) findViewById(R.id.action_bar_text);
-        textView.setVisibility(View.VISIBLE);
 
         if (value == 1) {
             textView.setText(getResources().getString(R.string.zakon));
@@ -72,145 +64,160 @@ public class Activity_dopol extends BaseActivite{
             textView.setText(getResources().getString(R.string.nsbu));
         }
 
-        ImageButton imgbtn_bar = (ImageButton) findViewById(R.id.imgbtn_bar);
-        imgbtn_bar.setImageResource(R.drawable.ic_search);
-        imgbtn_bar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        ImageButton imgbtn_bar = (ImageButton) findViewById(R.id.img_search);
+        imgbtn_bar.setOnClickListener(clickSearchImg);
+    }
 
-                final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
+    View.OnClickListener clickSearchImg = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
-                ll.removeViewAt(0);
+            final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
 
-                LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_search_bar, ll, false);
+            ll.removeViewAt(0);
 
-                ll.addView(ll_search, 0);
+            LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_search_bar, ll, false);
 
-                final EditText editText = (EditText) findViewById(R.id.editText_search);
+            ll.addView(ll_search, 0);
 
-                editText.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        InputMethodManager inputMethodManager =
-                                (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                        inputMethodManager.toggleSoftInputFromWindow(
-                                editText.getApplicationWindowToken(),InputMethodManager.SHOW_IMPLICIT, 0);
-                        editText.requestFocus();
+            final EditText editText = (EditText) findViewById(R.id.editText_search);
+
+            editText.post(new Runnable() {
+                @Override
+                public void run() {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.toggleSoftInputFromWindow(
+                            editText.getApplicationWindowToken(),InputMethodManager.SHOW_IMPLICIT, 0);
+                    editText.requestFocus();
+                }
+            });
+
+            editText.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (keyCode==KeyEvent.KEYCODE_ENTER){
+                        return true;
                     }
-                });
+                    return false;
+                }
+            });
 
-                editText.setOnKeyListener(new View.OnKeyListener() {
-                    @Override
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        if (keyCode==KeyEvent.KEYCODE_ENTER){
-                            return true;
-                        }
-                        return false;
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                    // TODO : отмена ранный запушенный поиск
+
+                    if (dokDopol.getSearchState() == SearchState.SearchStart) {
+                        dokDopol.stop();
                     }
-                });
 
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    Button btn_search_and_cancel = (Button) findViewById(R.id.btn_search_and_cancel);
+                    btn_search_and_cancel.setText(R.string.action_search);
+                    btn_search_and_cancel.setOnClickListener(clickSearch);
+                }
+            });
 
-                    }
+            Button btn_search_and_cancel = (Button) findViewById(R.id.btn_search_and_cancel);
+            btn_search_and_cancel.setOnClickListener(clickSearch);
+        }
+    };
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    View.OnClickListener clickSearch = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.setEnabled(false);
 
-                    }
+            // TODO : запускат новый поиск
+            final EditText editText = (EditText) findViewById(R.id.editText_search);
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        search(s.toString());
-                    }
-                });
+            editText.post(new Runnable() {
+                @Override
+                public void run() {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-                Button btn_cancel = (Button) findViewById(R.id.btn_cancel);
-                btn_cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                    inputMethodManager.toggleSoftInputFromWindow(
+                            editText.getApplicationWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                }
+            });
 
-                        editText.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                InputMethodManager inputMethodManager =
-                                        (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                                inputMethodManager.toggleSoftInputFromWindow(
-                                        editText.getApplicationWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                            }
-                        });
-
-                        ll.removeViewAt(0);
-
-                        LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_action_bar, ll, false);
-
-                        ll.addView(ll_search, 0);
-
-                        if (value == 1){
-                            toolbar_init(value);
-                            dopol1();
-                        }else if (value == 2){
-                            toolbar_init(value);
-                            dopol2();
-                        }
-                    }
-                });
+            try {
+                dokDopol.search(editText.getText().toString());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
-    }
 
-    public void search(String value){
+            ((Button) v).setText(R.string.action_cancel);
+            v.setOnClickListener(clickCancel);
+            v.setEnabled(true);
+        }
+    };
 
+    View.OnClickListener clickCancel = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
-    }
+            final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
+            final EditText editText = (EditText) findViewById(R.id.editText_search);
+
+            editText.post(new Runnable() {
+                @Override
+                public void run() {
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.toggleSoftInputFromWindow(
+                            editText.getApplicationWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                }
+            });
+
+            ll.removeViewAt(0);
+
+            LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_action_bar, ll, false);
+
+            ll.addView(ll_search, 0);
+
+            int value = getIntent().getIntExtra("dopol", 0);
+
+            if (value == 1){
+                toolbar_init(value);
+            }else if (value == 2){
+                toolbar_init(value);
+            }
+        }
+    };
 
     private void dopol1(){
-        try {
-            InputStream inZakon = getResources().openRawResource(R.raw.zakon);
-
-            File fileZakon = new File(getExternalFilesDir(null), "zalon.pdf");
-            copy(inZakon, fileZakon);
-
-            PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-
-            final DokDopol dokDopol = new DokDopol(pdfView);
-            dokDopol.openZakon(fileZakon);
-
-        }catch (IOException e){
-            Log.d(TAG, e.getMessage());
-        }
+        PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
+        dokDopol = DokDopol.getInstanceNSBU(getApplicationContext(), pdfView);
+        dokDopol.open();
     }
 
     private void dopol2(){
-        try {
-            InputStream inNSBU = getResources().openRawResource(R.raw.nsbu);
-
-            File fileNsbu = new File(getExternalFilesDir(null), "nsbu.pdf");
-            copy(inNSBU, fileNsbu);
-
-            PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-
-            DokDopol dokDopol = new DokDopol(pdfView);
-            dokDopol.openNSBU(fileNsbu);
-
-        }catch (IOException e){
-            Log.d(TAG, e.getMessage());
-        }
+        PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
+        dokDopol = DokDopol.getInstanceZakon(getApplicationContext(), pdfView);
+        dokDopol.open();
     }
 
-    private void copy(InputStream in, File target) throws IOException {
-
-        OutputStream out = new FileOutputStream(target);
-
-        byte[] buf = new byte[1024];
-        int len;
-
-        while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
+    @Override
+    protected void onStop() {
+        try {
+            dokDopol.Destroy();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        out.flush();
-        out.close();
+        super.onStop();
     }
 
     public DisplayMetrics getMetrics() {
@@ -221,7 +228,7 @@ public class Activity_dopol extends BaseActivite{
         this.metrics = metrics;
     }
 
-    private Activity_dopol getActivity(){
+    public Activity_dopol getActivity(){
         return this;
     }
 

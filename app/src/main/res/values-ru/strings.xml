@@ -512,4 +512,17 @@
     <string name="action_search">Поиск</string>
     <string name="action_cancel">Отмена</string>
 
+
+    <string name="menu_home">Главная</string>
+    <string name="menu_about">О нас</string>
+    <string name="menu_about_app">О мобильном приложении</string>
+    <string name="menu_lang">Сменить язык</string>
+    <string name="menu_other">Другой продукт</string>
+    <string name="menu_rate">Оцените нас</string>
+    <string name="menu_share">Поделиться</string>
+
+    <string name="nav_header_desc">slideshow</string>
+    <string name="nav_header_title">slideshow</string>
+    <string name="nav_header_subtitle">slideshow</string>
+
 </resources>

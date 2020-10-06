@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="financialStudio.young_accountant">
 
-
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -27,7 +26,8 @@
         </activity>
         <activity android:name=".Activity_active">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

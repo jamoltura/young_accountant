@@ -512,4 +512,17 @@
     <string name="action_search">Izlash</string>
     <string name="action_cancel">Bekor</string>
 
+
+    <string name="menu_home">Bosh sahifa</string>
+    <string name="menu_about">Biz haqimizda</string>
+    <string name="menu_about_app">Mobil ilova haqida</string>
+    <string name="menu_lang">Tilni o`zgartirish</string>
+    <string name="menu_other">Boshqa mahsulot</string>
+    <string name="menu_rate">Bizni baholang</string>
+    <string name="menu_share">Bo`lishish</string>
+
+    <string name="nav_header_desc">slideshow</string>
+    <string name="nav_header_title">slideshow</string>
+    <string name="nav_header_subtitle">slideshow</string>
+
 </resources>

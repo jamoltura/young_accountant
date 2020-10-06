@@ -531,7 +531,7 @@
     <string name="zabalans_016">016 Нематериальные активы, полученные по праву пользования</string>
 
     <!-- TODO: Remove or change this placeholder text -->
- <!--   <string name="hello_blank_fragment">Hello blank fragment</string>  -->
+    <!--   <string name="hello_blank_fragment">Hello blank fragment</string>  -->
 
 
     <string name="banner_1">Бухгалтерия асослари</string>
@@ -549,5 +549,19 @@
 
     <string name="action_search">Излаш</string>
     <string name="action_cancel">Бекор</string>
+
+
+    <string name="menu_home">Бош сахифа</string>
+    <string name="menu_about">Биз хақимизда</string>
+    <string name="menu_about_app">Мобил илова хақида</string>
+    <string name="menu_lang">Тилни ўзгартириш</string>
+    <string name="menu_other">Бошқа маҳсулот</string>
+    <string name="menu_rate">Бизни бахоланг</string>
+    <string name="menu_share">Бўлишиш</string>
+
+
+    <string name="nav_header_desc">slideshow</string>
+    <string name="nav_header_title">slideshow</string>
+    <string name="nav_header_subtitle">slideshow</string>
 
 </resources>

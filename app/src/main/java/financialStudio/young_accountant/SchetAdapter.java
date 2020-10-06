@@ -1,8 +1,12 @@
 package financialStudio.young_accountant;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
-import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,19 +23,18 @@ public class SchetAdapter extends BaseAdapter {
 
     private static final String TAG = "myLogs";
 
-    private ArrayList<String> list;
-    private ArrayList<String> listBase;
+    private ArrayList<MyMap> list;
+    private ArrayList<MyMap> listBase;
 
     private final LayoutInflater lInflater;
     private final Context context;
 
-    public SchetAdapter(Context context, ArrayList<String> list) {
+    public SchetAdapter(Context context, ArrayList<MyMap> list) {
         this.context = context;
-        this.list = new ArrayList<String>(list);
-        this.listBase = new ArrayList<String>(list);
+        this.list = new ArrayList<MyMap>(list);
+        this.listBase = new ArrayList<MyMap>(list);
 
         lInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
     }
 
     @Override
@@ -64,7 +67,11 @@ public class SchetAdapter extends BaseAdapter {
         RelativeLayout rl_schet_value = (RelativeLayout) view.findViewById(R.id.rl_schet_value);
         LinearLayout ll_a = (LinearLayout) view.findViewById(R.id.ll_a);
 
-        String s = (String) getItem(position);
+        MyMap myMap = (MyMap) getItem(position);
+
+        String s = myMap.getText();
+
+        Log.d(TAG, myMap.getP().x + " " + myMap.getP().y);
 
         if (s.codePointAt(2) == 48 && s.codePointAt(3) == 48){
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -79,7 +86,10 @@ public class SchetAdapter extends BaseAdapter {
 
             textSchet.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             textSchet.setGravity(Gravity.CENTER_HORIZONTAL);
-            textSchet.setText(s);
+
+            SpannableStringBuilder text = getColorText(myMap);
+
+            textSchet.setText(text);
             RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             textSchet.setLayoutParams(params2);
         }else{
@@ -92,7 +102,9 @@ public class SchetAdapter extends BaseAdapter {
 
             ll_a.setBackgroundColor(context.getResources().getColor(R.color.colorfonchild, context.getTheme()));
 
-            String[] arr = s.split(" ", 2);
+            String str = getColorText(myMap).toString();
+
+            String[] arr = str.split(" ", 2);
 
             String Schet = arr[0];
             String Schet_value = arr[1];
@@ -111,46 +123,38 @@ public class SchetAdapter extends BaseAdapter {
         return view;
     }
 
-    public void search(String str){
+    private SpannableStringBuilder getColorText(MyMap myMap){
 
-        ArrayList<String> temp = new ArrayList<String>(getListBase());
+        String sourse = myMap.getText();
 
-        int count = temp.size();
+        Point p = myMap.getP();
+        final SpannableStringBuilder text = new SpannableStringBuilder(sourse);
 
-        getList().clear();
-
-        for (int i = 0; i < count; i++){
-
-            Log.d(TAG, temp.get(i));
-
-            if (temp.get(i).startsWith(str)){
-                list.add(temp.get(i));
-            } else if ((count - 1 - i >= str.length()) && (temp.get(i).startsWith(str, i))){
-                Log.d(TAG, str + " = " + temp.get(i));
-                list.add(temp.get(i));
-            }
+        if (myMap.isBool()) {
+            final ForegroundColorSpan style = new ForegroundColorSpan(Color.rgb(255, 0, 0));
+            text.setSpan(style, p.x, p.y, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 
         }
-
+        return text;
     }
 
     public void cancel_search(){
         setList(getListBase());
     }
 
-    public ArrayList<String> getList() {
+    public ArrayList<MyMap> getList() {
         return list;
     }
 
-    public void setList(ArrayList<String> list) {
+    public void setList(ArrayList<MyMap> list) {
         this.list = list;
     }
 
-    public ArrayList<String> getListBase() {
+    public ArrayList<MyMap> getListBase() {
         return listBase;
     }
 
-    public void setListBase(ArrayList<String> listBase) {
+    public void setListBase(ArrayList<MyMap> listBase) {
         this.listBase = listBase;
     }
 }

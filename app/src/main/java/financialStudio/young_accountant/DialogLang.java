@@ -61,17 +61,17 @@ public class DialogLang extends DialogFragment implements View.OnClickListener {
             }
             break;
             case R.id.btn_uz_l:{
-                ((MainActivity) getActivity()).setLocaleUz_L();
+             //   ((MainActivity) getActivity()).setLocaleUz_L();
                 close();
             }
             break;
             case R.id.btn_ru:{
-                ((MainActivity) getActivity()).setLocaleRu();
+             //   ((MainActivity) getActivity()).setLocaleRu();
                 close();
             }
             break;
             case R.id.btn_uz_k:{
-                ((MainActivity) getActivity()).setLocaleUz_K();
+           //     ((MainActivity) getActivity()).setLocaleUz_K();
                 close();
             }
         }

@@ -3,13 +3,13 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/searchBar"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
+              android:layout_height="?attr/actionBarSize"
               android:orientation="horizontal"
               android:background="@color/colorPrimaryDark">
 
     <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_gravity="center_vertical">
         <EditText
@@ -20,23 +20,21 @@
                 android:hint="@string/action_search"
                 android:maxLines="1"
                 android:id="@+id/editText_search"
-                android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
-                android:layout_centerVertical="false"/>
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
     </RelativeLayout>
 
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-            <Button android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:text="@string/action_cancel"
-                    style="@style/buttonnormal"
-                    android:id="@+id/btn_cancel"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"/>
-        </RelativeLayout>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="@string/action_search"
+                style="@style/buttonnormal"
+                android:id="@+id/btn_search_and_cancel"
+                android:layout_marginEnd="10dp"/>
+    </RelativeLayout>
 
 </LinearLayout>
