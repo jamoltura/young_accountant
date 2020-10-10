@@ -2,8 +2,10 @@ package financialStudio.young_accountant.ui.home;
 
 import android.content.Intent;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.lifecycle.ViewModelProviders;
@@ -18,6 +20,8 @@ import com.smarteist.autoimageslider.SliderView;
 import financialStudio.young_accountant.*;
 
 public class HomeFragment extends Fragment {
+
+    private static final String TAG = "myLogs";
 
     private HomeViewModel mViewModel;
     private View root;
@@ -45,6 +49,10 @@ public class HomeFragment extends Fragment {
         init();
         displayInit();
         chartOFaccounts = new ChartOFaccounts(getResources());
+
+
+
+
         // TODO: Use the ViewModel
     }
 

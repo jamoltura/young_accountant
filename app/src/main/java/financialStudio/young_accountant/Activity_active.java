@@ -204,33 +204,19 @@ public class Activity_active extends BaseActivite {
 
         if (value.length() > 0) {
 
-         //   String[] arr = sourse.split(" ");
-
-        //    int childCount = arr.length;
-
-          //  int count = 0;
-
-        //    for (int j = 0; j < childCount; j++) {
-
             String _sourse = sourse.toLowerCase();
             String _value = value.toLowerCase();
 
-                if (_sourse.contains(_value)) {
+            if (_sourse.contains(_value)) {
 
-                    String _start = String.valueOf(_value.charAt(0));
+                int start_index = _sourse.indexOf(_value);
+                int end_index = start_index + _value.length();
 
-                    int start_index = _sourse.indexOf(_start);
-                    int end_index = start_index + _value.length();
+                Point p = new Point(start_index, end_index);
 
-                    Point p = new Point(start_index, end_index);
-
-                    myMap.setText(sourse);
-                    myMap.setP(p);
-                    myMap.setBool(true);
-
-                }else {
-                  //  count = count + arr[j].length() + 1;
-            //    }
+                myMap.setText(sourse);
+                myMap.setP(p);
+                myMap.setBool(true);
             }
         }
         return myMap;

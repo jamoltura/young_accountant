@@ -1,13 +1,17 @@
 package financialStudio.young_accountant;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +62,60 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        ImageView img_telegramm = (ImageView) drawer.findViewById(R.id.img_telegramm);
+        img_telegramm.setOnClickListener(click_telegramm);
+
+        ImageView img_facebook = (ImageView) drawer.findViewById(R.id.img_facebook);
+        img_telegramm.setOnClickListener(click_facebook);
+
+        ImageView img_vk = (ImageView) drawer.findViewById(R.id.img_vk);
+        img_telegramm.setOnClickListener(click_vk);
+
+        ImageView img_instagramm = (ImageView) drawer.findViewById(R.id.img_instagramm);
+        img_telegramm.setOnClickListener(click_instagramm);
+
+    }
+
+    View.OnClickListener click_telegramm = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=moliya_studiyasi"));
+            startActivity(intent);
+        }
+    };
+
+    View.OnClickListener click_facebook = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = getOpenFacebookIntent();
+            startActivity(intent);
+        }
+    };
+
+    View.OnClickListener click_vk = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=moliya_studiyasi"));
+            startActivity(intent);
+        }
+    };
+
+    View.OnClickListener click_instagramm = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=moliya_studiyasi"));
+            startActivity(intent);
+        }
+    };
+
+    public Intent getOpenFacebookIntent() {
+
+        try {
+             getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/moliya_studiyasi"));
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/moliya_studiyasi"));
+        }
     }
 
     @Override

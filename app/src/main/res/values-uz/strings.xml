@@ -524,5 +524,6 @@
     <string name="nav_header_desc">slideshow</string>
     <string name="nav_header_title">slideshow</string>
     <string name="nav_header_subtitle">slideshow</string>
+    <string name="action_search_not">Кидирув топилмади</string>
 
 </resources>

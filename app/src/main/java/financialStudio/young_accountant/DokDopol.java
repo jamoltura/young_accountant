@@ -1,9 +1,12 @@
 package financialStudio.young_accountant;
 
 import android.content.Context;
-import android.util.ArrayMap;
 import android.util.Log;
+import android.widget.TextView;
 import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnPageScrollListener;
+import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
+import com.github.barteksc.pdfviewer.scroll.ScrollHandle;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -16,13 +19,12 @@ import com.itextpdf.kernel.pdf.canvas.parser.listener.IPdfTextLocation;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.RegexBasedLocationExtractionStrategy;
 import com.itextpdf.layout.Canvas;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.concurrent.*;
+
 
 
 public class DokDopol {
@@ -32,11 +34,15 @@ public class DokDopol {
     private Context context;
     private PDFView pdfView;
     private InputStream inPDF;
-    private ArrayMap<Integer, Collection<IPdfTextLocation>> collection;
+    private File nowPdfFile;
     private SearchState searchState;
     private ExecutorService pool;
     private int countPdfPage;
     private ArrayList<PdfOnlyPage> list;
+    private DefaultScrollHandle dsh;
+
+
+    private PdfNavigation pdfNavigation;
 
     public static DokDopol getInstanceNSBU(Context context, PDFView pdfView) {
         InputStream in = context.getResources().openRawResource(R.raw.nsbu);
@@ -54,6 +60,7 @@ public class DokDopol {
         inPDF = in;
 
         try {
+            dsh = new DefaultScrollHandle(context);
             initialization();
             inPDF.reset();
         } catch (IOException e) {
@@ -62,10 +69,15 @@ public class DokDopol {
         setSearchState(SearchState.None);
     }
 
-    public void Destroy() throws IOException {
+    public void Destroy() {
         stop();
         list.clear();
-        inPDF.close();
+        try {
+            inPDF.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        pdfNavigation.Destroy();
     }
 
     public void stop() {
@@ -74,18 +86,29 @@ public class DokDopol {
             pool.shutdownNow();
         }
         setSearchState(SearchState.SearchCanceled);
-        collection.clear();
     }
 
-    public void reset() throws IOException {
-        this.inPDF.reset();
+    public void reset() {
+        try {
+            this.inPDF.reset();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void open() {
+//        int page = pdfNavigation.getPosition().getIndexArrayMap();
+//        pdfView.fromStream(inPDF).defaultPage(page).load();
         pdfView.fromStream(inPDF).load();
     }
 
-    public void search(String value) throws IOException {
+    public void reopen() {
+        int page = pdfNavigation.getPosition().getIndexArrayMap();
+        pdfView.fromFile(nowPdfFile).defaultPage(page).load();
+        reset();
+    }
+
+    public boolean search(String value) {
 
         setSearchState(SearchState.SearchStart);
 
@@ -103,37 +126,26 @@ public class DokDopol {
         }catch (InterruptedException e){
 
         }
-
-        if (getSearchState() != SearchState.SearchCanceled) {
-            File nowPdfFile = PdfOnlyPage.getEndFile(context, list);
-            pdfView.fromFile(nowPdfFile).load();
-            inPDF.reset();
+        boolean result = false;
+        try {
+            result = firstCollection();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-        /*
-        for (int i = 0; i < countPdfPage; i++) {
-
-            Collection<IPdfTextLocation> resultCollection = collection.valueAt(i);
-
-            for (IPdfTextLocation result : resultCollection) {
-
-                Log.d(TAG, "страница : " + String.valueOf(i));
-                Log.d(TAG, "text : " + result.getText());
-
-            }
-        }
-         */
-
-        setSearchState(SearchState.SearchEnd);
+        return result;
     }
 
     private void initialization() throws IOException {
 
-        PdfDocument pdfDocument = new PdfDocument(new PdfReader(inPDF));
+        PdfReader reader = new PdfReader(inPDF);
+
+        PdfDocument pdfDocument = new PdfDocument(reader);
 
         countPdfPage = pdfDocument.getNumberOfPages();
 
-        collection = new ArrayMap<>();
+        pdfNavigation = new PdfNavigation();
 
         list = new ArrayList<>();
 
@@ -142,6 +154,7 @@ public class DokDopol {
         }
 
         pdfDocument.close();
+        reader.close();
 
     }
 
@@ -150,12 +163,16 @@ public class DokDopol {
             @Override
             public void run() {
 
-                File filePdf = pdfOnlyPage.getPdfDocument();
-                File file = pdfOnlyPage.getFile();
+                File filePdf = pdfOnlyPage.getCopyPdfDocument();
+                File file = pdfOnlyPage.getDrawPdfDocument();
 
                 PdfDocument pdfDocument = null;
                 try {
-                    pdfDocument = new PdfDocument(new PdfReader(filePdf), new PdfWriter(file));
+
+                    PdfReader reader = new PdfReader(filePdf);
+                    PdfWriter writer = new PdfWriter(file);
+
+                    pdfDocument = new PdfDocument(reader, writer);
 
                     RegexBasedLocationExtractionStrategy strategy = new RegexBasedLocationExtractionStrategy(value);
 
@@ -165,26 +182,19 @@ public class DokDopol {
 
                     proc.processPageContent(page);
 
+                    proc.reset();
+
                     Collection<IPdfTextLocation> resultCollection = strategy.getResultantLocations();
 
-                    collection.put(index, resultCollection);
+                    ArrayList<IPdfTextLocation> array = new ArrayList<>(resultCollection);
 
-                    for (IPdfTextLocation result : resultCollection) {
+                    Collections.reverse(array);
 
-                        PdfCanvas pdfCanvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDocument);
-
-                        Rectangle rectangle = result.getRectangle();
-
-                        DeviceRgb rgb = new DeviceRgb(235, 200, 75);
-
-                        pdfCanvas.setFillColor(rgb).setStrokeColor(rgb).rectangle(rectangle).fillStroke();
-
-                        Canvas canvas = new Canvas(pdfCanvas, pdfDocument, rectangle);
-
-                        canvas.close();
-                    }
+                    pdfNavigation.add(index, array);
 
                     pdfDocument.close();
+                    writer.close();
+                    reader.close();
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -193,48 +203,223 @@ public class DokDopol {
         };
     }
 
+    private Runnable getRunnable_nav(final PdfOnlyPage pdfOnlyPage, final int index) {
+        return new Runnable() {
+            @Override
+            public void run() {
+
+                File filePdf = pdfOnlyPage.getCopyPdfDocument();
+                File file = pdfOnlyPage.getDrawPdfDocument();
+
+                PdfDocument pdfDocument = null;
+                try {
+
+                    PdfReader reader = new PdfReader(filePdf);
+                    PdfWriter writer = new PdfWriter(file);
+
+                    pdfDocument = new PdfDocument(reader, writer);
+
+                    PdfPage page = pdfDocument.getFirstPage();
+
+                    ArrayList<IPdfTextLocation> array = pdfNavigation.getArrayElement(index);
+                    IPdfTextLocation result = pdfNavigation.getElement();
+
+                    paintRectangle(pdfDocument, page, array, result);
+
+                    pdfDocument.close();
+                    writer.close();
+                    reader.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+    }
+
+    private void paintRectangle(PdfDocument pdfDocument, PdfPage page, ArrayList<IPdfTextLocation> arrayList, IPdfTextLocation result){
+
+        int count = arrayList.size();
+        PdfCanvas pdfCanvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDocument);
+        DeviceRgb rgb = null;
+        Rectangle rectangle = null;
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+
+                if (result == arrayList.get(i)) {
+                    rgb = new DeviceRgb(12, 148, 99);
+                    rectangle = result.getRectangle();
+                }else {
+                    rgb = new DeviceRgb(235, 200, 75);
+                    rectangle = arrayList.get(i).getRectangle();
+                }
+
+                pdfCanvas.setFillColor(rgb).setStrokeColor(rgb).rectangle(rectangle).fillStroke();
+
+                Canvas canvas = new Canvas(pdfCanvas, rectangle);
+
+                canvas.close();
+
+            }
+        }
+        pdfCanvas.release();
+    }
+
+    private void setCollection() throws IOException, InterruptedException {
+            pool = Executors.newFixedThreadPool(10);
+
+            for (int i = 0; i < countPdfPage; i++) {
+                PdfOnlyPage pdfOnlyPage = list.get(i);
+                pool.submit(getRunnable_nav(pdfOnlyPage, i));
+            }
+
+            pool.shutdown();
+            pool.awaitTermination(1, TimeUnit.DAYS);
+
+            nowPdfFile = PdfOnlyPage.getEndFile(context, list);
+            reopen();
+    }
+
+    private boolean firstCollection() throws IOException, InterruptedException {
+
+        boolean result = false;
+
+        if (getSearchState() != SearchState.SearchCanceled) {
+
+            if (pdfNavigation.first()) {
+                setCollection();
+                result = true;
+            }
+
+            setSearchState(SearchState.SearchEnd);
+            return result;
+        }
+
+        return result;
+    }
+
+    public boolean lastCollection(){
+
+        return false;
+    }
+
+    public boolean nextCollection(){
+
+        boolean result = false;
+
+        if (getSearchState() != SearchState.SearchCanceled) {
+
+            if (pdfNavigation.next()) {
+                try {
+                    setCollection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                result = true;
+            }
+
+            setSearchState(SearchState.SearchEnd);
+            return result;
+        }
+
+        return result;
+    }
+
+    public boolean preedCollection(){
+
+        boolean result = false;
+
+        if (getSearchState() != SearchState.SearchCanceled) {
+
+            if (pdfNavigation.preed()) {
+                try {
+                    setCollection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                result = true;
+            }
+
+            setSearchState(SearchState.SearchEnd);
+            return result;
+        }
+
+        return result;
+    }
+
+    public PdfNavigation getPdfNavigation() {
+        return pdfNavigation;
+    }
+
     private static class PdfOnlyPage{
-        private File pdfDocument;
-        private File file;
+
+        private File copy_pdf_Document;
+        private File draw_pdf_Document;
         private Context context;
 
-        private PdfOnlyPage(Context context, PdfDocument pdfDocument, int index) throws FileNotFoundException {
+        private PdfOnlyPage(Context context, PdfDocument pdfDocument, int index) throws IOException {
             this.context = context;
-            this.pdfDocument = getNowPdfFile(pdfDocument, index);
-            this.file = getNowFile(index);
+            getNowPdfFile(pdfDocument, index);
+            getNowFile(index);
         }
 
-        private File getNowPdfFile(PdfDocument pdfDocument, int index) throws FileNotFoundException {
-            File file = new File(context.getExternalFilesDir(null), "tempNow" + index + ".pdf");
-            PdfDocument newPdf = new PdfDocument(new PdfWriter(file));
+        private void getNowPdfFile(PdfDocument pdfDocument, int index) throws IOException {
+            File nowPdfFile = new File(context.getExternalFilesDir(null), "tempNow" + index + ".pdf");
+            PdfWriter writer = new PdfWriter(nowPdfFile);
+            PdfDocument newPdf = new PdfDocument(writer);
             pdfDocument.copyPagesTo(index + 1,index + 1, newPdf);
             newPdf.close();
-            return file;
+            writer.close();
+            setCopy_pdf_Document(nowPdfFile);
         }
 
-        private File getNowFile(int index){
-            return new File(context.getExternalFilesDir(null), "temp" + index + ".pdf");
+        private void getNowFile(int index){
+            File drawfileFile = new File(context.getExternalFilesDir(null), "temp" + index + ".pdf");
+            setDraw_pdf_Document(drawfileFile);
+            }
+
+        public File getCopyPdfDocument() {
+            return copy_pdf_Document;
         }
 
-        public File getPdfDocument() {
-            return pdfDocument;
+        public File getDrawPdfDocument() {
+            return draw_pdf_Document;
         }
 
-        public File getFile() {
-            return file;
+        public void setCopy_pdf_Document(File copy_pdf_Document) {
+            this.copy_pdf_Document = copy_pdf_Document;
+        }
+
+        public void setDraw_pdf_Document(File draw_pdf_Document) {
+            this.draw_pdf_Document = draw_pdf_Document;
         }
 
         public static File getEndFile(Context context, ArrayList<PdfOnlyPage> list) throws IOException {
+
             int count = list.size();
+
             File file = new File(context.getExternalFilesDir(null), "tempNow.pdf");
-            PdfDocument newPdf = new PdfDocument(new PdfWriter(file));
+            PdfWriter writer = new PdfWriter(file);
+            PdfDocument newPdf = new PdfDocument(writer);
 
             for (int i = 0; i < count; i++){
-                PdfDocument pdfDocument = new PdfDocument(new PdfReader(list.get(i).getFile()));
+                File filePDF = list.get(i).getDrawPdfDocument();
+
+                PdfReader reader = new PdfReader(filePDF);
+                PdfDocument pdfDocument = new PdfDocument(reader);
                 pdfDocument.copyPagesTo(1, 1, newPdf, i + 1);
+
+                reader.close();
                 pdfDocument.close();
             }
+
             newPdf.close();
+            writer.close();
+
             return file;
         }
     }

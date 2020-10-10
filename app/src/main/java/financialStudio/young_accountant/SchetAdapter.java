@@ -81,7 +81,6 @@ public class SchetAdapter extends BaseAdapter {
             LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
             rl_schet_value.setLayoutParams(params1);
 
-
             ll_a.setBackgroundColor(context.getResources().getColor(R.color.colorlisthead, context.getTheme()));
 
             textSchet.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
@@ -102,12 +101,8 @@ public class SchetAdapter extends BaseAdapter {
 
             ll_a.setBackgroundColor(context.getResources().getColor(R.color.colorfonchild, context.getTheme()));
 
-            String str = getColorText(myMap).toString();
-
-            String[] arr = str.split(" ", 2);
-
-            String Schet = arr[0];
-            String Schet_value = arr[1];
+            SpannableStringBuilder Schet = getColorText_1(myMap);
+            SpannableStringBuilder Schet_value = getColorText_2(myMap);
 
             textSchet.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
             textSchet.setGravity(Gravity.LEFT);
@@ -128,12 +123,48 @@ public class SchetAdapter extends BaseAdapter {
         String sourse = myMap.getText();
 
         Point p = myMap.getP();
-        final SpannableStringBuilder text = new SpannableStringBuilder(sourse);
+        SpannableStringBuilder text = new SpannableStringBuilder(sourse);
 
         if (myMap.isBool()) {
-            final ForegroundColorSpan style = new ForegroundColorSpan(Color.rgb(255, 0, 0));
+            ForegroundColorSpan style = new ForegroundColorSpan(Color.rgb(255, 0, 0));
             text.setSpan(style, p.x, p.y, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        }
+        return text;
+    }
 
+    private SpannableStringBuilder getColorText_1(MyMap myMap){
+
+        String[] sourse = myMap.getText().split(" ", 2);
+
+        Point p = myMap.getP();
+        SpannableStringBuilder text = new SpannableStringBuilder(sourse[0]);
+
+        if (myMap.isBool() && p.x < 4) {
+            ForegroundColorSpan style = new ForegroundColorSpan(Color.rgb(255, 0, 0));
+
+            // 0123 _4
+            int y = 0;
+            if (p.y > 4){
+                y = 3;
+            }else {
+                y = p.y;
+            }
+
+            text.setSpan(style, p.x, y, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        }
+        return text;
+    }
+
+    private SpannableStringBuilder getColorText_2(MyMap myMap){
+
+        String[] sourse = myMap.getText().split(" ", 2);
+
+        Point p = myMap.getP();
+        SpannableStringBuilder text = new SpannableStringBuilder(sourse[1]);
+
+        if (myMap.isBool() && p.x > 4) {
+            ForegroundColorSpan style = new ForegroundColorSpan(Color.rgb(255, 0, 0));
+            text.setSpan(style, p.x - 5, p.y - 5, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         }
         return text;
     }
