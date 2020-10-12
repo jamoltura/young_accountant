@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ public class Activity_active extends BaseActivite {
     private static final String KEY_STATUSBANNER = "STATUSBANNER";
     private static final String KEY_WIDTH = "WIDTH";
 
+    private ArrayList<String> activ_1;
+    private ArrayList<String> activ_2;
     private DisplayMetrics metrics;
     private int page;
     private int status_banner;
@@ -38,6 +41,13 @@ public class Activity_active extends BaseActivite {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active);
+
+        String lang = LocaleHelper.getLanguage(getApplicationContext());
+        LocaleHelper.onAttach(this, lang);
+
+        ChartOFaccounts chartOFaccounts = new ChartOFaccounts(getResources());
+        activ_1 = chartOFaccounts.getActive_1();
+        activ_2 = chartOFaccounts.getActive_2();
 
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -175,9 +185,9 @@ public class Activity_active extends BaseActivite {
         ArrayList<MyMap> result = new ArrayList<>();
 
         if (getPage() == 1) {
-            temp = new ArrayList<String>(getIntent().getStringArrayListExtra("active_1"));
+            temp = new ArrayList<String>(activ_1);
         }else {
-            temp = new ArrayList<String>(getIntent().getStringArrayListExtra("active_2"));
+            temp = new ArrayList<String>(activ_2);
         }
 
         int count = temp.size();
@@ -195,7 +205,6 @@ public class Activity_active extends BaseActivite {
 
         sch = new SchetAdapter(getApplicationContext(), result);
         listView.setAdapter(sch);
-
     }
 
     private MyMap getMyMap(String sourse, String value){
@@ -301,14 +310,12 @@ public class Activity_active extends BaseActivite {
 
         ListView listView = (ListView) findViewById(R.id.list_activ);
 
-        ArrayList<String> list = getIntent().getStringArrayListExtra("active_1");
-
-        int count = list.size();
+        int count = activ_1.size();
 
         ArrayList<MyMap> myMapArrayList = new ArrayList<>();
 
         for (int i = 0; i < count; i++){
-            myMapArrayList.add(getMyMap(list.get(i), ""));
+            myMapArrayList.add(getMyMap(activ_1.get(i), ""));
         }
 
         sch = new SchetAdapter(getApplicationContext(), myMapArrayList);
@@ -329,14 +336,12 @@ public class Activity_active extends BaseActivite {
 
         ListView listView = (ListView) findViewById(R.id.list_activ);
 
-        ArrayList<String> list = getIntent().getStringArrayListExtra("active_2");
-
-        int count = list.size();
+        int count = activ_2.size();
 
         ArrayList<MyMap> myMapArrayList = new ArrayList<>();
 
         for (int i = 0; i < count; i++){
-            myMapArrayList.add(getMyMap(list.get(i), ""));
+            myMapArrayList.add(getMyMap(activ_2.get(i), ""));
         }
 
         sch = new SchetAdapter(getApplicationContext(), myMapArrayList);

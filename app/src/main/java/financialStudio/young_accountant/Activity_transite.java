@@ -20,6 +20,7 @@ public class Activity_transite extends BaseActivite {
 
     private static final String TAG = "myLogs";
 
+    private ArrayList<String> transit;
     private DisplayMetrics metrics;
     private SchetAdapter sch;
 
@@ -27,6 +28,12 @@ public class Activity_transite extends BaseActivite {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transite);
+
+        String lang = LocaleHelper.getLanguage(getApplicationContext());
+        LocaleHelper.onAttach(this, lang);
+
+        ChartOFaccounts chartOFaccounts = new ChartOFaccounts(getResources());
+        transit = chartOFaccounts.getTransite();
 
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -40,14 +47,12 @@ public class Activity_transite extends BaseActivite {
     private void init_transit(){
         ListView listView = (ListView) findViewById(R.id.list_transit);
 
-        ArrayList<String> list = getIntent().getStringArrayListExtra("transite");
-
-        int count = list.size();
+        int count = transit.size();
 
         ArrayList<MyMap> myMapArrayList = new ArrayList<>();
 
         for (int i = 0; i < count; i++){
-            myMapArrayList.add(getMyMap(list.get(i), ""));
+            myMapArrayList.add(getMyMap(transit.get(i), ""));
         }
 
         sch = new SchetAdapter(getApplicationContext(), myMapArrayList);
@@ -157,7 +162,7 @@ public class Activity_transite extends BaseActivite {
         ArrayList<String> temp = new ArrayList<>();
         ArrayList<MyMap> result = new ArrayList<>();
 
-        temp = new ArrayList<String>(getIntent().getStringArrayListExtra("transite"));
+        temp = new ArrayList<String>(transit);
 
         int count = temp.size();
 
@@ -182,24 +187,19 @@ public class Activity_transite extends BaseActivite {
 
         if (value.length() > 0) {
 
-            String[] arr = sourse.split(" ");
+            String _sourse = sourse.toLowerCase();
+            String _value = value.toLowerCase();
 
-            int childCount = arr.length;
+            if (_sourse.contains(_value)) {
 
-            for (int j = 0; j < childCount; j++) {
-                if (arr[0].toLowerCase().contains(value.toLowerCase())) {
-                    String _start = String.valueOf(value.charAt(0));
-                    String _end = String.valueOf(value.charAt(value.length() - 1));
+                int start_index = _sourse.indexOf(_value);
+                int end_index = start_index + _value.length();
 
-                    int start_index = value.indexOf(_start);
-                    int end_index = value.indexOf(_end);
+                Point p = new Point(start_index, end_index);
 
-                    Point p = new Point(start_index, end_index);
-
-                    myMap.setText(sourse);
-                    myMap.setP(p);
-                    myMap.setBool(true);
-                }
+                myMap.setText(sourse);
+                myMap.setP(p);
+                myMap.setBool(true);
             }
         }
         return myMap;

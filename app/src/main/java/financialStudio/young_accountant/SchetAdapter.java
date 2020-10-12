@@ -71,8 +71,6 @@ public class SchetAdapter extends BaseAdapter {
 
         String s = myMap.getText();
 
-        Log.d(TAG, myMap.getP().x + " " + myMap.getP().y);
-
         if (s.codePointAt(2) == 48 && s.codePointAt(3) == 48){
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 

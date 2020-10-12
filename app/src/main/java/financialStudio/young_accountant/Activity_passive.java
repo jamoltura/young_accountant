@@ -28,6 +28,8 @@ public class Activity_passive extends BaseActivite {
     private static final String KEY_STATUSBANNER = "STATUSBANNER";
     private static final String KEY_WIDTH = "WIDTH";
 
+    private ArrayList<String> passiv_1;
+    private ArrayList<String> passiv_2;
     private DisplayMetrics metrics;
     private int page;
     private int status_banner;
@@ -38,6 +40,13 @@ public class Activity_passive extends BaseActivite {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passive);
+
+        String lang = LocaleHelper.getLanguage(getApplicationContext());
+        LocaleHelper.onAttach(this, lang);
+
+        ChartOFaccounts chartOFaccounts = new ChartOFaccounts(getResources());
+        passiv_1 = chartOFaccounts.getPasssive_1();
+        passiv_2 = chartOFaccounts.getPasssive_2();
 
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -182,9 +191,9 @@ public class Activity_passive extends BaseActivite {
         ArrayList<MyMap> result = new ArrayList<>();
 
         if (getPage() == 1) {
-            temp = new ArrayList<String>(getIntent().getStringArrayListExtra("passive_1"));
+            temp = new ArrayList<String>(passiv_1);
         }else {
-            temp = new ArrayList<String>(getIntent().getStringArrayListExtra("passive_2"));
+            temp = new ArrayList<String>(passiv_2);
         }
 
         int count = temp.size();
@@ -211,24 +220,19 @@ public class Activity_passive extends BaseActivite {
 
         if (value.length() > 0) {
 
-            String[] arr = sourse.split(" ");
+            String _sourse = sourse.toLowerCase();
+            String _value = value.toLowerCase();
 
-            int childCount = arr.length;
+            if (_sourse.contains(_value)) {
 
-            for (int j = 0; j < childCount; j++) {
-                if (arr[0].toLowerCase().contains(value.toLowerCase())) {
-                    String _start = String.valueOf(value.charAt(0));
-                    String _end = String.valueOf(value.charAt(value.length() - 1));
+                int start_index = _sourse.indexOf(_value);
+                int end_index = start_index + _value.length();
 
-                    int start_index = value.indexOf(_start);
-                    int end_index = value.indexOf(_end);
+                Point p = new Point(start_index, end_index);
 
-                    Point p = new Point(start_index, end_index);
-
-                    myMap.setText(sourse);
-                    myMap.setP(p);
-                    myMap.setBool(true);
-                }
+                myMap.setText(sourse);
+                myMap.setP(p);
+                myMap.setBool(true);
             }
         }
         return myMap;
@@ -305,14 +309,12 @@ public class Activity_passive extends BaseActivite {
 
         ListView listView = (ListView) findViewById(R.id.list_passiv);
 
-        ArrayList<String> list = getIntent().getStringArrayListExtra("passive_1");
-
-        int count = list.size();
+        int count = passiv_1.size();
 
         ArrayList<MyMap> myMapArrayList = new ArrayList<>();
 
         for (int i = 0; i < count; i++){
-            myMapArrayList.add(getMyMap(list.get(i), ""));
+            myMapArrayList.add(getMyMap(passiv_1.get(i), ""));
         }
 
         sch = new SchetAdapter(getApplicationContext(), myMapArrayList);
@@ -333,14 +335,12 @@ public class Activity_passive extends BaseActivite {
 
         ListView listView = (ListView) findViewById(R.id.list_passiv);
 
-        ArrayList<String> list = getIntent().getStringArrayListExtra("passive_2");
-
-        int count = list.size();
+        int count = passiv_2.size();
 
         ArrayList<MyMap> myMapArrayList = new ArrayList<>();
 
         for (int i = 0; i < count; i++){
-            myMapArrayList.add(getMyMap(list.get(i), ""));
+            myMapArrayList.add(getMyMap(passiv_2.get(i), ""));
         }
 
         sch = new SchetAdapter(getApplicationContext(), myMapArrayList);

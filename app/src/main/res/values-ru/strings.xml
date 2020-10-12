@@ -502,7 +502,6 @@
     <string name="banner_3">Зрелый специалист</string>
 
     <!--  menu   -->
-    <string name="action_home">Главный</string>
     <string name="action_personal">Личная информация</string>
     <string name="action_setting">Настройка</string>
     <string name="action_about">О программа</string>

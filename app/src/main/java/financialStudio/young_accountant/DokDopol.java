@@ -1,12 +1,8 @@
 package financialStudio.young_accountant;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.TextView;
 import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.listener.OnPageScrollListener;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
-import com.github.barteksc.pdfviewer.scroll.ScrollHandle;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -19,12 +15,15 @@ import com.itextpdf.kernel.pdf.canvas.parser.listener.IPdfTextLocation;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.RegexBasedLocationExtractionStrategy;
 import com.itextpdf.layout.Canvas;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.concurrent.*;
-
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
 public class DokDopol {
@@ -97,14 +96,12 @@ public class DokDopol {
     }
 
     public void open() {
-//        int page = pdfNavigation.getPosition().getIndexArrayMap();
-//        pdfView.fromStream(inPDF).defaultPage(page).load();
-        pdfView.fromStream(inPDF).load();
+        pdfView.fromStream(inPDF).scrollHandle(new DefaultScrollHandle(context)).load();
     }
 
     public void reopen() {
         int page = pdfNavigation.getPosition().getIndexArrayMap();
-        pdfView.fromFile(nowPdfFile).defaultPage(page).load();
+        pdfView.fromFile(nowPdfFile).scrollHandle(new DefaultScrollHandle(context)).defaultPage(page).load();
         reset();
     }
 
@@ -276,7 +273,7 @@ public class DokDopol {
             pool.shutdown();
             pool.awaitTermination(1, TimeUnit.DAYS);
 
-            nowPdfFile = PdfOnlyPage.getEndFile(context, list);
+            nowPdfFile = getEndFile(context, list);
             reopen();
     }
 
@@ -355,73 +352,29 @@ public class DokDopol {
         return pdfNavigation;
     }
 
-    private static class PdfOnlyPage{
+    public File getEndFile(Context context, ArrayList<PdfOnlyPage> list) throws IOException {
 
-        private File copy_pdf_Document;
-        private File draw_pdf_Document;
-        private Context context;
+        int count = list.size();
 
-        private PdfOnlyPage(Context context, PdfDocument pdfDocument, int index) throws IOException {
-            this.context = context;
-            getNowPdfFile(pdfDocument, index);
-            getNowFile(index);
+        File file = new File(context.getExternalFilesDir(null), "tempNow.pdf");
+        PdfWriter writer = new PdfWriter(file);
+        PdfDocument newPdf = new PdfDocument(writer);
+
+        for (int i = 0; i < count; i++){
+            File filePDF = new File(list.get(i).getDrawPdfDocument().getAbsolutePath());
+
+            PdfReader reader = new PdfReader(filePDF);
+            PdfDocument pdfDocument = new PdfDocument(reader);
+            pdfDocument.copyPagesTo(1, 1, newPdf, i + 1);
+
+            reader.close();
+            pdfDocument.close();
         }
 
-        private void getNowPdfFile(PdfDocument pdfDocument, int index) throws IOException {
-            File nowPdfFile = new File(context.getExternalFilesDir(null), "tempNow" + index + ".pdf");
-            PdfWriter writer = new PdfWriter(nowPdfFile);
-            PdfDocument newPdf = new PdfDocument(writer);
-            pdfDocument.copyPagesTo(index + 1,index + 1, newPdf);
-            newPdf.close();
-            writer.close();
-            setCopy_pdf_Document(nowPdfFile);
-        }
+        newPdf.close();
+        writer.close();
 
-        private void getNowFile(int index){
-            File drawfileFile = new File(context.getExternalFilesDir(null), "temp" + index + ".pdf");
-            setDraw_pdf_Document(drawfileFile);
-            }
-
-        public File getCopyPdfDocument() {
-            return copy_pdf_Document;
-        }
-
-        public File getDrawPdfDocument() {
-            return draw_pdf_Document;
-        }
-
-        public void setCopy_pdf_Document(File copy_pdf_Document) {
-            this.copy_pdf_Document = copy_pdf_Document;
-        }
-
-        public void setDraw_pdf_Document(File draw_pdf_Document) {
-            this.draw_pdf_Document = draw_pdf_Document;
-        }
-
-        public static File getEndFile(Context context, ArrayList<PdfOnlyPage> list) throws IOException {
-
-            int count = list.size();
-
-            File file = new File(context.getExternalFilesDir(null), "tempNow.pdf");
-            PdfWriter writer = new PdfWriter(file);
-            PdfDocument newPdf = new PdfDocument(writer);
-
-            for (int i = 0; i < count; i++){
-                File filePDF = list.get(i).getDrawPdfDocument();
-
-                PdfReader reader = new PdfReader(filePDF);
-                PdfDocument pdfDocument = new PdfDocument(reader);
-                pdfDocument.copyPagesTo(1, 1, newPdf, i + 1);
-
-                reader.close();
-                pdfDocument.close();
-            }
-
-            newPdf.close();
-            writer.close();
-
-            return file;
-        }
+        return file;
     }
 
     public SearchState getSearchState() {

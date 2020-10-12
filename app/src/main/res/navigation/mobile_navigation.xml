@@ -8,16 +8,16 @@
     <fragment
             android:id="@+id/nav_home"
             android:name="financialStudio.young_accountant.ui.home.HomeFragment"
-            android:label="@string/menu_home"
+            android:label=""
             tools:layout="@layout/home_fragment">
     </fragment>
 
-    <fragment
+    <dialog
             android:id="@+id/nav_lang"
-            android:name="financialStudio.young_accountant.ui.lang.LangFragment"
+            android:name="financialStudio.young_accountant.DialogLang"
             android:label="@string/menu_lang"
-            tools:layout="@layout/lang_fragment">
-    </fragment>
+            tools:layout="@layout/dialog_language">
+    </dialog>
 
     <fragment
             android:id="@+id/nav_share"

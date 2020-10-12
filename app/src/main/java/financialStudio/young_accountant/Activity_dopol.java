@@ -29,6 +29,9 @@ public class Activity_dopol extends BaseActivite{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dopol);
 
+        String lang = LocaleHelper.getLanguage(getApplicationContext());
+        LocaleHelper.onAttach(this, lang);
+
         int dopol = getIntent().getIntExtra("dopol", 0);
 
         if (dopol == 1){
@@ -67,14 +70,14 @@ public class Activity_dopol extends BaseActivite{
     private void dopol1(){
         setNavigateVisible(false);
         PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-        dokDopol = DokDopol.getInstanceNSBU(getApplicationContext(), pdfView);
+        dokDopol = DokDopol.getInstanceNSBU(this, pdfView);
         dokDopol.open();
     }
 
     private void dopol2(){
         setNavigateVisible(false);
         PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-        dokDopol = DokDopol.getInstanceZakon(getApplicationContext(), pdfView);
+        dokDopol = DokDopol.getInstanceZakon(this, pdfView);
         dokDopol.open();
     }
 
@@ -251,7 +254,14 @@ public class Activity_dopol extends BaseActivite{
             }
         });
 
+        long millisecondsStart = System.currentTimeMillis();
+        Log.d(TAG, "start : " + convertSecondsToHMmSs(System.currentTimeMillis()));
+
         if (dokDopol.search(editText.getText().toString())){
+
+            long timeSpentInMilliseconds = System.currentTimeMillis() - millisecondsStart;
+            Log.d(TAG, "stop : " + convertSecondsToHMmSs(System.currentTimeMillis()) + " - " + convertSecondsToHMmSs(timeSpentInMilliseconds));
+
             setNavigation();
             setNavigateVisible(true);
             Button btn_search_and_cancel = (Button) findViewById(R.id.btn_search_and_cancel);
@@ -263,6 +273,13 @@ public class Activity_dopol extends BaseActivite{
             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
             add_custom_action_bar();
         }
+    }
+
+    public static String convertSecondsToHMmSs(long seconds) {
+        long s = seconds % 60;
+        long m = (seconds / 60) % 60;
+        long h = (seconds / (60 * 60)) % 24;
+        return String.format("%d:%02d:%02d", h, m, s);
     }
 
 

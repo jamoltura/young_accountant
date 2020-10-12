@@ -1,6 +1,9 @@
 package financialStudio.young_accountant;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,11 +18,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavBackStackEntry;
+import androidx.navigation.NavController;
+import financialStudio.young_accountant.ui.home.HomeFragment;
+
+import java.util.Iterator;
 
 public class DialogLang extends DialogFragment implements View.OnClickListener {
 
     private static final String TAG = "myLogs";
-
 
     @Nullable
     @Override
@@ -57,31 +64,23 @@ public class DialogLang extends DialogFragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.imgbtnclose: {
-                close();
+                getActivity().onBackPressed();
             }
             break;
             case R.id.btn_uz_l:{
-             //   ((MainActivity) getActivity()).setLocaleUz_L();
-                close();
+                ((MainActivity) getActivity()).setLocaleUz_L();
+                getActivity().onBackPressed();
             }
             break;
             case R.id.btn_ru:{
-             //   ((MainActivity) getActivity()).setLocaleRu();
-                close();
+                ((MainActivity) getActivity()).setLocaleRu();
+                getActivity().onBackPressed();
             }
             break;
             case R.id.btn_uz_k:{
-           //     ((MainActivity) getActivity()).setLocaleUz_K();
-                close();
+                ((MainActivity) getActivity()).setLocaleUz_K();
+                getActivity().onBackPressed();
             }
-        }
-    }
-
-    private void close(){
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        Fragment dialogLang = getActivity().getSupportFragmentManager().findFragmentByTag("dlg_lang");
-        if (dialogLang != null){
-            ft.remove(dialogLang).commit();
         }
     }
 }

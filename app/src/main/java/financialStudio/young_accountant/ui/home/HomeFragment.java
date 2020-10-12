@@ -1,5 +1,6 @@
 package financialStudio.young_accountant.ui.home;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -27,7 +28,6 @@ public class HomeFragment extends Fragment {
     private View root;
 
     private SliderBuilder sliderBuilder;
-    private ChartOFaccounts chartOFaccounts;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -48,17 +48,11 @@ public class HomeFragment extends Fragment {
 
         init();
         displayInit();
-        chartOFaccounts = new ChartOFaccounts(getResources());
-
-
-
 
         // TODO: Use the ViewModel
     }
 
     private void init() {
-
-        //  toolbar_init();
 
         SliderView sliderView = root.findViewById(R.id.imageSlider);
 
@@ -69,7 +63,6 @@ public class HomeFragment extends Fragment {
         sliderBuilder.setResourses(getResources());
 
         sliderBuilder.build();
-
 
         ImageButton btn1 = (ImageButton) root.findViewById(R.id.imgbtn1);
         btn1.setOnClickListener(btn1Click);
@@ -88,50 +81,6 @@ public class HomeFragment extends Fragment {
 
         ImageButton btn6 = (ImageButton) root.findViewById(R.id.imgbtn6);
         btn6.setOnClickListener(btn6Click);
-    }
-
-    private void toolbar_init(){
-        ImageButton imageView = (ImageButton) root.findViewById(R.id.img_back);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        TextView textView = (TextView) root.findViewById(R.id.action_bar_text);
-        textView.setVisibility(View.INVISIBLE);
-
-        final DialogLang dialogLang = new DialogLang();
-
-        ImageButton imgbtn_lang = (ImageButton) root.findViewById(R.id.img_search);
-        imgbtn_lang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              //  dialogLang.show(getSupportFragmentManager(), "dlg_lang");
-            }
-        });
-    }
-
-    private void initLanguage(){
-
-        TextView textView = (TextView) root.findViewById(R.id.textView);
-        textView.setText(R.string.active);
-
-        TextView textView2 = (TextView) root.findViewById(R.id.textView2);
-        textView2.setText(R.string.passive);
-
-        TextView textView3 = (TextView) root.findViewById(R.id.textView3);
-        textView3.setText(R.string.transit);
-
-        TextView textView4 = (TextView) root.findViewById(R.id.textView4);
-        textView4.setText(R.string.zabalans);
-
-        TextView textView5 = (TextView) root.findViewById(R.id.textView5);
-        textView5.setText(R.string.zakon);
-
-        TextView textView6 = (TextView) root.findViewById(R.id.textView6);
-        textView6.setText(R.string.nsbu);
     }
 
     private void displayInit(){
@@ -177,7 +126,6 @@ public class HomeFragment extends Fragment {
                 int left_margin = (int) superfluous / 3;
                 int rigth_margin = superfluous - left_margin;
 
-
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_2.getLayoutParams();
                 params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
                 fr_2.setLayoutParams(params);
@@ -196,7 +144,6 @@ public class HomeFragment extends Fragment {
 
                 int rigth_margin= (int) superfluous / 3;
                 int left_margin  = superfluous - rigth_margin;
-
 
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_3.getLayoutParams();
                 params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
@@ -217,7 +164,6 @@ public class HomeFragment extends Fragment {
                 int left_margin = (int) superfluous / 3;
                 int rigth_margin = superfluous - left_margin;
 
-
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_4.getLayoutParams();
                 params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
                 fr_4.setLayoutParams(params);
@@ -236,7 +182,6 @@ public class HomeFragment extends Fragment {
 
                 int rigth_margin= (int) superfluous / 3;
                 int left_margin  = superfluous - rigth_margin;
-
 
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_5.getLayoutParams();
                 params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
@@ -257,7 +202,6 @@ public class HomeFragment extends Fragment {
                 int left_margin = (int) superfluous / 3;
                 int rigth_margin = superfluous - left_margin;
 
-
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fr_6.getLayoutParams();
                 params.setMargins(left_margin,params.topMargin, rigth_margin,params.bottomMargin);
                 fr_6.setLayoutParams(params);
@@ -269,10 +213,6 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getContext().getApplicationContext(), Activity_active.class);
-
-            intent.putExtra("active_1", getChartOFaccounts().getActive_1());
-            intent.putExtra("active_2", getChartOFaccounts().getActive_2());
-
             startActivity(intent);
         }
     };
@@ -281,10 +221,6 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getContext().getApplicationContext(), Activity_passive.class);
-
-            intent.putExtra("passive_1", getChartOFaccounts().getPasssive_1());
-            intent.putExtra("passive_2", getChartOFaccounts().getPasssive_2());
-
             startActivity(intent);
         }
     };
@@ -293,9 +229,6 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getContext().getApplicationContext(), Activity_transite.class);
-
-            intent.putExtra("transite", getChartOFaccounts().getTransite());
-
             startActivity(intent);
         }
     };
@@ -304,9 +237,6 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getContext().getApplicationContext(), Activity_zabalanse.class);
-
-            intent.putExtra("zabalanse", getChartOFaccounts().getZabalans());
-
             startActivity(intent);
         }
     };
@@ -330,30 +260,4 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         }
     };
-
-    public void setLocaleRu (){
-        LocaleHelper.onAttach(getContext().getApplicationContext(), "ru");
-        initLanguage();
-        chartOFaccounts = new ChartOFaccounts(getResources());
-        sliderBuilder.update(getResources());
-    }
-
-    public void setLocaleUz_L (){
-        LocaleHelper.onAttach(getContext().getApplicationContext(), "uz");
-        initLanguage();
-        chartOFaccounts = new ChartOFaccounts(getResources());
-        sliderBuilder.update(getResources());
-    }
-
-    public void setLocaleUz_K (){
-        LocaleHelper.onAttach(getContext().getApplicationContext(), "default");
-        initLanguage();
-        chartOFaccounts = new ChartOFaccounts(getResources());
-        sliderBuilder.update(getResources());
-    }
-
-    public ChartOFaccounts getChartOFaccounts() {
-        return chartOFaccounts;
-    }
-
 }
