@@ -513,16 +513,56 @@
 
 
     <string name="menu_home">Bosh sahifa</string>
-    <string name="menu_about">Biz haqimizda</string>
-    <string name="menu_about_app">Mobil ilova haqida</string>
     <string name="menu_lang">Tilni o`zgartirish</string>
-    <string name="menu_other">Boshqa mahsulot</string>
-    <string name="menu_rate">Bizni baholang</string>
+    <string name="menu_theme">Тунги режим</string>
     <string name="menu_share">Bo`lishish</string>
+    <string name="menu_rate">Bizni baholang</string>
+    <string name="menu_about">Biz haqimizda</string>
+    <string name="menu_other">Boshqa mahsulot</string>
+
+
 
     <string name="nav_header_desc">slideshow</string>
     <string name="nav_header_title">slideshow</string>
     <string name="nav_header_subtitle">slideshow</string>
     <string name="action_search_not">Кидирув топилмади</string>
+    <string name="app_1">Hisob-kitoblar rejasi</string>
+    <string name="app_2">BXMS</string>
+    <string name="app_3">Qonunlar kodeksi</string>
+    <string name="app_4">Buxgalteriya o`tkazmalari</string>
+    <string name="app_5">Buxgalter uchun imtihon topshiruvchi</string>
+    <string name="app_6">Balans vs moliyaviy natija</string>
+
+    <string name="app_1_text">Эта программа бухгалтерского учета и быстро получить информацию из некоторых…</string>
+    <string name="app_2_text">В приложении пользователь имеет доступ ко всем Национальным Стандартам Бухгалтерского учета…</string>
+    <string name="app_3_text">Приложение - список кодексов. Пользователь может ознакомиться и выбрать нужные…</string>
+    <string name="app_4_text">Эта программа предназначена для лучшего понимания концепций узбекских бухгалтерских проводок и…</string>
+    <string name="app_5_text">Данное приложение поможет вам закрепить и проверить ваши знания по бухгалтерии…</string>
+    <string name="app_6_text">Эта программа бухгалтерского учета и быстро получить информацию из некоторых…</string>
+
+    <string name="app_end_time">Ushbu Ilovanining sinov rejimi vaqti tugagan. Ilovani telefoningizdan o`chirib tashlang yoki ushbu dastur ishlab chiqaruvchisiga murojaat qiling.</string>
+
+    <string name="name_kompany">Moliya studiyasi</string>
+    <string name="adress_kompany">Moliya studiyasi binosi</string>
+    <string name="say_kompany">“Moliya studiyasi” – бухгалтерия ҳисобини ўргатишга ва шу билан биргаликда бухгалтерия хизматларини амалга оширишга
+        ихтисослашган ўқув муассасаси. Ўқув курсимизда сиз 4 ой мобайнида бухгалтерияни 0 дан бошлаб балансга қадар ўрганиш имкониятини қўлга киритасиз.
+        Дарсимиз ҳафтасига 3 маротаба 2 ярим соатдан бўлиб ўтади. Курс давомида 1С 8.3 дастурида қийинчиликсиз ишлай оладиган етук кадр бўлиб,
+        ўқиш сўнгида диплом ҳамда мукаммал иш ўрнига эга бўласиз. Бундан ташқари курс давомида сизга солиқ ҳисоботлари, банк клиент иш давомида
+        керак бўладиган вазифалар ўргатиб борилади. Агарда сиз якка тартибдаги дарсларни хоҳласангиз бизда бу имконият ҳам мавжуд.
+    </string>
+    <string name="say_kompany1">4 ой давомида сиз:</string>
+    <string name="say_kompany2">- Бухгалтерия ҳисоби фани;</string>
+    <string name="say_kompany3">- Корхона қай тартибда очилиши ва ҳужжатларнинг қай тартибда расмийлаштирилиши;</string>
+    <string name="say_kompany4">- Корхона ишининг қандай тартибда амалга оширилиши;</string>
+    <string name="say_kompany5">- Шартномалар;</string>
+    <string name="say_kompany6">- Ҳисоб фактуралар;</string>
+    <string name="say_kompany7">- Икки ёқламали ёзув бўйича бухгалтерия ҳисобини юритиш;</string>
+    <string name="say_kompany8">- Давлат солиқ инспекциясига топширилиши лозим бўлган солиқлар;</string>
+    <string name="say_kompany9">- Барча турдаги корхоналарнинг ойлик, чорак ва йиллик ҳисоботларини ҳисоблаш;</string>
+    <string name="say_kompany10">- Банк клиент, випискалар ва уларни қай тартибда киритилиши каби билим ва кўникмаларга эга бўласиз ҳамда кусрни тамомлаганингиздан сўнг
+        ўқитувчиларимиз билан биргаликда амалиёт ҳам ўташингиз мумкин.</string>
+
+    <string name="adress_kompany_text">Тошкент шаҳри, Юнусобод тумани, Шароф Рашидов кўчаси 16-уй</string>
+    <string name="phone_kompany_text">+99899 876 44 44        +99893 919 99 19</string>
 
 </resources>

@@ -549,16 +549,58 @@
 
 
     <string name="menu_home">Бош сахифа</string>
-    <string name="menu_about">Биз хақимизда</string>
-    <string name="menu_about_app">Мобил илова хақида</string>
     <string name="menu_lang">Тилни ўзгартириш</string>
-    <string name="menu_other">Бошқа маҳсулот</string>
-    <string name="menu_rate">Бизни бахоланг</string>
+    <string name="menu_theme">Тунги режим</string>
     <string name="menu_share">Бўлишиш</string>
+    <string name="menu_rate">Бизни бахоланг</string>
+    <string name="menu_about">Биз хақимизда</string>
+    <string name="menu_other">Бошқа маҳсулот</string>
+
+
 
 
     <string name="nav_header_desc">slideshow</string>
     <string name="nav_header_title">slideshow</string>
     <string name="nav_header_subtitle">slideshow</string>
+
+
+    <string name="app_1">Хисоб-китоблар режаси</string>
+    <string name="app_2">БХМС</string>
+    <string name="app_3">Конунлар кодекси</string>
+    <string name="app_4">Бухгалтерия утказмалари</string>
+    <string name="app_5">Бухгалтер учун имтихон топширувчи</string>
+    <string name="app_6">Баланс ва молиявий натижа</string>
+
+    <string name="app_1_text">Эта программа бухгалтерского учета и быстро получить информацию из некоторых…</string>
+    <string name="app_2_text">В приложении пользователь имеет доступ ко всем Национальным Стандартам Бухгалтерского учета…</string>
+    <string name="app_3_text">Приложение - список кодексов. Пользователь может ознакомиться и выбрать нужные…</string>
+    <string name="app_4_text">Эта программа предназначена для лучшего понимания концепций узбекских бухгалтерских проводок и…</string>
+    <string name="app_5_text">Данное приложение поможет вам закрепить и проверить ваши знания по бухгалтерии…</string>
+    <string name="app_6_text">Эта программа бухгалтерского учета и быстро получить информацию из некоторых…</string>
+
+    <string name="app_end_time">Ушбу илованинг синов режими вақти тугаган. Иловани телефонингиздан ўчириб ташланг ёки ушбу дастури ишлаб чикарувсига мурожаат килинг</string>
+
+    <string name="name_kompany">Moliya studiyasi</string>
+    <string name="adress_kompany">Молия студияси биноси</string>
+    <string name="say_kompany">“Moliya studiyasi” – бухгалтерия ҳисобини ўргатишга ва шу билан биргаликда бухгалтерия хизматларини амалга оширишга
+        ихтисослашган ўқув муассасаси. Ўқув курсимизда сиз 4 ой мобайнида бухгалтерияни 0 дан бошлаб балансга қадар ўрганиш имкониятини қўлга киритасиз.
+        Дарсимиз ҳафтасига 3 маротаба 2 ярим соатдан бўлиб ўтади. Курс давомида 1С 8.3 дастурида қийинчиликсиз ишлай оладиган етук кадр бўлиб,
+        ўқиш сўнгида диплом ҳамда мукаммал иш ўрнига эга бўласиз. Бундан ташқари курс давомида сизга солиқ ҳисоботлари, банк клиент иш давомида
+        керак бўладиган вазифалар ўргатиб борилади. Агарда сиз якка тартибдаги дарсларни хоҳласангиз бизда бу имконият ҳам мавжуд.
+    </string>
+    <string name="say_kompany1">4 ой давомида сиз:</string>
+    <string name="say_kompany2">- Бухгалтерия ҳисоби фани;</string>
+    <string name="say_kompany3">- Корхона қай тартибда очилиши ва ҳужжатларнинг қай тартибда расмийлаштирилиши;</string>
+    <string name="say_kompany4">- Корхона ишининг қандай тартибда амалга оширилиши;</string>
+    <string name="say_kompany5">- Шартномалар;</string>
+    <string name="say_kompany6">- Ҳисоб фактуралар;</string>
+    <string name="say_kompany7">- Икки ёқламали ёзув бўйича бухгалтерия ҳисобини юритиш;</string>
+    <string name="say_kompany8">- Давлат солиқ инспекциясига топширилиши лозим бўлган солиқлар;</string>
+    <string name="say_kompany9">- Барча турдаги корхоналарнинг ойлик, чорак ва йиллик ҳисоботларини ҳисоблаш;</string>
+    <string name="say_kompany10">- Банк клиент, випискалар ва уларни қай тартибда киритилиши каби билим ва кўникмаларга эга бўласиз ҳамда кусрни тамомлаганингиздан сўнг
+        ўқитувчиларимиз билан биргаликда амалиёт ҳам ўташингиз мумкин.</string>
+
+    <string name="adress_kompany_text">Тошкент шаҳри, Юнусобод тумани, Шароф Рашидов кўчаси 16-уй</string>
+    <string name="phone_kompany_text">+99899 876 44 44        +99893 919 99 19</string>
 
 </resources>

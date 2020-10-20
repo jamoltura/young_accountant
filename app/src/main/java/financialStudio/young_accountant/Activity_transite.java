@@ -38,126 +38,36 @@ public class Activity_transite extends BaseActivite {
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        toolbar_init();
+        toolbar_init(0);
         init_transit();
 
         new ThreadBanner(getActivity()).start();
     }
 
-    private void init_transit(){
-        ListView listView = (ListView) findViewById(R.id.list_transit);
-
-        int count = transit.size();
-
-        ArrayList<MyMap> myMapArrayList = new ArrayList<>();
-
-        for (int i = 0; i < count; i++){
-            myMapArrayList.add(getMyMap(transit.get(i), ""));
-        }
-
-        sch = new SchetAdapter(getApplicationContext(), myMapArrayList);
-        listView.setAdapter(sch);
-    }
-
-    private void toolbar_init(){
-        ImageButton imageView = (ImageButton) findViewById(R.id.img_back);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
+    @Override
+    void toolbar_init(final int value){
+        super.toolbar_init(value);
         TextView textView = (TextView) findViewById(R.id.action_bar_text);
         textView.setText(getResources().getString(R.string.transit));
-
-        ImageButton imgbtn_bar = (ImageButton) findViewById(R.id.img_search);
-        imgbtn_bar.setOnClickListener(clickSearch);
     }
 
-    View.OnClickListener clickSearch = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
+    @Override
+    void add_custom_action_bar() {
+        final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
 
-            ll.removeViewAt(0);
+        ll.removeViewAt(0);
 
-            LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_search_bar, ll, false);
+        LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_action_bar, ll, false);
 
-            ll.addView(ll_search, 0);
+        ll.addView(ll_search, 0);
 
-            final EditText editText = (EditText) findViewById(R.id.editText_search);
-            editText.post(new Runnable() {
-                @Override
-                public void run() {
-                    InputMethodManager inputMethodManager =
-                            (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodManager.toggleSoftInputFromWindow(
-                            editText.getApplicationWindowToken(),InputMethodManager.SHOW_IMPLICIT, 0);
-                    editText.requestFocus();
-                }
-            });
+        toolbar_init(0);
 
-            editText.setOnKeyListener(new View.OnKeyListener() {
-                @Override
-                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    if (keyCode==KeyEvent.KEYCODE_ENTER){
-                        return true;
-                    }
-                    return false;
-                }
-            });
+        init_transit();
+    }
 
-            editText.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    search(s.toString());
-                }
-            });
-
-            Button btn_cancel = (Button) findViewById(R.id.btn_search_and_cancel);
-            btn_cancel.setText(R.string.action_cancel);
-            btn_cancel.setOnClickListener(clickCancel);
-        }
-    };
-
-    View.OnClickListener clickCancel = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
-            final EditText editText = (EditText) findViewById(R.id.editText_search);
-            editText.post(new Runnable() {
-                @Override
-                public void run() {
-                    InputMethodManager inputMethodManager =
-                            (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodManager.toggleSoftInputFromWindow(
-                            editText.getApplicationWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                }
-            });
-
-            ll.removeViewAt(0);
-
-            LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_action_bar, ll, false);
-
-            ll.addView(ll_search, 0);
-            toolbar_init();
-
-            init_transit();
-        }
-    };
-
-    public void search(String value){
+    @Override
+    void _search(String value){
 
         ArrayList<String> temp = new ArrayList<>();
         ArrayList<MyMap> result = new ArrayList<>();
@@ -178,6 +88,21 @@ public class Activity_transite extends BaseActivite {
         listView.setAdapter(null);
 
         sch = new SchetAdapter(getApplicationContext(), result);
+        listView.setAdapter(sch);
+    }
+
+    private void init_transit(){
+        ListView listView = (ListView) findViewById(R.id.list_transit);
+
+        int count = transit.size();
+
+        ArrayList<MyMap> myMapArrayList = new ArrayList<>();
+
+        for (int i = 0; i < count; i++){
+            myMapArrayList.add(getMyMap(transit.get(i), ""));
+        }
+
+        sch = new SchetAdapter(getApplicationContext(), myMapArrayList);
         listView.setAdapter(sch);
     }
 

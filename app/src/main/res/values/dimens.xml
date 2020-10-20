@@ -13,4 +13,12 @@
 
     <dimen name="nav_header_vertical_spacing">10dp</dimen>
 
+
+    <dimen name="text_head_size">14sp</dimen>
+    <dimen name="text_body_size">9sp</dimen>
+
+    <dimen name="text_marg_size">2dp</dimen>
+
+    <dimen name="text_head_size_about">22sp</dimen>
+
 </resources>

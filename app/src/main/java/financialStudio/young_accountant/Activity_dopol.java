@@ -1,22 +1,21 @@
 package financialStudio.young_accountant;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Activity_dopol extends BaseActivite{
 
@@ -27,10 +26,11 @@ public class Activity_dopol extends BaseActivite{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dopol);
 
         String lang = LocaleHelper.getLanguage(getApplicationContext());
         LocaleHelper.onAttach(this, lang);
+
+        setContentView(R.layout.activity_dopol);
 
         int dopol = getIntent().getIntExtra("dopol", 0);
 
@@ -45,16 +45,9 @@ public class Activity_dopol extends BaseActivite{
         new ThreadBanner(getActivity()).start();
     }
 
-    private void toolbar_init(final int value){
-
-        ImageButton imageView = (ImageButton) findViewById(R.id.img_back);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
+    @Override
+    void toolbar_init(int value) {
+        super.toolbar_init(value);
         TextView textView = (TextView) findViewById(R.id.action_bar_text);
 
         if (value == 1) {
@@ -62,46 +55,12 @@ public class Activity_dopol extends BaseActivite{
         }else {
             textView.setText(getResources().getString(R.string.nsbu));
         }
-
-        ImageButton imgbtn_bar = (ImageButton) findViewById(R.id.img_search);
-        imgbtn_bar.setOnClickListener(clickSearchImg);
-    }
-
-    private void dopol1(){
-        setNavigateVisible(false);
-        PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-        dokDopol = DokDopol.getInstanceNSBU(this, pdfView);
-        dokDopol.open();
-    }
-
-    private void dopol2(){
-        setNavigateVisible(false);
-        PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-        dokDopol = DokDopol.getInstanceZakon(this, pdfView);
-        dokDopol.open();
     }
 
     @Override
-    protected void onStop() {
-
-        dokDopol.Destroy();
-        super.onStop();
-    }
-
-    private void add_custom_action_bar(){
+    void add_custom_action_bar(){
         setNavigateVisible(false);
         final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
-        final EditText editText = (EditText) findViewById(R.id.editText_search);
-
-        editText.post(new Runnable() {
-            @Override
-            public void run() {
-                InputMethodManager inputMethodManager =
-                        (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.toggleSoftInputFromWindow(
-                        editText.getApplicationWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-            }
-        });
 
         ll.removeViewAt(0);
 
@@ -121,153 +80,34 @@ public class Activity_dopol extends BaseActivite{
         }
     }
 
-    private void add_custom_search_bar(){
-        final LinearLayout ll = (LinearLayout) findViewById(R.id.actionBar);
+    @Override
+    void _search(String value){
 
-        ll.removeViewAt(0);
+        final SearchView searchView = (SearchView) findViewById(R.id.search_view);
 
-        LinearLayout ll_search = (LinearLayout) getLayoutInflater().inflate(R.layout.custom_search_bar, ll, false);
-
-        ll.addView(ll_search, 0);
-
-        final EditText editText = (EditText) findViewById(R.id.editText_search);
-
-        editText.post(new Runnable() {
-            @Override
-            public void run() {
-                InputMethodManager inputMethodManager =
-                        (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.toggleSoftInputFromWindow(
-                        editText.getApplicationWindowToken(),InputMethodManager.SHOW_IMPLICIT, 0);
-                editText.requestFocus();
-            }
+        searchView.post(() -> {
+            InputMethodManager inputMethodManager =
+                    (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.toggleSoftInputFromWindow(
+                    searchView.getApplicationWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
         });
 
-        editText.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode==KeyEvent.KEYCODE_ENTER){
-                    return true;
-                }
-                return false;
-            }
-        });
+        RelativeLayout rl_progress = (RelativeLayout) findViewById(R.id.progress);
+        rl_progress.setVisibility(View.VISIBLE);
 
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                // TODO : отмена ранный запушенный поиск
-
-                if (dokDopol.getSearchState() == SearchState.SearchStart) {
-                    dokDopol.stop();
-                }
-            }
-        });
-
-        editText.setOnEditorActionListener(search);
-
-        Button btn_search_and_cancel = (Button) findViewById(R.id.btn_search_and_cancel);
-        btn_search_and_cancel.setText(R.string.action_search);
-        btn_search_and_cancel.setOnClickListener(clickSearch);
+        new ThreadSearch(getActivity(), dokDopol, value, StatusDopol.SearchStart).start();
     }
 
-    TextView.OnEditorActionListener search = new TextView.OnEditorActionListener(){
+    public void stopSearch(DokDopol dokDopol, boolean result){
+        this.dokDopol = dokDopol;
 
-        @Override
-        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH){
-                _search();
-                return true;
-            }
-            return false;
-        }
-    };
+        RelativeLayout rl_progress = (RelativeLayout) findViewById(R.id.progress);
+        rl_progress.setVisibility(View.INVISIBLE);
 
-
-    // TODO : click button
-    View.OnClickListener clickSearch = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            v.setEnabled(false);
-            _search();
-            v.setEnabled(true);
-
-        }
-    };
-
-    View.OnClickListener clickCancel = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            add_custom_action_bar();
-        }
-    };
-
-    View.OnClickListener clickSearchImg = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            add_custom_search_bar();
-        }
-    };
-
-    View.OnClickListener click_left = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (dokDopol.preedCollection()){
-                setNavigation();
-            }
-        }
-    };
-
-    View.OnClickListener click_right = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (dokDopol.nextCollection()){
-                setNavigation();
-            }
-        }
-    };
-
-    // TODO : запускает новый поиск
-    private void _search(){
-
-        final EditText editText = (EditText) findViewById(R.id.editText_search);
-
-        editText.post(new Runnable() {
-            @Override
-            public void run() {
-                InputMethodManager inputMethodManager =
-                        (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-
-                inputMethodManager.toggleSoftInputFromWindow(
-                        editText.getApplicationWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-            }
-        });
-
-        long millisecondsStart = System.currentTimeMillis();
-        Log.d(TAG, "start : " + convertSecondsToHMmSs(System.currentTimeMillis()));
-
-        if (dokDopol.search(editText.getText().toString())){
-
-            long timeSpentInMilliseconds = System.currentTimeMillis() - millisecondsStart;
-            Log.d(TAG, "stop : " + convertSecondsToHMmSs(System.currentTimeMillis()) + " - " + convertSecondsToHMmSs(timeSpentInMilliseconds));
-
+        if (result){
+            this.dokDopol.reopen();
             setNavigation();
             setNavigateVisible(true);
-            Button btn_search_and_cancel = (Button) findViewById(R.id.btn_search_and_cancel);
-            btn_search_and_cancel.setText(getResources().getString(R.string.action_cancel));
-            btn_search_and_cancel.setOnClickListener(clickCancel);
-
         }else {
             String msg = getResources().getString(R.string.action_search_not);
             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
@@ -275,13 +115,89 @@ public class Activity_dopol extends BaseActivite{
         }
     }
 
-    public static String convertSecondsToHMmSs(long seconds) {
-        long s = seconds % 60;
-        long m = (seconds / 60) % 60;
-        long h = (seconds / (60 * 60)) % 24;
-        return String.format("%d:%02d:%02d", h, m, s);
+    @Override
+    void add_custom_search_bar() {
+        super.add_custom_search_bar();
+
+        final SearchView searchView = (SearchView) findViewById(R.id.search_view);
+
+        searchView.setOnQueryTextListener(onQuery);
     }
 
+    SearchView.OnQueryTextListener onQuery = new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            if (query.length() > 0){
+                _search(query);
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            return false;
+        }
+    };
+
+    private void dopol1(){
+        setNavigateVisible(false);
+        PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
+        dokDopol = DokDopol.getInstanceNSBU(this, pdfView);
+        dokDopol.open();
+    }
+
+    private void dopol2(){
+        setNavigateVisible(false);
+        PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
+        dokDopol = DokDopol.getInstanceZakon(this, pdfView);
+        dokDopol.open();
+    }
+
+    @Override
+    protected void onStop() {
+        dokDopol.Destroy();
+        super.onStop();
+    }
+
+    View.OnClickListener click_left = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            RelativeLayout rl_progress = (RelativeLayout) findViewById(R.id.progress);
+            rl_progress.setVisibility(View.VISIBLE);
+
+            new ThreadSearch(getActivity(), dokDopol, StatusDopol.SearchPreed).start();
+        }
+    };
+
+    View.OnClickListener click_right = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            RelativeLayout rl_progress = (RelativeLayout) findViewById(R.id.progress);
+            rl_progress.setVisibility(View.VISIBLE);
+
+            new ThreadSearch(getActivity(), dokDopol, StatusDopol.SearchNext).start();
+        }
+    };
+
+    public void next_and_preed_Search(DokDopol dokDopol, boolean result){
+        this.dokDopol = dokDopol;
+
+        RelativeLayout rl_progress = (RelativeLayout) findViewById(R.id.progress);
+        rl_progress.setVisibility(View.INVISIBLE);
+
+        if (result){
+            this.dokDopol.reopen();
+            setNavigation();
+        }
+    }
+
+    public static String convertSecondsToHMmSs(long seconds) {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss.SSS");
+        cal.setTimeInMillis(seconds);
+        return format.format(cal.getTime());
+    }
 
     // TODO: Navigation
     private void setNavigation(){

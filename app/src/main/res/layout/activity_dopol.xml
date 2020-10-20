@@ -65,6 +65,36 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <RelativeLayout
+                    android:id="@+id/progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:foreground="#55000000"
+                    android:visibility="gone">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_pdf"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:layout_centerInParent="true"/>
+
+                <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:search_defaultStartLoading="true"
+                        app:search_lensBorderWidth="6dp"
+                        app:search_lensColor="@color/colorPrimaryDark"
+                        app:search_lensHandleLength="20dp"
+                        app:search_lensRadius="18dp"
+                        app:search_xRangeToSearch="140dp"
+                        app:search_yRangeToSearch="140dp"
+                        android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
+
             <FrameLayout
                     android:id="@+id/frame_banner"
                     android:layout_width="match_parent"

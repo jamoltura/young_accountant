@@ -20,22 +20,21 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_bx_bxs_moon"
-                android:id="@+id/img_mon"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="15dp"/>
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_logo_digital"
+                app:srcCompat="@drawable/logo_digital"
                 android:id="@+id/imageView"
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:layout_marginTop="30dp"/>
-
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_moliya_studiyasi"
+                android:id="@+id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="150dp"/>
 
     </RelativeLayout>
 

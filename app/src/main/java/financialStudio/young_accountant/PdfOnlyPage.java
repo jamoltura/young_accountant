@@ -1,57 +1,59 @@
 package financialStudio.young_accountant;
 
 import android.content.Context;
+import android.util.Log;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class PdfOnlyPage {
 
     private static final String TAG = "myLogs";
 
-    private File copy_pdf_Document;
-    private File draw_pdf_Document;
+    private File reader_Document;
+    private File writer_Document;
     private Context context;
 
 
 
-    public PdfOnlyPage(Context context, PdfDocument pdfDocument, int index) throws IOException {
+    public PdfOnlyPage(Context context, PdfDocument pdfDocument,int index) {
         this.context = context;
-        getNowPdfFile(pdfDocument, index);
-        getNowFile(index);
+        try {
+            reader_Document_File(pdfDocument, index);
+        } catch (IOException e) {
+            Log.d(TAG, e.getMessage());
+        }
+        writer_Document_File(index);
     }
 
-    private void getNowPdfFile(PdfDocument pdfDocument, int index) throws IOException {
-        File nowPdfFile = new File(context.getExternalFilesDir(null), "tempNow" + index + ".pdf");
-        PdfWriter writer = new PdfWriter(nowPdfFile);
+    public void Destroy(){
+        reader_Document.delete();
+        writer_Document.delete();
+    }
+
+    private void reader_Document_File(PdfDocument pdfDocument, int index) throws IOException {
+        reader_Document = new File(context.getExternalFilesDir(null), "read" + index + ".pdf");
+        PdfWriter writer = new PdfWriter(reader_Document);
         PdfDocument newPdf = new PdfDocument(writer);
-        pdfDocument.copyPagesTo(index + 1,index + 1, newPdf);
+        pdfDocument.copyPagesTo(index+1 ,index+1, newPdf);
         newPdf.close();
         writer.close();
-        setCopy_pdf_Document(nowPdfFile);
     }
 
-    private void getNowFile(int index){
-        File drawfileFile = new File(context.getExternalFilesDir(null), "temp" + index + ".pdf");
-        setDraw_pdf_Document(drawfileFile);
+    private void writer_Document_File(int index){
+        writer_Document = new File(context.getExternalFilesDir(null), "write" + index + ".pdf");
     }
 
-    public File getCopyPdfDocument() {
-        return copy_pdf_Document;
+    public File getReader_Document() {
+        return reader_Document;
     }
 
-    public File getDrawPdfDocument() {
-        return draw_pdf_Document;
-    }
-
-    public void setCopy_pdf_Document(File copy_pdf_Document) {
-        this.copy_pdf_Document = copy_pdf_Document;
-    }
-
-    public void setDraw_pdf_Document(File draw_pdf_Document) {
-        this.draw_pdf_Document = draw_pdf_Document;
+    public File getWriter_Document() {
+        return writer_Document;
     }
 
 }

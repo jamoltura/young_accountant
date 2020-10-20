@@ -3,17 +3,26 @@ package financialStudio.young_accountant;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ShareCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -22,68 +31,118 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
+import com.smarteist.autoimageslider.SliderView;
 import financialStudio.young_accountant.ui.home.HomeFragment;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "myLogs";
 
-    private static final String VK_APP_PACKAGE_ID = "com.vkontakte.android";
-    private static final String FACEBOOK_APP_PACKAGE_ID = "com.facebook.katana";
-    private static final String INSTAGRAM_APP_PACKAGE_ID = "com.instagram.android";
-    private static final String TELEGRAM_APP_PACKAGE_ID = "com.telegram.android";
-
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawer;
     private NavController navController;
-
+    private NavigationView navigationView;
+    private SliderBuilder sliderBuilder;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        String lang = LocaleHelper.getLanguage(this);
+        String lang = LocaleHelper.getLanguage(getApplicationContext());
         LocaleHelper.onAttach(this, lang);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        FileManager fma = new FileManager(getApplicationContext());
 
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        if (fma.isTime()){
+            setContentView(R.layout.activity_main_time);
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_lang, R.id.nav_share, R.id.nav_about, R.id.nav_about_app, R.id.nav_rate, R.id.nav_other)
-                .setDrawerLayout(drawer)
-                .build();
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+            SliderView sliderView = findViewById(R.id.imageSlider);
 
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+            SliderAdapterExample adapter = new SliderAdapterExample(getApplicationContext());
 
-        ImageView img_telegramm = (ImageView) drawer.findViewById(R.id.img_telegramm);
-        img_telegramm.setOnClickListener(click_telegramm);
+            sliderBuilder = new SliderBuilder(sliderView, adapter);
 
-        ImageView img_facebook = (ImageView) drawer.findViewById(R.id.img_facebook);
-        img_facebook.setOnClickListener(click_facebook);
+            sliderBuilder.setResourses(getResources());
 
-        ImageView img_vk = (ImageView) drawer.findViewById(R.id.img_vk);
-        img_vk.setOnClickListener(click_vk);
+            sliderBuilder.build();
 
-        ImageView img_instagramm = (ImageView) drawer.findViewById(R.id.img_instagramm);
-        img_instagramm.setOnClickListener(click_instagramm);
+        }else {
+            setContentView(R.layout.activity_main);
 
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            drawer = findViewById(R.id.drawer_layout);
+            navigationView = findViewById(R.id.nav_view);
+
+            MenuItem item_share = navigationView.getMenu().findItem(R.id.nav_share);
+            item_share.setOnMenuItemClickListener(click_share);
+
+            MenuItem item_rate = navigationView.getMenu().findItem(R.id.nav_rate);
+            item_rate.setOnMenuItemClickListener(click_rate);
+
+            // Passing each menu ID as a set of Ids because each
+            // menu should be considered as top level destinations.
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_home, R.id.nav_lang, R.id.nav_share, R.id.nav_rate, R.id.nav_about, R.id.nav_other)
+                    .setDrawerLayout(drawer)
+                    .build();
+
+            navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
+            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+            NavigationUI.setupWithNavController(navigationView, navController);
+
+            ImageView img_telegramm = (ImageView) drawer.findViewById(R.id.img_telegramm);
+            img_telegramm.setOnClickListener(click_telegramm);
+
+            ImageView img_facebook = (ImageView) drawer.findViewById(R.id.img_facebook);
+            img_facebook.setOnClickListener(click_facebook);
+
+            ImageView img_vk = (ImageView) drawer.findViewById(R.id.img_vk);
+            img_vk.setOnClickListener(click_vk);
+
+            ImageView img_instagramm = (ImageView) drawer.findViewById(R.id.img_instagramm);
+            img_instagramm.setOnClickListener(click_instagramm);
+        }
     }
+
+    MenuItem.OnMenuItemClickListener click_share = new MenuItem.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            drawer.closeDrawers();
+
+            final String URL_TO_SHARE = "https://play.google.com/store/apps/details?id=com.viber.voip&hl=ru&gl=US";
+
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, URL_TO_SHARE);
+            startActivity(Intent.createChooser(intent, "Share"));
+
+            return true;
+        }
+    };
+
+    MenuItem.OnMenuItemClickListener click_rate = new MenuItem.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            drawer.closeDrawers();
+            openLink("market://details?id=com.viber.voip&hl=ru&gl=US");
+            return true;
+        }
+    };
 
     View.OnClickListener click_telegramm = new View.OnClickListener() {
         @Override
@@ -128,6 +187,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openLink(String url) {
+
+        final String VK_APP_PACKAGE_ID = "com.vkontakte.android";
+        final String FACEBOOK_APP_PACKAGE_ID = "com.facebook.katana";
+        final String INSTAGRAM_APP_PACKAGE_ID = "com.instagram.android";
+        final String TELEGRAM_APP_PACKAGE_ID = "com.telegram.android";
+        final String PLAYMARKET_APP_PACKAGE_ID = "com.android.vending";
+
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(intent, 0);
 
@@ -139,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     || FACEBOOK_APP_PACKAGE_ID.equals(info.activityInfo.packageName)
                     || INSTAGRAM_APP_PACKAGE_ID.equals(info.activityInfo.packageName)
                     || TELEGRAM_APP_PACKAGE_ID.equals(info.activityInfo.packageName)
+                    || PLAYMARKET_APP_PACKAGE_ID.equals(info.activityInfo.packageName)
             ) {
                 intent.setPackage(info.activityInfo.packageName);
                 break;
@@ -168,28 +235,24 @@ public class MainActivity extends AppCompatActivity {
         LocaleHelper.onAttach(getApplicationContext(), "ru");
         LocaleHelper.onAttach(this, "ru");
         initLanguage();
-
-     //   chartOFaccounts = new ChartOFaccounts(getResources());
-      //  sliderBuilder.update(getResources());
     }
 
     public void setLocaleUz_L (){
         LocaleHelper.onAttach(getApplicationContext(), "uz");
         LocaleHelper.onAttach(this, "uz");
         initLanguage();
-      //  chartOFaccounts = new ChartOFaccounts(getResources());
-     //   sliderBuilder.update(getResources());
     }
 
     public void setLocaleUz_K (){
         LocaleHelper.onAttach(getApplicationContext(), "default");
         LocaleHelper.onAttach(this, "default");
         initLanguage();
-     //   chartOFaccounts = new ChartOFaccounts(getResources());
-     //   sliderBuilder.update(getResources());
     }
 
     private void initLanguage(){
+
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu(R.menu.activity_main_drawer);
 
         TextView textView = (TextView) findViewById(R.id.textView);
         textView.setText(R.string.active);

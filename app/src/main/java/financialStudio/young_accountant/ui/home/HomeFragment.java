@@ -209,55 +209,37 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    View.OnClickListener btn1Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getContext().getApplicationContext(), Activity_active.class);
-            startActivity(intent);
-        }
+    View.OnClickListener btn1Click = v -> {
+        Intent intent = new Intent(getContext().getApplicationContext(), Activity_active.class);
+        startActivity(intent);
     };
 
-    View.OnClickListener btn2Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getContext().getApplicationContext(), Activity_passive.class);
-            startActivity(intent);
-        }
+    View.OnClickListener btn2Click = v -> {
+        Intent intent = new Intent(getContext().getApplicationContext(), Activity_passive.class);
+        startActivity(intent);
     };
 
-    View.OnClickListener btn3Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getContext().getApplicationContext(), Activity_transite.class);
-            startActivity(intent);
-        }
+    View.OnClickListener btn3Click = v -> {
+        Intent intent = new Intent(getContext().getApplicationContext(), Activity_transite.class);
+        startActivity(intent);
     };
 
-    View.OnClickListener btn4Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getContext().getApplicationContext(), Activity_zabalanse.class);
-            startActivity(intent);
-        }
+    View.OnClickListener btn4Click = v -> {
+        Intent intent = new Intent(getContext().getApplicationContext(), Activity_zabalanse.class);
+        startActivity(intent);
     };
 
-    View.OnClickListener btn5Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getContext().getApplicationContext(), Activity_dopol.class);
-            intent.putExtra("dopol", 1);
+    View.OnClickListener btn5Click = v -> {
+        Intent intent = new Intent(getContext().getApplicationContext(), Activity_dopol.class);
+        intent.putExtra("dopol", 1);
 
-            startActivity(intent);
-        }
+        startActivity(intent);
     };
 
-    View.OnClickListener btn6Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getContext().getApplicationContext(), Activity_dopol.class);
-            intent.putExtra("dopol", 2);
+    View.OnClickListener btn6Click = v -> {
+        Intent intent = new Intent(getContext().getApplicationContext(), Activity_dopol.class);
+        intent.putExtra("dopol", 2);
 
-            startActivity(intent);
-        }
+        startActivity(intent);
     };
 }

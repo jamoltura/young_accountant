@@ -8,36 +8,26 @@
               android:background="@color/colorPrimaryDark">
 
     <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical">
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="12"
-                android:textSize="12sp"
-                android:hint="@string/action_search"
-                android:maxLines="1"
-                android:inputType="text"
-                android:singleLine="true"
-                android:imeOptions="actionSearch"
-                android:id="@+id/editText_search"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <Button android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:text="@string/action_search"
-                style="@style/buttonnormal"
-                android:id="@+id/btn_search_and_cancel"
-                android:layout_marginEnd="10dp"/>
+
+        <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_view"
+                android:queryHint="@string/action_search"
+                android:inputType="text"
+                android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+                android:iconifiedByDefault="false"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:divider ="@color/color_black"
+                app:showDividers = "middle"/>
+
     </RelativeLayout>
+
 
 </LinearLayout>

@@ -20,31 +20,10 @@
     </dialog>
 
     <fragment
-            android:id="@+id/nav_share"
-            android:name="financialStudio.young_accountant.ui.share.ShareFragment"
-            android:label="@string/menu_share"
-            tools:layout="@layout/share_fragment">
-    </fragment>
-
-    <fragment
             android:id="@+id/nav_about"
             android:name="financialStudio.young_accountant.ui.about.AboutFragment"
             android:label="@string/menu_about"
             tools:layout="@layout/about_fragment">
-    </fragment>
-
-    <fragment
-            android:id="@+id/nav_about_app"
-            android:name="financialStudio.young_accountant.ui.about_app.AboutAppFragment"
-            android:label="@string/menu_about_app"
-            tools:layout="@layout/aboutapp_fragment">
-    </fragment>
-
-    <fragment
-            android:id="@+id/nav_rate"
-            android:name="financialStudio.young_accountant.ui.rate.RateFragment"
-            android:label="@string/menu_rate"
-            tools:layout="@layout/rate_fragment">
     </fragment>
 
     <fragment

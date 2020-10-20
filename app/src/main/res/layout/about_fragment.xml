@@ -1,14 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorfon"
+        android:orientation="vertical"
         tools:context=".ui.about.AboutFragment">
 
-    <TextView
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello"/>
+            android:layout_margin="15dp">
 
-</FrameLayout>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+
+                          android:background="@drawable/window_round">
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:text="@string/name_kompany"
+                            android:layout_margin="10dp"
+                            style="@style/TextView_about_head"/>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:src="@drawable/poytaxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView3"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"/>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:text="@string/adress_kompany"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:id="@+id/textView10"/>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp">
+
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:text="@string/say_kompany"
+                                style="@style/TextView_about"/>
+
+                        <TextView
+                                android:text=""
+                                style="@style/TextView_about"/>
+
+                        <TextView
+                                android:text="@string/say_kompany1"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany2"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany3"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany4"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany5"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany6"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany7"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany8"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany9"
+                                style="@style/TextView_about"/>
+                        <TextView
+                                android:text="@string/say_kompany10"
+                                style="@style/TextView_about"/>
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+                        <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7">
+
+                            <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1">
+
+                                    <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+                                        <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                            <ImageView
+                                                    app:srcCompat="@drawable/ic_map_coor"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:adjustViewBounds="true"
+                                                    android:scaleType="centerCrop"
+                                                    android:layout_centerInParent="true"/>
+                                        </RelativeLayout>
+                                        <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="8">
+
+                                            <TextView
+                                                    android:text="@string/adress_kompany_text"
+                                                    style="@style/TextView_about"
+                                                    android:textSize="10sp"/>
+                                        </RelativeLayout>
+                                    </LinearLayout>
+                                </RelativeLayout>
+                                <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1">
+
+                                    <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+                                        <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                            <ImageView
+                                                    app:srcCompat="@drawable/ic_phone"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:adjustViewBounds="true"
+                                                    android:scaleType="centerCrop"
+                                                    android:layout_centerInParent="true"/>
+                                        </RelativeLayout>
+                                        <RelativeLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="8">
+
+                                            <LinearLayout
+                                                    android:orientation="horizontal"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+                                                <RelativeLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="match_parent"
+                                                        android:layout_weight="1">
+
+                                                    <TextView
+                                                            android:text="@string/phone_kompany_text"
+                                                            style="@style/TextView_about"
+                                                            android:textSize="10sp"/>
+                                                </RelativeLayout>
+                                                <RelativeLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="match_parent"
+                                                        android:layout_weight="1">
+
+                                                </RelativeLayout>
+                                            </LinearLayout>
+                                        </RelativeLayout>
+                                    </LinearLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3">
+
+                            <ImageView
+                                    android:src="@drawable/map"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/image_map"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
