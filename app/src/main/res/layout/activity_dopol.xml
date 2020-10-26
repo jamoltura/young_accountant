@@ -7,102 +7,145 @@
         android:layout_height="match_parent"
         tools:context=".Activity_dopol">
 
-    <LinearLayout
-            android:orientation="vertical"
+    <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <include layout="@layout/custom_action_bar"/>
-
-        <FrameLayout
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/colorfon_list">
 
+            <include layout="@layout/custom_action_bar"/>
 
-            <com.github.barteksc.pdfviewer.PDFView
-                    android:id="@+id/pdfView"
-                    android:layout_width="match_parent"
-                    android:layout_height ="match_parent"/>
-
-            <RelativeLayout
-                    android:id="@+id/navigation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
-                    android:background="@drawable/btn_navigation">
-
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:text="99/99"
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/text_navigation"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@color/color_white"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_carbon_chevron_left"
-                            android:id="@+id/img_nav_left"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="5dp"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_carbon_chevron_right"
-                            android:id="@+id/img_nav_right"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="10dp"/>
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                    android:id="@+id/progress"
+            <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:foreground="#55000000"
-                    android:visibility="gone">
+                    android:layout_marginBottom="70dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/fr_pdf">
 
-                <ImageView
+                <com.github.barteksc.pdfviewer.PDFView
+                        android:id="@+id/pdfView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                </com.github.barteksc.pdfviewer.PDFView>
+
+                <RelativeLayout
+                        android:id="@+id/navigation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_pdf"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:layout_centerInParent="true"/>
+                        android:layout_gravity="right|bottom"
+                        android:background="@drawable/btn_navigation"
+                        tools:ignore="RtlHardcoded">
 
-                <com.agrawalsuneet.loaderspack.loaders.SearchLoader
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:search_defaultStartLoading="true"
-                        app:search_lensBorderWidth="6dp"
-                        app:search_lensColor="@color/colorPrimaryDark"
-                        app:search_lensHandleLength="20dp"
-                        app:search_lensRadius="18dp"
-                        app:search_xRangeToSearch="140dp"
-                        app:search_yRangeToSearch="140dp"
-                        android:layout_centerInParent="true"/>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:text="99999/99999"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:id="@+id/text_navigation"
+                                android:layout_marginStart="7dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/color_white"/>
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_carbon_chevron_left"
+                                android:id="@+id/img_nav_left"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="5dp"/>
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_carbon_chevron_right"
+                                android:id="@+id/img_nav_right"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="10dp"/>
+                    </LinearLayout>
+                </RelativeLayout>
 
-            </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:foreground="#55000000"
+                        android:visibility="gone">
 
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_pdf"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            android:layout_centerInParent="true"/>
 
+                    <com.agrawalsuneet.loaderspack.loaders.SearchLoader
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:search_defaultStartLoading="true"
+                            app:search_lensBorderWidth="6dp"
+                            app:search_lensColor="@color/colorPrimaryDark"
+                            app:search_lensHandleLength="20dp"
+                            app:search_lensRadius="18dp"
+                            app:search_xRangeToSearch="140dp"
+                            app:search_yRangeToSearch="140dp"
+                            android:layout_centerInParent="true"/>
+                </RelativeLayout>
+
+                <!--
             <FrameLayout
                     android:id="@+id/frame_banner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center">
             </FrameLayout>
+            -->
+            </FrameLayout>
+        </LinearLayout>
 
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/fl_action"
+                android:layout_gravity="bottom">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_upbutton1"
+                    android:id="@+id/fab"
+                    android:layout_gravity="top|center"
+                    app:maxImageSize="65dp"
+                    app:useCompatPadding="false"
+                    app:fabSize="normal"
+                    app:backgroundTint="@color/colorfab"/>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/ic_floatback"
+                    android:layout_gravity="bottom"
+                    android:id="@+id/rl_anim">
+
+            </RelativeLayout>
         </FrameLayout>
-    </LinearLayout>
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,21 +2,16 @@ package financialStudio.young_accountant;
 
 import android.content.res.Configuration;
 import android.graphics.Point;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
-import android.os.Bundle;
-import androidx.fragment.app.FragmentTransaction;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
 
@@ -69,10 +64,12 @@ public class Activity_passive extends BaseActivite {
             init_passive2();
         }
 
+        /*
         if (getStatus_banner() == 0) {
             new ThreadBanner(getActivity()).start();
             setStatus_banner(1);
         }
+         */
     }
 
     @Override
@@ -169,10 +166,10 @@ public class Activity_passive extends BaseActivite {
         final Button btn_p2 = (Button) findViewById(R.id.btn_p2);
 
         btn_p1.setBackgroundResource(R.drawable.btnsimple);
-        btn_p1.setTextColor(getResources().getColor(R.color.colorPrimaryDark, getTheme()));
+        btn_p1.setTextColor(getColorPrimaryDark());
 
         btn_p2.setBackgroundResource(R.drawable.btnsimple);
-        btn_p2.setTextColor(getResources().getColor(R.color.colorPrimaryDark, getTheme()));
+        btn_p2.setTextColor(getColorPrimaryDark());
 
         btn_p1.setOnClickListener(chip_p1Click);
         btn_p2.setOnClickListener(chip_p2Click);
@@ -227,10 +224,10 @@ public class Activity_passive extends BaseActivite {
         Button btn_p2 = (Button) findViewById(R.id.btn_p2);
 
         btn_p1.setBackgroundResource(R.drawable.btnsimple_select);
-        btn_p1.setTextColor(getResources().getColor(R.color.color_white, getTheme()));
+        btn_p1.setTextColor(getColor_white());
 
         btn_p2.setBackgroundResource(R.drawable.btnsimple);
-        btn_p2.setTextColor(getResources().getColor(R.color.colorPrimaryDark, getTheme()));
+        btn_p2.setTextColor(getColorPrimaryDark());
 
         ListView listView = (ListView) findViewById(R.id.list_passiv);
 
@@ -253,10 +250,10 @@ public class Activity_passive extends BaseActivite {
         Button btn_p2 = (Button) findViewById(R.id.btn_p2);
 
         btn_p1.setBackgroundResource(R.drawable.btnsimple);
-        btn_p1.setTextColor(getResources().getColor(R.color.colorPrimaryDark, getTheme()));
+        btn_p1.setTextColor(getColorPrimaryDark());
 
         btn_p2.setBackgroundResource(R.drawable.btnsimple_select);
-        btn_p2.setTextColor(getResources().getColor(R.color.color_white, getTheme()));
+        btn_p2.setTextColor(getColor_white());
 
         ListView listView = (ListView) findViewById(R.id.list_passiv);
 
@@ -310,6 +307,7 @@ public class Activity_passive extends BaseActivite {
 
     @Override
     void startBanner() {
+        /*
         MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -319,5 +317,6 @@ public class Activity_passive extends BaseActivite {
                 rft.commit();
             }
         });
+         */
     }
 }

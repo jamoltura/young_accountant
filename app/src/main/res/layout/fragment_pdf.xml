@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PdfFragment"
+        android:id="@+id/pdf_fragment"
+        android:background="@color/color_transparent">
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_upbutton1"
+                android:id="@+id/fab"
+                android:layout_gravity="center|top"
+                app:maxImageSize="65dp"
+                app:useCompatPadding="false"
+                app:fabSize="normal"
+                app:backgroundTint="@color/colorfab"/>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:layout_marginTop="@dimen/btn_pdf_top"
+                      android:background="@drawable/ic_floatback">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="@dimen/btn_pdf_leftrigth"
+                    android:layout_marginEnd="@dimen/btn_pdf_leftrigth"
+                    android:id="@+id/rl_anim">
+
+                <Button
+                        android:text="@string/bxms_general"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button"
+                        android:background="@drawable/btnbackground"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/btn_pdf_top"
+                    android:layout_marginStart="@dimen/btn_pdf_leftrigth"
+                    android:layout_marginEnd="@dimen/btn_pdf_leftrigth"
+                    android:id="@+id/rl_anim1">
+
+                <Button
+                        android:text="@string/bxms_scope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button2"
+                        android:background="@drawable/btnbackground"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/btn_pdf_top"
+                    android:layout_marginStart="@dimen/btn_pdf_leftrigth"
+                    android:layout_marginEnd="@dimen/btn_pdf_leftrigth"
+                    android:id="@+id/rl_anim2">
+
+                <Button
+                        android:text="@string/bxms_definitions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button3"
+                        android:background="@drawable/btnbackground"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/btn_pdf_top"
+                    android:layout_marginStart="@dimen/btn_pdf_leftrigth"
+                    android:layout_marginEnd="@dimen/btn_pdf_leftrigth"
+                    android:id="@+id/rl_anim3">
+
+                <Button
+                        android:text="@string/bxms_attachment1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button4"
+                        android:background="@drawable/btnbackground"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/btn_pdf_top"
+                    android:layout_marginStart="@dimen/btn_pdf_leftrigth"
+                    android:layout_marginEnd="@dimen/btn_pdf_leftrigth"
+                    android:id="@+id/rl_anim4">
+
+                <Button
+                        android:text="@string/bxms_attachment2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button5"
+                        android:background="@drawable/btnbackground"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

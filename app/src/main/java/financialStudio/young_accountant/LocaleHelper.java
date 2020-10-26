@@ -3,12 +3,10 @@ package financialStudio.young_accountant;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 import java.util.Locale;
 
@@ -77,9 +75,7 @@ public class LocaleHelper {
         android.content.res.Configuration conf = res.getConfiguration();
         conf.locale = locale;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            conf.setLayoutDirection(locale);
-        }
+        conf.setLayoutDirection(locale);
 
         res.updateConfiguration(conf, dm);
     }

@@ -1,18 +1,11 @@
 package financialStudio.young_accountant;
 
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import com.google.android.gms.ads.*;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 
 /**
@@ -70,6 +63,7 @@ public class FragmentBanner extends Fragment {
 
         final View v = inflater.inflate(R.layout.fragment_banner, container, false);
 
+        /*
         final AdView mAdView = (AdView) v.findViewById(R.id.adView);
 
         ImageButton imgbtn_close = (ImageButton) v.findViewById(R.id.imgbtn_close);
@@ -125,7 +119,7 @@ public class FragmentBanner extends Fragment {
                 super.onAdImpression();
             }
         });
-
+         */
         return v;
     }
 }

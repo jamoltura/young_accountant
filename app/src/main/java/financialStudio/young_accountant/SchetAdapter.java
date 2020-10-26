@@ -4,10 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,7 +79,7 @@ public class SchetAdapter extends BaseAdapter {
             LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
             rl_schet_value.setLayoutParams(params1);
 
-            ll_a.setBackgroundColor(context.getResources().getColor(R.color.colorlisthead, context.getTheme()));
+            ll_a.setBackgroundColor(getColor_colorlisthead());
 
             textSchet.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             textSchet.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -97,7 +97,7 @@ public class SchetAdapter extends BaseAdapter {
             LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             rl_schet_value.setLayoutParams(params2);
 
-            ll_a.setBackgroundColor(context.getResources().getColor(R.color.colorfonchild, context.getTheme()));
+            ll_a.setBackgroundColor(getColor_colorfonchild());
 
             SpannableStringBuilder Schet = getColorText_1(myMap);
             SpannableStringBuilder Schet_value = getColorText_2(myMap);
@@ -165,6 +165,38 @@ public class SchetAdapter extends BaseAdapter {
             text.setSpan(style, p.x - 5, p.y - 5, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         }
         return text;
+    }
+
+    protected int getColorPrimaryDark(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getResources().getColor(R.color.colorPrimaryDark, context.getTheme());
+        }else {
+            return context.getResources().getColor(R.color.colorPrimaryDark);
+        }
+    }
+
+    protected int getColor_white(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getResources().getColor(R.color.color_white, context.getTheme());
+        }else {
+            return context.getResources().getColor(R.color.color_white);
+        }
+    }
+
+    protected int getColor_colorlisthead(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getResources().getColor(R.color.colorlisthead, context.getTheme());
+        }else {
+            return context.getResources().getColor(R.color.colorlisthead);
+        }
+    }
+
+    protected int getColor_colorfonchild(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getResources().getColor(R.color.colorfonchild, context.getTheme());
+        }else {
+            return context.getResources().getColor(R.color.colorfonchild);
+        }
     }
 
     public void cancel_search(){

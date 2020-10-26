@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
     private View root;
+    private DisplayMetrics metrics;
 
     private SliderBuilder sliderBuilder;
 
@@ -45,6 +46,9 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+
+        metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         init();
         displayInit();
@@ -242,4 +246,12 @@ public class HomeFragment extends Fragment {
 
         startActivity(intent);
     };
+
+    private DisplayMetrics getMetrics() {
+        return metrics;
+    }
+
+    private void setMetrics(DisplayMetrics metrics) {
+        this.metrics = metrics;
+    }
 }

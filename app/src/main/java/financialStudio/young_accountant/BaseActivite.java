@@ -1,12 +1,13 @@
 package financialStudio.young_accountant;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.KeyEvent;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
-import androidx.annotation.Nullable;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 
 @SuppressLint("Registered")
@@ -83,6 +84,22 @@ public abstract class BaseActivite extends AppCompatActivity {
             add_custom_action_bar();
         }else {
             super.onBackPressed();
+        }
+    }
+
+    protected int getColorPrimaryDark(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+           return getResources().getColor(R.color.colorPrimaryDark, getTheme());
+        }else {
+            return getResources().getColor(R.color.colorPrimaryDark);
+        }
+    }
+
+    protected int getColor_white(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getResources().getColor(R.color.color_white, getTheme());
+        }else {
+            return getResources().getColor(R.color.color_white);
         }
     }
 

@@ -41,8 +41,6 @@
         <item name="android:layout_centerInParent">true</item>
     </style>
 
-
-
     <style name="buttonsimplebase" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:layout_centerInParent">true</item>
         <item name="android:textSize">12sp</item>

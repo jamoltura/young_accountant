@@ -21,4 +21,8 @@
 
     <dimen name="text_head_size_about">22sp</dimen>
 
+
+    <dimen name="btn_pdf_top">30dp</dimen>
+    <dimen name="btn_pdf_leftrigth">20dp</dimen>
+
 </resources>

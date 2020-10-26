@@ -28,6 +28,7 @@
                         android:id="@+id/textschet"
                         android:textSize="18sp"
                         android:padding="6dp"
+                        android:textColor="@color/color_black"
                         android:text="1000 "/>
             </RelativeLayout>
             <RelativeLayout
@@ -41,6 +42,7 @@
                         android:id="@+id/textschet_value"
                         android:textSize="18sp"
                         android:padding="6dp"
+                        android:textColor="@color/color_black"
                         android:text="hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"/>
             </RelativeLayout>
         </LinearLayout>

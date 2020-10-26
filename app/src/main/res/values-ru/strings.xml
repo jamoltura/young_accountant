@@ -476,7 +476,6 @@
     <string name="transit_9900">9900 СЧЕТА УЧЕТА КОНЕЧНОГО ФИНАНСОВОГО РЕЗУЛЬТАТА</string>
     <string name="transit_9910">9910 Конечный финансовый результат</string>
 
-
     <string name="zabalans_1">ЗАБАЛАНСОВЫЕ СЧЕТА</string>
 
     <string name="zabalans_001">001 Основные средства, полученные по оперативной аренде</string>
@@ -496,7 +495,6 @@
     <string name="zabalans_015">015 Имущество, полученное по договору простого товарищества (совместной деятельности)</string>
     <string name="zabalans_016">016 Нематериальные активы, полученные по праву пользования</string>
 
-
     <string name="banner_1">Основы бухгалтерского учета</string>
     <string name="banner_2">Профессиональный подход</string>
     <string name="banner_3">Зрелый специалист</string>
@@ -511,7 +509,6 @@
     <string name="action_search">Поиск</string>
     <string name="action_cancel">Отмена</string>
 
-
     <string name="menu_home">Главная</string>
     <string name="menu_lang">Сменить язык</string>
     <string name="menu_theme">Тунги режим</string>
@@ -519,8 +516,6 @@
     <string name="menu_rate">Оцените нас</string>
     <string name="menu_about">О нас</string>
     <string name="menu_other">Другой продукт</string>
-
-
 
     <string name="nav_header_desc">slideshow</string>
     <string name="nav_header_title">slideshow</string>
@@ -563,6 +558,19 @@
         ўқитувчиларимиз билан биргаликда амалиёт ҳам ўташингиз мумкин.</string>
 
     <string name="adress_kompany_text">Тошкент шаҳри, Юнусобод тумани, Шароф Рашидов кўчаси 16-уй</string>
-    <string name="phone_kompany_text">+99899 876 44 44        +99893 919 99 19</string>
+    <string name="phone_kompany_text1">+99899 876 44 44</string>
+    <string name="phone_kompany_text2">+99893 919 99 19</string>
+    <string name="bxms_general">Общие положения</string>
+    <string name="bxms_attachment20">Приложения</string>
+    <string name="bxms_attachment21">Первая часть</string>
+    <string name="bxms_attachment22">Вторая часть</string>
+    <string name="bxms_attachment23">Третья часть</string>
+    <string name="bxms_attachment24">Четвертая часть</string>
+    <string name="bxms_attachment25">Пятая часть</string>
+    <string name="bxms_attachment26">Шестая часть</string>
+    <string name="bxms_attachment2">Приложения №2</string>
+    <string name="bxms_attachment1">Приложения №1</string>
+    <string name="bxms_definitions">Определения</string>
+    <string name="bxms_scope">Сфера действия</string>
 
 </resources>

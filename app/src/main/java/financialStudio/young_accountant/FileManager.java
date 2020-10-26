@@ -2,39 +2,33 @@ package financialStudio.young_accountant;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.util.Log;
-import androidx.annotation.RequiresApi;
 
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
-import java.util.TimeZone;
 
 public class FileManager {
 
     private static final String TAG = "myLogs";
 
-    private final long TIME_OFF = 86400000;
+ //   private final long TIME_OFF = 86400000;
+    private final long TIME_OFF = 3600000;
+    public static final String APP_PREFERENCES = "mysettings";
+    public static final String APP_START_DATE_TIME = "StartDateTime";
 
     private Context context;
 
-    // Поный пут к приложении ////////////
-    private String pathApp;
-
-    // Поный пут к папкам ////////////////
-    private String SettingPath;
-    // Поный пут к файл ////////////////
-    private String SettingFile;
-
+    // TODO construktor FileManager
     public FileManager(Context context) {
         this.context = context;
         init();
     }
 
+    // проверяем время работа тестовой режим
     public boolean isTime(){
 
         boolean result = false;
@@ -48,76 +42,32 @@ public class FileManager {
         return result;
     }
 
+    // читаем значения из файла "setting"
     public Boolean timeIsKorrect() throws IOException {
 
-        String tempPath = getSettingFile();
-        File file = new File(tempPath);
+        SharedPreferences mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
-        InputStream in = new FileInputStream(file);
-
-        byte[] buf = new byte[(int) file.length()];
-
-        in.read(buf, 0, (int) file.length());
-
-        in.close();
-
-        String time_setup = new String(buf);
+        String time_setup = mSettings.getString(APP_START_DATE_TIME, "");
 
         return getDifferenceTime(time_setup);
     }
 
+    // инитциализация
     private void init(){
-        pathApp = context.getFilesDir().getAbsolutePath();
 
-        String TempPath = getPathApp() + "/Setting";
+        if (!getKeyInit()) {
+            SharedPreferences mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
-        File theDir = new File(TempPath);
+            @SuppressLint("CommitPrefEdits") SharedPreferences.Editor ed = mSettings.edit();
 
-        if (!theDir.exists()) {
-            try {
-                theDir.mkdir();
-            } catch (SecurityException se) {
-                //handle it
-            }
-        }
+            ed.putString(APP_START_DATE_TIME, getCurrentTime());
 
-        if (theDir.exists()) {
-            this.SettingPath = TempPath;
-        }
-
-        File theFile = new File(getSettingPath(), "SettingFile");
-
-        if (!theFile.exists()) {
-            try {
-                boolean newFile = theFile.createNewFile();
-
-                if (newFile) {
-                    initSettingFile(theFile);
-                }
-            } catch (SecurityException | IOException se) {
-                //handle it
-            }
-        }
-
-        if (theFile.exists()) {
-            this.SettingFile = theFile.getAbsolutePath();
+            ed.apply();
         }
     }
 
-    private void initSettingFile(File file) throws IOException {
-
-        OutputStream out = new FileOutputStream(file);
-
-        byte[] buf = new byte[8];
-
-        String str = getCurrentTime();
-
-        buf = str.getBytes();
-
-        out.write(buf, 0, buf.length);
-
-        out.flush();
-        out.close();
+    private boolean getKeyInit(){
+        return context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).contains(APP_START_DATE_TIME);
     }
 
     public String getCurrentTime() {
@@ -137,42 +87,16 @@ public class FileManager {
             Calendar cal_c = Calendar.getInstance();
             cal_c.setTime(Objects.requireNonNull(format.parse(getCurrentTime())));
 
-            long timeDiff = cal_s.getTimeInMillis() - cal_c.getTimeInMillis();
+            long timeDiff = cal_c.getTimeInMillis() - cal_s.getTimeInMillis();
 
             if (timeDiff > TIME_OFF){
                 return true;
             }
 
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Log.d(TAG, e.getMessage());
         }
 
         return false;
-    }
-
-
-    public String getPathApp() {
-        return pathApp;
-    }
-
-    public void setPathApp(String pathApp) {
-        this.pathApp = pathApp;
-    }
-
-    public String getSettingPath() {
-        return SettingPath;
-    }
-
-    public void setSettingPath(String settingPath) {
-        SettingPath = settingPath;
-    }
-
-    public String getSettingFile() {
-        return SettingFile;
-    }
-
-    public void setSettingFile(String settingFile) {
-        SettingFile = settingFile;
     }
 }

@@ -18,7 +18,10 @@ import com.itextpdf.layout.Canvas;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -243,8 +246,6 @@ public class DokDopol {
 
         return result;
     }
-
-    public static Comparator<IPdfTextLocation> sort = (obj1, obj2) -> (Double.compare(obj2.getRectangle().getX(), obj1.getRectangle().getX()));
 
     private void setCollection() {
         try {

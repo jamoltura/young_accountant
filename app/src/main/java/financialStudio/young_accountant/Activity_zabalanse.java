@@ -1,18 +1,11 @@
 package financialStudio.young_accountant;
 
 import android.graphics.Point;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
 import android.os.Bundle;
-import androidx.fragment.app.FragmentTransaction;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import android.util.DisplayMetrics;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -41,7 +34,7 @@ public class Activity_zabalanse extends BaseActivite {
         toolbar_init(0);
         init_zabalans();
 
-        new ThreadBanner(getActivity()).start();
+       // new ThreadBanner(getActivity()).start();
     }
 
     @Override
@@ -144,6 +137,7 @@ public class Activity_zabalanse extends BaseActivite {
 
     @Override
     void startBanner() {
+        /*
         MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -153,5 +147,6 @@ public class Activity_zabalanse extends BaseActivite {
                 rft.commit();
             }
         });
+         */
     }
 }

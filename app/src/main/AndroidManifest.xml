@@ -12,21 +12,28 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
+        <!--
         <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
                 android:value="ca-app-pub-8759219509601174~9539652983"/>
+        -->
 
         <activity android:name=".Activity_dopol"
-        android:configChanges="orientation|keyboardHidden|screenSize">
+            android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
+
         <activity android:name=".Activity_zabalanse">
         </activity>
+
         <activity android:name=".Activity_transite">
         </activity>
+
         <activity android:name=".Activity_passive">
         </activity>
+
         <activity android:name=".Activity_active">
         </activity>
+
         <activity android:name=".MainActivity"
                   android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

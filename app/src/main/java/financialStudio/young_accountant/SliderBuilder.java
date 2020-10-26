@@ -1,15 +1,12 @@
 package financialStudio.young_accountant;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import com.github.barteksc.pdfviewer.PDFView;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SliderBuilder {
 

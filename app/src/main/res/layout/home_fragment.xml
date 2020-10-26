@@ -72,7 +72,9 @@
                         <ImageButton
                                 android:id="@+id/imgbtn1"
                                 app:srcCompat="@drawable/ic_active"
-                                style="@style/bazebutton"/>
+                                style="@style/bazebutton"
+                                android:adjustViewBounds="true"
+                                android:scaleType="center"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -100,7 +102,9 @@
                         <ImageButton
                                 android:id="@+id/imgbtn2"
                                 app:srcCompat="@drawable/ic_passive"
-                                style="@style/bazebutton"/>
+                                style="@style/bazebutton"
+                                android:adjustViewBounds="true"
+                                android:scaleType="center"/>
                     </RelativeLayout>
                     <RelativeLayout
                             android:layout_width="match_parent"
@@ -140,7 +144,9 @@
                         <ImageButton
                                 android:id="@+id/imgbtn3"
                                 app:srcCompat="@drawable/ic_transit"
-                                style="@style/bazebutton"/>
+                                style="@style/bazebutton"
+                                android:adjustViewBounds="true"
+                                android:scaleType="center"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -169,7 +175,9 @@
                         <ImageButton
                                 android:id="@+id/imgbtn4"
                                 app:srcCompat="@drawable/ic_zabalanse"
-                                style="@style/bazebutton"/>
+                                style="@style/bazebutton"
+                                android:adjustViewBounds="true"
+                                android:scaleType="center"/>
                     </RelativeLayout>
                     <RelativeLayout
                             android:layout_width="match_parent"
@@ -209,7 +217,9 @@
                         <ImageButton
                                 android:id="@+id/imgbtn5"
                                 app:srcCompat="@drawable/ic_zakon"
-                                style="@style/bazebutton"/>
+                                style="@style/bazebutton"
+                                android:adjustViewBounds="true"
+                                android:scaleType="center"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -238,7 +248,9 @@
                         <ImageButton
                                 android:id="@+id/imgbtn6"
                                 app:srcCompat="@drawable/ic_nsbu"
-                                style="@style/bazebutton"/>
+                                style="@style/bazebutton"
+                                android:adjustViewBounds="true"
+                                android:scaleType="center"/>
                     </RelativeLayout>
                     <RelativeLayout
                             android:layout_width="match_parent"

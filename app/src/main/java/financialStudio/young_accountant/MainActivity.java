@@ -1,42 +1,26 @@
 package financialStudio.young_accountant;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ShareCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.smarteist.autoimageslider.SliderView;
-import financialStudio.young_accountant.ui.home.HomeFragment;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -59,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         FileManager fma = new FileManager(getApplicationContext());
 
-        if (fma.isTime()){
+     //   if (!fma.isTime()){
+        if (false){
             setContentView(R.layout.activity_main_time);
 
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -224,10 +209,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if (drawer.isOpen()){
-            drawer.closeDrawers();
-        }else {
+        FileManager fma = new FileManager(getApplicationContext());
+
+        if (fma.isTime()){
             super.onBackPressed();
+        }else {
+            if (drawer.isOpen()){
+                drawer.closeDrawers();
+            }else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -271,9 +262,5 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView6 = (TextView) findViewById(R.id.textView6);
         textView6.setText(R.string.nsbu);
-    }
-
-    public NavController getNavController() {
-        return navController;
     }
 }

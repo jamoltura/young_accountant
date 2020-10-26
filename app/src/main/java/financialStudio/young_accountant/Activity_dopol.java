@@ -1,18 +1,18 @@
 package financialStudio.young_accountant;
 
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentTransaction;
 import com.github.barteksc.pdfviewer.PDFView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +22,8 @@ public class Activity_dopol extends BaseActivite{
     private static final String TAG = "myLogs";
 
     private DokDopol dokDopol;
+    private int fl_heigth;
+    private DisplayMetrics metrics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,9 @@ public class Activity_dopol extends BaseActivite{
 
         String lang = LocaleHelper.getLanguage(getApplicationContext());
         LocaleHelper.onAttach(this, lang);
+
+        metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         setContentView(R.layout.activity_dopol);
 
@@ -42,8 +47,27 @@ public class Activity_dopol extends BaseActivite{
             dopol2();
         }
 
-        new ThreadBanner(getActivity()).start();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(click_fab_up);
+
+       // new ThreadBanner(getActivity()).start();
     }
+
+    View.OnClickListener click_fab_up = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            PdfFragment pdfFragment = new PdfFragment();
+            pdfFragment.show(getSupportFragmentManager(), "pdf_dialog");
+
+
+          //  getSupportFragmentManager().beginTransaction().add(R.id.pdf_fragment, pdfFragment);
+          //  getSupportFragmentManager().beginTransaction().show(pdfFragment);
+          //  getSupportFragmentManager().beginTransaction().commit();
+        }
+    };
+
+
+
 
     @Override
     void toolbar_init(int value) {
@@ -143,14 +167,14 @@ public class Activity_dopol extends BaseActivite{
     private void dopol1(){
         setNavigateVisible(false);
         PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-        dokDopol = DokDopol.getInstanceNSBU(this, pdfView);
+        dokDopol = DokDopol.getInstanceZakon(this, pdfView);
         dokDopol.open();
     }
 
     private void dopol2(){
         setNavigateVisible(false);
         PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
-        dokDopol = DokDopol.getInstanceZakon(this, pdfView);
+        dokDopol = DokDopol.getInstanceNSBU(this, pdfView);
         dokDopol.open();
     }
 
@@ -249,8 +273,17 @@ public class Activity_dopol extends BaseActivite{
         return this;
     }
 
+    public DisplayMetrics getMetrics() {
+        return metrics;
+    }
+
+    public void setMetrics(DisplayMetrics metrics) {
+        this.metrics = metrics;
+    }
+
     @Override
     void startBanner() {
+        /*
         MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -260,5 +293,6 @@ public class Activity_dopol extends BaseActivite{
                 rft.commit();
             }
         });
+         */
     }
 }

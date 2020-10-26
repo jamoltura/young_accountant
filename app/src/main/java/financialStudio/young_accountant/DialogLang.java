@@ -1,32 +1,26 @@
 package financialStudio.young_accountant;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.app.ActionBar;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavBackStackEntry;
-import androidx.navigation.NavController;
-import financialStudio.young_accountant.ui.home.HomeFragment;
-
-import java.util.Iterator;
 
 public class DialogLang extends DialogFragment implements View.OnClickListener {
 
     private static final String TAG = "myLogs";
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(STYLE_NO_TITLE, 0);
+    }
 
     @Nullable
     @Override
@@ -48,13 +42,13 @@ public class DialogLang extends DialogFragment implements View.OnClickListener {
 
         if (lang.equalsIgnoreCase("ru")){
             btn_lang_ru.setBackgroundResource(R.drawable.btnsimple_select);
-            btn_lang_ru.setTextColor(getActivity().getResources().getColor(R.color.color_white, getActivity().getTheme()));
+            btn_lang_ru.setTextColor(getColor_white());
         }else if (lang.equalsIgnoreCase("uz")){
             btn_lang_uz_l.setBackgroundResource(R.drawable.btnsimple_select);
-            btn_lang_uz_l.setTextColor(getActivity().getResources().getColor(R.color.color_white, getActivity().getTheme()));
-        }else if (lang.equalsIgnoreCase("default")){
+            btn_lang_uz_l.setTextColor(getColor_white());
+        }else {
             btn_lang_uz_k.setBackgroundResource(R.drawable.btnsimple_select);
-            btn_lang_uz_k.setTextColor(getActivity().getResources().getColor(R.color.color_white, getActivity().getTheme()));
+            btn_lang_uz_k.setTextColor(getColor_white());
         }
 
         return v;
@@ -81,6 +75,38 @@ public class DialogLang extends DialogFragment implements View.OnClickListener {
                 ((MainActivity) getActivity()).setLocaleUz_K();
                 getActivity().onBackPressed();
             }
+        }
+    }
+
+    protected int getColorPrimaryDark(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getResources().getColor(R.color.colorPrimaryDark, getActivity().getTheme());
+        }else {
+            return getResources().getColor(R.color.colorPrimaryDark);
+        }
+    }
+
+    protected int getColor_white(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getResources().getColor(R.color.color_white, getActivity().getTheme());
+        }else {
+            return getResources().getColor(R.color.color_white);
+        }
+    }
+
+    protected int getColor_colorlisthead(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getResources().getColor(R.color.colorlisthead, getActivity().getTheme());
+        }else {
+            return getResources().getColor(R.color.colorlisthead);
+        }
+    }
+
+    protected int getColor_colorfonchild(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getResources().getColor(R.color.colorfonchild, getActivity().getTheme());
+        }else {
+            return getResources().getColor(R.color.colorfonchild);
         }
     }
 }

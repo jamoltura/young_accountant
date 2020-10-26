@@ -1,5 +1,6 @@
 package financialStudio.young_accountant.ui.about;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,7 +22,9 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.about_fragment, container, false);
+        View root = inflater.inflate(R.layout.about_fragment, container, false);
+
+        return root;
     }
 
     @Override

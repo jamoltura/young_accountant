@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="colorfon">#EBECF0</color>
+    <color name="colorfab">#33C481</color>
 
     <color name="colorbtnpress">#fefffa</color>
 
@@ -23,6 +24,7 @@
 
 
     <color name="color_app_back_color">#1B06E775</color>
+    <color name="color_transparent">@android:color/transparent</color>
 
 
 </resources>

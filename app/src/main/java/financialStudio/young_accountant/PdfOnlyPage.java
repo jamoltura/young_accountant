@@ -3,11 +3,9 @@ package financialStudio.young_accountant;
 import android.content.Context;
 import android.util.Log;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class PdfOnlyPage {

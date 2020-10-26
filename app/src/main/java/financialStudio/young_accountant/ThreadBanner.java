@@ -1,7 +1,5 @@
 package financialStudio.young_accountant;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class ThreadBanner extends Thread{
 
     final private BaseActivite activity;
@@ -16,12 +14,7 @@ public class ThreadBanner extends Thread{
 
         try {
             Thread.sleep(1000);
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    getActivity().startBanner();
-                }
-            });
+            getActivity().runOnUiThread(() -> getActivity().startBanner());
 
 
         } catch (InterruptedException e) {

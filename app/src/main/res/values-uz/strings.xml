@@ -563,6 +563,19 @@
         ўқитувчиларимиз билан биргаликда амалиёт ҳам ўташингиз мумкин.</string>
 
     <string name="adress_kompany_text">Тошкент шаҳри, Юнусобод тумани, Шароф Рашидов кўчаси 16-уй</string>
-    <string name="phone_kompany_text">+99899 876 44 44        +99893 919 99 19</string>
+    <string name="phone_kompany_text1">+99899 876 44 44</string>
+    <string name="phone_kompany_text2">+99893 919 99 19</string>
+    <string name="bxms_general">Umumiy qoidalar</string>
+    <string name="bxms_scope">Amal qilish soxasi</string>
+    <string name="bxms_definitions">Tushunchalar</string>
+    <string name="bxms_attachment1">Ilova №1</string>
+    <string name="bxms_attachment2">Ilova №2</string>
+    <string name="bxms_attachment20">Ilova</string>
+    <string name="bxms_attachment21">Birinchi qism</string>
+    <string name="bxms_attachment22">Ikkinchi qism</string>
+    <string name="bxms_attachment23">Uchinchi qism</string>
+    <string name="bxms_attachment24">To`rtinchi qism</string>
+    <string name="bxms_attachment25">Beshinchi qism</string>
+    <string name="bxms_attachment26">Oltinchi qism</string>
 
 </resources>
